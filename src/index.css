@@ -1,0 +1,9 @@
+nav { 
+    height: 70px; 
+}
+
+body { font-family: sans-serif; }
+
+* { box-sizing: border-box; }
+
+nav, section { display: flex; }
