@@ -102,6 +102,10 @@ h2.travel_title2 {
     bottom: 25px;
 }
 
+.polaroid-banner {
+    position: relative;
+}
+
 
 h1 {
     color: #f3f3f2;
@@ -124,15 +128,15 @@ h1 i {
     margin-bottom: 50px;
 }
 
-.banner img { max-width: 400px; border: white 45px solid; border-radius: 4px; box-shadow: 0 0 21px #b2b2c3; border-bottom: 80px white solid; }
+.banner img { max-width: 380px; border: white 45px solid; border-radius: 4px; box-shadow: 0 0 21px #b2b2c3; border-bottom: 80px white solid; }
 
-.banner h2 {
-    max-width: 340px;
-font-family: 'Indie Flower';
-font-size: 50px;
-transform: rotate(-15deg);
-line-height: 2.0;
-letter-spacing: 4px;
+
+.ninety-days-banner h2 {
+    max-width: 361px;
+    font-size: 30px;
+    transform: rotate(-15deg);
+    line-height: 3;
+    letter-spacing: 10px;
 }
 
 .banner > div {
