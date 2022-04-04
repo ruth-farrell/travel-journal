@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from './components/Header'
 import Card from './components/Card'
+import Banner from './components/Banner'
 import Footer from './components/Footer'
 import travelData from './data'
 
@@ -26,6 +27,7 @@ export default function App () {
    return (
        <>
         <Header/> 
+        <Banner/>
         <main>
         {cards}
         </main>
