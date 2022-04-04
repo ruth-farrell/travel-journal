@@ -1,16 +1,35 @@
 import React from 'react'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero' 
+import Header from './components/Header'
 import Card from './components/Card'
+import Footer from './components/Footer'
+import travelData from './data'
+
+
 
 export default function App () {
+
+    const cards = travelData.map(item => {
+        return (
+        <Card 
+         key={ item.id} 
+         location={item.location}
+         googleMapsUrl = {item.googleMapsUrl}
+         title={item.title}
+         imageUrl={item.imageUrl}
+         startDate={item.startDate}
+         endDate={item.endDate}
+         description={item.description}
+           />
+        )
+    })
+
    return (
        <>
-        <Navbar/> 
-        <Hero/>
-        <Card phone="0861" email="something@gmail.com"/>
-        <Card  email="hello@gmail.com"/>
-        <Card phone="8937" email="nothing@gmail.com"/>
+        <Header/> 
+        <main>
+        {cards}
+        </main>
+        <Footer/>
        </>
    )
 

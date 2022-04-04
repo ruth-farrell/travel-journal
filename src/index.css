@@ -1,9 +1,43 @@
-nav { 
-    height: 70px; 
-}
+/* CSS reset */
+
+body, p, h2, h1 { margin: 0px; padding: 0px; }
 
 body { font-family: sans-serif; }
 
 * { box-sizing: border-box; }
 
-nav, section { display: flex; }
+header, footer { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 20px;
+    background: #cfcfed; 
+}
+
+main {
+    margin: 0 auto;
+    max-width: 1050px;
+}
+
+/* Card */
+
+.card {
+    display: flex;
+    padding: 20px 0px;
+}
+
+.card_left .travel_img {
+    max-width: 200px;
+    border-radius: 5px;
+}
+
+.card_right div {
+    margin: 5px 0px;
+}
+
+.travel_locationData, .travel_dates {
+    display: flex;
+    gap: 10px;
+}
+
+
