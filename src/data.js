@@ -16,10 +16,10 @@
         title: "Nea Makri",
         location: "Greece",
         googleMapsUrl: "https://www.google.com/maps/place/Athens,+Greece/@37.9908164,23.6682993,12z/data=!3m1!4b1!4m5!3m4!1s0x14a1bd1f067043f1:0x2736354576668ddd!8m2!3d37.9838096!4d23.7275388",
-        startDate: "12 August 2021",
+        startDate: "18 August 2021",
         endDate: "22 August 2021",
         description: "Lots of great stuff in Nea Makri.",
-        imageUrl: "nea-makri.png"
+        imageUrl: "nea-makri.jpg"
     },
 
     {
@@ -30,7 +30,7 @@
         startDate: "12 August 2021",
         endDate: "22 August 2021",
         description: "Lots of great stuff in Nea Makri.",
-        imageUrl: "mykonos.png"
+        imageUrl: "mykonos.jpg"
     }, 
 
     {
@@ -41,7 +41,7 @@
         startDate: "12 August 2021",
         endDate: "22 August 2021",
         description: "Lots of great stuff in Nea Makri.",
-        imageUrl: "mykonos.png"
+        imageUrl: "mykonos.jpg"
     },
 
     {
@@ -52,7 +52,7 @@
         startDate: "12 August 2021",
         endDate: "22 August 2021",
         description: "Lots of great stuff in Nea Makri.",
-        imageUrl: "santorini.png"
+        imageUrl: "santorini.jpg"
     }, 
 
     {
@@ -135,7 +135,7 @@
     {
         id: 10,
         title: "Tenerife",
-        location: "Spain",
+        location: "Canary Islands",
         googleMapsUrl: "https://www.google.com/maps/place/Athens,+Greece/@37.9908164,23.6682993,12z/data=!3m1!4b1!4m5!3m4!1s0x14a1bd1f067043f1:0x2736354576668ddd!8m2!3d37.9838096!4d23.7275388",
         startDate: "12 August 2021",
         endDate: "22 August 2021",

@@ -6,10 +6,11 @@ export default function Card(props) {
     return (
         <div className="card" > 
         <div className="card_left"> 
-         <img src={`../images/${props.imageUrl}`} className="travel_img"/>
+         <img src={process.env.PUBLIC_URL + `/images/${props.imageUrl}`} className="travel_img" alt={props.title} title={props.title}/>
+         <h2 className="travel_title2">{props.title}</h2>
          </div>
          <div className="card_right">
-            <div className="travel_locationData"><img src="../images/location-arrow"/><span className="travel_location">{props.location}</span>
+            <div className="travel_locationData"><i class="fas fa-map-marker-alt"></i><span className="travel_location">{props.location}</span>
             <a href={props.googleMapsUrl}>View on Google Maps</a>
             </div>
         
