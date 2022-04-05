@@ -1,26 +1,33 @@
 import React from 'react'
 
 
-export default function Card(props) {
+const Card = ({ item }) => {   
 
- 
 
     return (
-        <div className="card" > 
+        <>
+        {item.map((Val) => { 
+        return (
+        <div className="card" key={Val.id} > 
         <div className="card_left"> 
-         <img src={process.env.PUBLIC_URL + `/images/${props.imageUrl}`} className="travel_img" alt={props.title} title={props.title} />
-         <h2 className="travel_title2">{props.title}</h2>
+         <img src={process.env.PUBLIC_URL + `/images/${Val.imageUrl}`} className="travel_img" alt={Val.title} title={Val.title} />
+         <h2 className="travel_title2">{Val.title}</h2>
          </div>
          <div className="card_right">
-            <div className="travel_locationData"><i className="fas fa-map-marker-alt"></i><span className="travel_location">{props.location}</span>
-            <a href={props.googleMapsUrl} target="_blank">View on Google Maps</a>
+            <div className="travel_locationData"><i className="fas fa-map-marker-alt"></i><span className="travel_location">{Val.location}</span>
+            <a href={Val.googleMapsUrl} target="_blank">View on Google Maps</a>
             </div>
         
-                <h2 className="travel_title">{props.title}</h2>
+                <h2 className="travel_title">{Val.title}</h2>
 
-                <div className="travel_dates"><span className="start_date">{props.startDate}</span>-<span className="end_date">{props.endDate}</span></div>
-                <span className="travel_description">{props.description}</span> 
+                <div className="travel_dates"><span className="start_date">{Val.startDate}</span>-<span className="end_date">{Val.endDate}</span></div>
+                <span className="travel_description">{Val.description}</span> 
          </div>
         </div>
-    )
-} 
+        );
+        })}
+        </>
+    );
+};
+
+export default Card;

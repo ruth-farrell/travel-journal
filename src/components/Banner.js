@@ -3,7 +3,9 @@ import React from 'react'
 export default function Banner () {
     return (
         <div className="banner">
-         <div className="ninety-days-banner"><h2><i className="far fa-calendar-alt"></i> 90 Days Travelling and Working</h2> 
+         <div className="ninety-days-banner">
+             <img src={process.env.PUBLIC_URL + `/images/travelpostit.png`} alt="Ruth on Laptop" />
+             <h2><i className="far fa-calendar-alt"></i> 90 Days Travelling and Working</h2> 
         </div>
         <div className="polaroid-banner">
             <img src={process.env.PUBLIC_URL + `/images/ruthlaptop.jpeg`} alt="Ruth on Laptop" />

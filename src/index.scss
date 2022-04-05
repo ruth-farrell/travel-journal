@@ -1,0 +1,377 @@
+/* Define Variables */ 
+
+$primaryfont: "Work Sans", sans-serif;
+$secondaryfont: "Indie Flower", cursive;
+
+$accentcolor: #8686b8;
+$beigecolor: #f3f3f2;
+
+$box-shadow: 0 0 21px #b2b2c3;
+
+/* Mixin */
+
+@mixin flex-center {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+@mixin transform($property) {
+    -webkit-transform: $property;
+    -ms-transform: $property;
+    transform: $property;
+  }
+
+@mixin whiteborder {
+     box-shadow: $box-shadow;
+     border-radius: 4px;
+     border: #ffffff 45px solid;
+  }
+
+/* CSS reset */
+
+html, body, p, h1, h2, h3 { 
+    margin: 0px; 
+    padding: 0px; 
+    font-weight: normal; 
+    font-weight: 300; 
+}
+
+/* Element styles */
+
+body { 
+    background-color: $beigecolor; 
+    font-family: $primaryfont; 
+    letter-spacing: 1.0px; 
+    background-image: url("./whitemap.png");
+    background-position: top center; 
+   }
+
+* { box-sizing: border-box; }
+
+h1 {
+    color: $beigecolor;
+    font-size: 16px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 2.0;
+
+     i {
+        padding-right: 20px;
+    }
+    
+}
+
+h2 { text-transform: uppercase; }
+
+
+/* Header and Footer */
+
+header, footer { 
+    @include flex-center;
+    padding: 30px;
+    background: $accentcolor;
+}
+
+header { margin-bottom: 50px; }
+
+footer { 
+    font-size: 11px; 
+    color: $beigecolor; 
+    margin-top: 100px; 
+}
+
+main, .banner {
+    margin: 0 auto;
+    max-width: 1050px;
+}
+
+/* Card */
+
+.card {
+    display: flex;
+    padding: 20px 0px;
+    margin: 0 auto;
+    max-width: 929px;
+}
+
+.card_left {
+    position: relative;
+    @include flex-center;
+
+    .travel_img {
+        max-width: 350px;
+        @include whiteborder;
+        border-bottom: 80px #ffffff solid;
+      }   
+}
+
+
+
+.card_right {
+        padding-left: 20px;
+        line-height: 2.0;
+        @include flex-center;
+        flex-direction: column;
+        width: 100%;
+
+        > div {
+            margin: 5px 0px;
+        }
+    }
+
+
+.travel_locationData, .travel_dates {
+    @include flex-center;
+    gap: 10px;
+}
+
+.travel_dates {
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+span.travel_location {
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.travel_locationData i, .travel_locationData a {
+    color: $accentcolor;
+}
+
+.travel_locationData a {
+    text-underline-offset: 4px;
+}
+
+h2.travel_title {
+    font-size: 25px;
+    text-transform: capitalize;
+}
+
+h2.travel_title2 {
+    font-family: $secondaryfont;
+    letter-spacing: 5px;
+    position: absolute;
+    bottom: 25px;
+}
+
+
+
+
+/* Banner */
+
+.banner {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    margin-bottom: 50px;
+
+    > div {
+        width: 100%;
+        @include flex-center;
+        text-align: center;
+    }
+}
+
+.polaroid-banner {
+    position: relative;
+
+    img { 
+        max-width: 380px; 
+        @include whiteborder;
+        border-bottom: 80px white solid; 
+    }
+
+}
+
+
+.ninety-days-banner { 
+    h2 {
+    position: absolute;
+    color: $beigecolor;
+    @include transform(rotate(-12deg));
+    line-height: 3;
+    letter-spacing: 6px;
+    max-width: 320px;
+    font-size: 21px;
+    font-family: $secondaryfont;
+    }   
+
+    img {
+        max-width: 400px;
+        position: relative;
+    }
+}
+
+
+
+/* Map Filter */ 
+
+img.button-map {
+    @include whiteborder;
+    background-color: $beigecolor;
+    max-width: 100%;
+    height: auto;
+    border-top: white 80px solid;
+}
+
+.button-map-section {
+    position: relative;
+    text-align: center;
+
+     button {
+    position: absolute;
+    border: none;
+    color: $beigecolor;
+    background: $accentcolor;
+    padding: 10px 15px;
+    letter-spacing: 3px;
+    border-radius: 3px;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-family: $primaryfont;
+    font-weight: 100;
+    cursor: pointer;
+   }
+
+    button:focus {
+        outline: 4px solid white;
+        box-shadow: $box-shadow;
+    }
+
+}
+
+/* Map Buttons */
+
+.button-map-section {
+
+        button.Greece {
+            left: 56%;
+            top: 53%;
+        } 
+
+        button.Greek.Islands {
+            top: 63%;
+            right: 37%;
+        }
+
+        button.Canary.Islands {
+            top: 82.5%;
+            right: 71%;
+        }
+
+        button.Morrocco {
+            top: 73%;
+            right: 52%;
+        }
+
+        button.Spain {
+            top: 53%;
+            right: 58%;
+        }
+
+        button.Italy {
+            top: 46%;
+            right: 47%;
+        }
+
+        button.Sicily {
+            right: 48%;
+            top: 55%;
+        }
+
+        button.All {
+            top: 19%;
+            right: 13%;
+            padding: 10px 20px;
+        }
+
+}
+
+h2.filter-title {
+    position: absolute;
+    width: 100%;
+    @include flex-center;
+    top: 25px;
+    font-family: $secondaryfont;
+    letter-spacing: 5px;
+}
+
+/* Timeline section */ 
+
+.timeline-section {
+    max-width: 929px;
+    @include flex-center;
+    flex-direction: column;
+    gap: 20px;
+    background: #ffffff;
+    @include whiteborder;
+    margin: 20px auto;
+
+    .filter-title { position: static; }
+
+     button { 
+        border: none; 
+        padding: 10px 15px; 
+        letter-spacing: 3px; 
+        font-size: 11px; 
+        text-transform: uppercase;
+        font-family: $primaryfont;
+        font-weight: 100;
+        background: $beigecolor;
+        cursor: pointer;
+        border-right: 4px solid #8686b7;
+    }
+
+      button:last-child { border-right: none; }
+
+       button:focus {
+        outline: 4px solid white;
+        border-right: none;
+        z-index: 999;
+        position: relative;
+        box-shadow: 0 0 21px #b2b2c3;
+       }
+
+
+   
+}
+
+/* Mobile Styles */
+
+@media screen and (max-width: 768px) {
+    .banner, .card {
+        flex-direction: column;
+    }
+
+    .card { gap: 40px; }
+
+    .button-map-section, .timeline-section {
+        max-width: 90%;
+        margin: 0 auto;
+        
+        button {
+            position: static;
+            margin: 10px;
+        }
+
+    }
+
+
+    .timeline-section .timeline-buttons {
+        @include flex-center;
+        flex-wrap: wrap;
+        gap: 20px;
+
+
+        button:last-child { border-right: 4px solid #8686b7; }
+
+    }
+
+    
+    .ninety-days-banner img {  max-width: 80%; }
+
+}
+
