@@ -1,36 +1,45 @@
 import React from "react";
-import travelData from '../data'
 
-
-
- 
-const Timeline = ({ filtermonthItems, setItem, monthItems }) => {
-
+const Timeline = ({
+  setItem,
+  monthItems,
+  travelYear,
+  travelDataByYear,
+  travelMonth,
+  setTravelMonth,
+  setTravelLocation,
+  filterMonth,
+}) => {
   return (
     <>
-     <div className="timeline-section">
-      <h2 className="filter-title">Filter By Month</h2>
-      <div className="timeline-buttons">
-
-        {monthItems.map((Val, id) => {
-          return (
-            <button className={Val}
-              key={id}
-              onClick={() => filtermonthItems(Val)}
-            >
-               {Val}
-            </button>
-          );
-        })}
-        <button className="All"
-          onClick={() => setItem(travelData)}
-        >
-          See All 
-        </button>
+      <div className="timeline-section">
+        <h2 className="filter-title">Filter {travelYear} By Month</h2>
+        <div className="timeline-buttons">
+          {monthItems.map((Val, id) => {
+            return (
+              <button
+                key={id}
+                onClick={() => filterMonth(Val)}
+                className={Val + (travelMonth === Val ? " active" : "")}
+              >
+                {Val}
+              </button>
+            );
+          })}
+          <button
+            className="All"
+            onClick={() => {
+              setItem(travelDataByYear);
+              setTravelMonth([]);
+              setTravelLocation([]);
+            }}
+          >
+            See All
+          </button>
         </div>
-     </div>
+      </div>
     </>
   );
 };
- 
+
 export default Timeline;

@@ -1,4 +1,4 @@
-/* Define Variables */ 
+/* Define Variables */
 
 $primaryfont: "Work Sans", sans-serif;
 $secondaryfont: "Indie Flower", cursive;
@@ -11,9 +11,10 @@ $box-shadow: 0 0 21px #b2b2c3;
 /* Mixin */
 
 @mixin flex-center {
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 @mixin transform($property) {
@@ -30,21 +31,21 @@ $box-shadow: 0 0 21px #b2b2c3;
 
 /* CSS reset */
 
-html, body, p, h1, h2, h3 { 
-    margin: 0px; 
-    padding: 0px; 
-    font-weight: normal; 
-    font-weight: 300; 
+html, body, p, h1, h2, h3 {
+    margin: 0px;
+    padding: 0px;
+    font-weight: normal;
+    font-weight: 300;
 }
 
 /* Element styles */
 
-body { 
-    background-color: $beigecolor; 
-    font-family: $primaryfont; 
-    letter-spacing: 1.0px; 
+body {
+    background-color: $beigecolor;
+    font-family: $primaryfont;
+    letter-spacing: 1.0px;
     background-image: url("./whitemap.png");
-    background-position: top center; 
+    background-position: top center;
    }
 
 * { box-sizing: border-box; }
@@ -60,7 +61,7 @@ h1 {
      i {
         padding-right: 20px;
     }
-    
+
 }
 
 h2 { text-transform: uppercase; }
@@ -68,7 +69,7 @@ h2 { text-transform: uppercase; }
 
 /* Header and Footer */
 
-header, footer { 
+header, footer {
     @include flex-center;
     padding: 30px;
     background: $accentcolor;
@@ -76,40 +77,78 @@ header, footer {
 
 header { margin-bottom: 50px; }
 
-footer { 
-    font-size: 11px; 
-    color: $beigecolor; 
-    margin-top: 100px; 
+header nav button {
+    border: none;
+    padding: 10px 20px;
+    letter-spacing: 3px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: $primaryfont;
+    font-weight: 100;
+    background: $beigecolor;
+    cursor: pointer;
+    margin-right: 20px;
+     }
+
+nav button:last-child {
+    margin-right: 0px;
+    }
+
+footer {
+    font-size: 11px;
+    color: $beigecolor;
+    margin-top: 100px;
 }
 
-main, .banner {
+main, .banner, .container {
     margin: 0 auto;
-    max-width: 1050px;
+    max-width: 1150px;
 }
 
 /* Card */
 
+.timeline-section.breadcrumb {
+    border: #ffffff 30px solid;
+}
+
+.breadcrumb .filter-title {
+    justify-content: left;
+    font-family: 'Work Sans';
+    font-size: 14px;
+    letter-spacing: 4px;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 48px;
+}
+
 .card {
     display: flex;
     padding: 20px 0px;
-    margin: 0 auto;
     max-width: 929px;
+    position: relative;
 }
 
 .card_left {
     position: relative;
+    border: none;
+    padding: 0;
+    cursor: pointer;
     @include flex-center;
 
     .travel_img {
         max-width: 350px;
+        height: 515px;
         @include whiteborder;
         border-bottom: 80px #ffffff solid;
-      }   
+      }
 }
 
 
-
-.card_right {
+.card .card_right {
         padding-left: 20px;
         line-height: 2.0;
         @include flex-center;
@@ -120,6 +159,18 @@ main, .banner {
             margin: 5px 0px;
         }
     }
+
+.card .card_right { display: none; }
+
+.card.card-open .card_right {
+    display: flex;
+    position: absolute;
+    background: #ffffff;
+    padding: 0px 36px;
+    height: 90%;
+    gap: 20px;
+    cursor: pointer;
+ }
 
 
 .travel_locationData, .travel_dates {
@@ -137,6 +188,10 @@ span.travel_location {
     font-size: 14px;
 }
 
+span.travel_description {
+    text-align: center;
+}
+
 .travel_locationData i, .travel_locationData a {
     color: $accentcolor;
 }
@@ -145,18 +200,35 @@ span.travel_location {
     text-underline-offset: 4px;
 }
 
-h2.travel_title {
+.travel_title {
     font-size: 25px;
     text-transform: capitalize;
+    font-size: 1.5em;
 }
 
-h2.travel_title2 {
+.travel_title2 {
     font-family: $secondaryfont;
     letter-spacing: 5px;
     position: absolute;
     bottom: 25px;
+    font-size: 1.5em;
 }
 
+
+/* Number */
+
+.number {
+    font-weight: bold;
+    font-size: 30px;
+    letter-spacing: 6px;
+    color: $accentcolor;
+}
+
+.timeline-num {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
 
 
 
@@ -178,41 +250,52 @@ h2.travel_title2 {
 .polaroid-banner {
     position: relative;
 
-    img { 
-        max-width: 380px; 
+    img {
+        max-width: 380px;
         @include whiteborder;
-        border-bottom: 80px white solid; 
+        border-bottom: 80px white solid;
     }
 
 }
 
 
-.ninety-days-banner { 
+.ninety-days-banner {
     h2 {
     position: absolute;
     color: $beigecolor;
     @include transform(rotate(-12deg));
     line-height: 3;
     letter-spacing: 6px;
-    max-width: 320px;
+    max-width: 303px;
     font-size: 21px;
     font-family: $secondaryfont;
-    }   
+    }
 
     img {
-        max-width: 400px;
+        max-width: 420px;
         position: relative;
     }
 }
 
+/* Sidebyside components */
 
+.compflex .timeline-section {
+    margin: 20px 0px;
+}
 
-/* Map Filter */ 
+.compflex {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    min-width: 60%;
+}
+
+/* Map Filter */
 
 img.button-map {
     @include whiteborder;
     background-color: $beigecolor;
-    max-width: 100%;
+    width: 100%;
     height: auto;
     border-top: white 80px solid;
 }
@@ -243,6 +326,7 @@ img.button-map {
 
 }
 
+
 /* Map Buttons */
 
 .button-map-section {
@@ -250,7 +334,7 @@ img.button-map {
         button.Greece {
             left: 56%;
             top: 53%;
-        } 
+        }
 
         button.Greek.Islands {
             top: 63%;
@@ -282,10 +366,45 @@ img.button-map {
             top: 55%;
         }
 
+        button.France {
+            top: 40%;
+            right: 55%;
+        }
+
+        button.Cyprus {
+            top: 59%;
+            right: 23%;
+        }
+
+        button.Belgium {
+            top: 34%;
+            right: 47%;
+        }
+
+        button.Hungary {
+            top: 40%;
+            right: 39%;
+        }
+
         button.All {
             top: 19%;
-            right: 13%;
+            right: 7%;
             padding: 10px 20px;
+        }
+
+        button.Latvia {
+            top: 18%;
+            right: 34%;
+        }
+
+        button.United.States {
+            left: 5%;
+            top: 25%;
+        }
+
+        button.Poland {
+            top: 28%;
+            right: 38%;
         }
 
 }
@@ -299,24 +418,24 @@ h2.filter-title {
     letter-spacing: 5px;
 }
 
-/* Timeline section */ 
+/* Timeline section */
 
 .timeline-section {
-    max-width: 929px;
     @include flex-center;
     flex-direction: column;
     gap: 20px;
+    min-width: 49%;
     background: #ffffff;
     @include whiteborder;
     margin: 20px auto;
 
     .filter-title { position: static; }
 
-     button { 
-        border: none; 
-        padding: 10px 15px; 
-        letter-spacing: 3px; 
-        font-size: 11px; 
+     button {
+        border: none;
+        padding: 10px 20px;
+        letter-spacing: 3px;
+        font-size: 12px;
         text-transform: uppercase;
         font-family: $primaryfont;
         font-weight: 100;
@@ -327,16 +446,22 @@ h2.filter-title {
 
       button:last-child { border-right: none; }
 
-       button:focus {
-        outline: 4px solid white;
-        border-right: none;
-        z-index: 999;
-        position: relative;
-        box-shadow: 0 0 21px #b2b2c3;
-       }
+}
 
 
-   
+/* Button focus styles */
+
+button.active, button:focus {
+    outline: 4px solid white;
+    border-right: none;
+    z-index: 999;
+    position: relative;
+    box-shadow: 0 0 21px #b2b2c3;
+   }
+
+.button-map-section button.active,
+.button-map-section button:focus {
+    position: absolute;
 }
 
 /* Mobile Styles */
@@ -346,12 +471,14 @@ h2.filter-title {
         flex-direction: column;
     }
 
+    .compflex .timeline-section { margin: 20px auto;}
+
     .card { gap: 40px; }
 
     .button-map-section, .timeline-section {
         max-width: 90%;
-        margin: 0 auto;
-        
+        margin: 20px auto;
+
         button {
             position: static;
             margin: 10px;
@@ -370,7 +497,7 @@ h2.filter-title {
 
     }
 
-    
+
     .ninety-days-banner img {  max-width: 80%; }
 
 }

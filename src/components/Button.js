@@ -1,34 +1,48 @@
 import React from "react";
-import travelData from '../data'
 
-
-
- 
-const Buttons = ({ filterItems, setItem, locationItems }) => {
-
+const Buttons = ({
+  filterLocation,
+  locationItems,
+  setItem,
+  travelLocation,
+  travelYear,
+  travelDataByYear,
+  setTravelMonth,
+  setTravelLocation,
+}) => {
   return (
     <>
-      <div className="button-map-section"> 
-      <h2 className="filter-title">Filter By Destination</h2>
-      <img src={process.env.PUBLIC_URL + `/images/map-png-1-1-2.png`} alt="Map of Buttons" className="button-map"/>
+      <div className="button-map-section">
+        <h2 className="filter-title">Filter {travelYear} By Country</h2>
+        <img
+          src={process.env.PUBLIC_URL + `/images/map-png-1-1-2.png`}
+          alt="Map of Buttons"
+          className="button-map"
+        />
         {locationItems.map((Val, id) => {
           return (
-            <button className={Val}
+            <button
               key={id}
-              onClick={() => filterItems(Val)}
+              onClick={() => filterLocation(Val)}
+              className={Val + (travelLocation === Val ? " active" : "")}
             >
               <i className="fas fa-map-pin"></i> {Val}
             </button>
           );
         })}
-        <button className="All"
-          onClick={() => setItem(travelData)}
+        <button
+          className="All"
+          onClick={() => {
+            setItem(travelDataByYear);
+            setTravelLocation([]);
+            setTravelMonth([]);
+          }}
         >
-          See All Destinations
+          See All Countries
         </button>
-       </div>
+      </div>
     </>
   );
 };
- 
+
 export default Buttons;
