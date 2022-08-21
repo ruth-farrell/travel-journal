@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/travel-journal/static/css/main.49c4eb1a.css",
-    "main.js": "/travel-journal/static/js/main.d826f8d0.js",
+    "main.css": "/travel-journal/static/css/main.beafde28.css",
+    "main.js": "/travel-journal/static/js/main.e146789b.js",
     "static/media/whitemap.png": "/travel-journal/static/media/whitemap.0f737fc34536e7a95cdb.png",
     "index.html": "/travel-journal/index.html",
-    "main.49c4eb1a.css.map": "/travel-journal/static/css/main.49c4eb1a.css.map",
-    "main.d826f8d0.js.map": "/travel-journal/static/js/main.d826f8d0.js.map"
+    "main.beafde28.css.map": "/travel-journal/static/css/main.beafde28.css.map",
+    "main.e146789b.js.map": "/travel-journal/static/js/main.e146789b.js.map"
   },
   "entrypoints": [
-    "static/css/main.49c4eb1a.css",
-    "static/js/main.d826f8d0.js"
+    "static/css/main.beafde28.css",
+    "static/js/main.e146789b.js"
   ]
 }
