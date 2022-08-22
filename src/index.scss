@@ -467,6 +467,12 @@ button.active, button:focus {
 /* Mobile Styles */
 
 @media screen and (max-width: 768px) {
+
+    .ninety-days-banner h2 {
+        font-size: 4.1vw;
+        max-width: 65%;
+    }
+
     .banner, .card {
         flex-direction: column;
     }
@@ -479,12 +485,13 @@ button.active, button:focus {
         max-width: 90%;
         margin: 20px auto;
 
-        button {
+        button, button.active, button:focus {
             position: static;
             margin: 10px;
         }
 
     }
+
 
 
     .timeline-section .timeline-buttons {
@@ -498,7 +505,8 @@ button.active, button:focus {
     }
 
 
-    .ninety-days-banner img {  max-width: 80%; }
+    .polaroid-banner img, .ninety-days-banner img {  max-width: 90%; }
+
 
 }
 
