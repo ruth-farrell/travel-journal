@@ -1,13 +1,10 @@
 import React from "react";
 
-const Buttons = ({
+const Map = ({
   filterLocation,
   locationItems,
-  setItem,
   travelLocation,
   travelYear,
-  travelDataByYear,
-  setTravelMonth,
   setTravelLocation,
 }) => {
   return (
@@ -15,34 +12,36 @@ const Buttons = ({
       <div className="button-map-section">
         <h2 className="filter-title">Filter {travelYear} By Country</h2>
         <img
-          src={process.env.PUBLIC_URL + `/images/map-png-1-1-2.png`}
+          src={process.env.PUBLIC_URL + `/images/blank_world_map.png`}
           alt="Map of Buttons"
           className="button-map"
         />
         {locationItems.map((Val, id) => {
           return (
+            <>
             <button
               key={id}
               onClick={() => filterLocation(Val)}
               className={Val + (travelLocation === Val ? " active" : "")}
             >
-              <i className="fas fa-map-pin"></i> {Val}
-            </button>
+              <i className="fas fa-map-marker-alt"></i><span className="hidden">{Val}</span></button> 
+
+            </>
           );
         })}
+      {travelLocation.length ? (
         <button
-          className="All"
+        className={"All" + (travelLocation.length ? " active" : "")}
           onClick={() => {
-            setItem(travelDataByYear);
             setTravelLocation([]);
-            setTravelMonth([]);
           }}
         >
-          See All Countries
-        </button>
+          Clear Filter
+        </button> 
+        ) : ('') }
       </div>
     </>
   );
 };
 
-export default Buttons;
+export default Map;

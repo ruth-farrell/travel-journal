@@ -9,7 +9,7 @@ export default function Banner() {
           alt="Ruth on Laptop"
         />
         <h2>
-          <i class="far fa-calendar-alt" aria-hidden="true"></i> Days remote
+          <i className="far fa-calendar-alt" aria-hidden="true"></i> Days remote
           working, travelling + vacationing
         </h2>
       </div>

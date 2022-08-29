@@ -73,6 +73,8 @@ header, footer {
     @include flex-center;
     padding: 30px;
     background: $accentcolor;
+    flex-direction: column;
+    gap: 12px;
 }
 
 header { margin-bottom: 50px; }
@@ -95,9 +97,15 @@ nav button:last-child {
     }
 
 footer {
-    font-size: 11px;
+    font-size: 12px;
     color: $beigecolor;
     margin-top: 100px;
+}
+
+footer .social-icons a {
+    font-size: 18px;
+    color: $beigecolor;
+    margin: 5px;
 }
 
 main, .banner, .container {
@@ -105,10 +113,14 @@ main, .banner, .container {
     max-width: 1150px;
 }
 
-/* Card */
+/* Breadcrumb */
 
-.timeline-section.breadcrumb {
-    border: #ffffff 30px solid;
+.timeline-section.bread-search {
+    border: #ffffff 25px solid;
+    flex-direction: row;
+    justify-content: space-between;
+    border-left-width: 45px;
+    border-right-width: 45px;
 }
 
 .breadcrumb .filter-title {
@@ -117,6 +129,43 @@ main, .banner, .container {
     font-size: 14px;
     letter-spacing: 4px;
 }
+
+/* Search */
+
+.search { position: relative;}
+
+.search input {
+    font-family: "Work Sans";
+    background: #f3f3f2;
+    padding: 14px 20px 14px 40px;
+    font-size: 11px;
+    border: none;
+    letter-spacing: 1.5px;
+    display: inline;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.search i {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    color: $accentcolor;
+    display: inline-block;
+}
+
+.search .input-hidden-label {
+    height: 0;
+    visibility: hidden;
+    padding: 0px 20px;
+}
+
+.no-results {
+    font-size: 18px;
+    margin: 45px 20px 0px 20px;
+}
+
+/* Card */
 
 .cards-container {
     display: flex;
@@ -167,7 +216,7 @@ main, .banner, .container {
     position: absolute;
     background: #ffffff;
     padding: 0px 36px;
-    height: 90%;
+    height: 93%;
     gap: 20px;
     cursor: pointer;
  }
@@ -178,6 +227,10 @@ main, .banner, .container {
     gap: 10px;
 }
 
+.travel_locationData {
+    flex-direction: column;
+}
+
 .travel_dates {
     text-transform: uppercase;
     font-size: 12px;
@@ -186,6 +239,7 @@ main, .banner, .container {
 span.travel_location {
     text-transform: uppercase;
     font-size: 14px;
+    margin-left: 7px;
 }
 
 span.travel_description {
@@ -228,6 +282,13 @@ span.travel_description {
     display: flex;
     align-items: center;
     font-size: 14px;
+    margin: 0 20px;
+}
+
+.number-container {
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
 }
 
 
@@ -287,7 +348,14 @@ span.travel_description {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    min-width: 60%;
+}
+
+.compflex > div:first-child {
+    width: 38%;
+}
+
+.compflex > div:last-child {
+    width: 60%;
 }
 
 /* Map Filter */
@@ -297,7 +365,8 @@ img.button-map {
     background-color: $beigecolor;
     width: 100%;
     height: auto;
-    border-top: white 80px solid;
+    border-top: white 100px solid;
+    border-bottom: white 20px solid;
 }
 
 .button-map-section {
@@ -311,7 +380,6 @@ img.button-map {
     background: $accentcolor;
     padding: 10px 15px;
     letter-spacing: 3px;
-    border-radius: 3px;
     font-size: 11px;
     text-transform: uppercase;
     font-family: $primaryfont;
@@ -324,87 +392,149 @@ img.button-map {
         box-shadow: $box-shadow;
     }
 
+
+
+}
+
+.hidden { display: none; font-family: "Indie Flower", cursive; }
+
+.active .hidden {
+    display: block;
+    position: absolute;
+    font-size: 22px;
+    font-weight: 400;
+    padding-left: 25px;
+}
+
+button.deactivate {
+    opacity: 40%;
+    pointer-events: none;
+}
+button.active.deactivate {
+    box-shadow: 0 0 21px #000000; 
 }
 
 
 /* Map Buttons */
 
+
+.button-map-section button:hover {
+    opacity: 65%;
+}
+
 .button-map-section {
 
         button.Greece {
-            left: 56%;
-            top: 53%;
-        }
-
-        button.Greek.Islands {
-            top: 63%;
-            right: 37%;
-        }
-
-        button.Canary.Islands {
-            top: 82.5%;
-            right: 71%;
+            left: 47%;
+            top: 37%;
         }
 
         button.Morrocco {
-            top: 73%;
-            right: 52%;
+            top: 41%;
+            right: 60%;
         }
 
         button.Spain {
-            top: 53%;
-            right: 58%;
+            top: 35%;
+            right: 58.5%;
         }
 
         button.Italy {
-            top: 46%;
-            right: 47%;
+            top: 36%;
+            right: 53%;
         }
 
-        button.Sicily {
-            right: 48%;
-            top: 55%;
+        button.Vatican.City {
+            top: 33%;
+            right: 54%;
+        }
+
+        button.Germany {
+            top: 28%;
+            right: 54.5%;
+        }
+
+        button.Northern.Ireland {
+            top: 27%;
+            right: 58.8%;
+        }
+
+        button.England {
+            top: 28%;
+            right: 57.5%;
         }
 
         button.France {
-            top: 40%;
-            right: 55%;
+            top: 32%;
+            right: 57%;
+        }
+
+        button.Malta {
+            top: 38%;
+            right: 53.8%;
         }
 
         button.Cyprus {
-            top: 59%;
-            right: 23%;
+            top: 38%;
+            right: 48.5%;
+        }
+
+        button.Austria {
+            top: 31%;
+            right: 53.5%;
+        }
+
+        button.Czech.Republic {
+            top: 29.5%;
+            right: 53.5%;
         }
 
         button.Belgium {
-            top: 34%;
-            right: 47%;
+            top: 29.5%;
+            right: 56%;
+        }
+
+        button.Netherlands {
+            top: 27.5%;
+            right: 55.5%;
         }
 
         button.Hungary {
-            top: 40%;
-            right: 39%;
+            top: 31%;
+            right: 52%;
         }
 
         button.All {
-            top: 19%;
+            top: 8%;
             right: 7%;
             padding: 10px 20px;
+            background: #f3f3f2;
+            color: #8686b8;
+            font-weight: 400;
         }
 
         button.Latvia {
-            top: 18%;
-            right: 34%;
+            top: 25%;
+            right: 51%;
         }
 
         button.United.States {
-            left: 5%;
-            top: 25%;
+            left: 14%;
+            top: 36%;
         }
 
         button.Poland {
             top: 28%;
-            right: 38%;
+            right: 53%;
+        }
+
+       button:not(.All) {
+            font-size: 25px;
+            color: #8686b8;
+            background: none;
+            padding: 0px;
+            display: flex;
+            align-items: center;
         }
 
 }
@@ -413,10 +543,54 @@ h2.filter-title {
     position: absolute;
     width: 100%;
     @include flex-center;
-    top: 25px;
+    top: 45px;
     font-family: $secondaryfont;
     letter-spacing: 5px;
 }
+
+/* Year */
+
+.year-buttons select {
+    font-family: "Work Sans";
+    letter-spacing: 1.5px;
+    font-weight: 100;
+    cursor: pointer;
+    background: #f3f3f2;
+    border: none;
+    padding: 14px 45px 14px 45px;
+    font-size: 13px;
+    text-transform: uppercase;
+    appearance: none;
+    pointer-events: all;
+}
+
+.year-buttons { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    position: relative;
+    pointer-events: none;
+}
+
+.year-buttons:before {
+    font-family: "Font Awesome 6 Free"; 
+    content: "\f073";
+    font-size: 20px;
+    color: $accentcolor;
+    margin-bottom: 2px;
+    position: absolute;
+    left: 12px;
+  }
+
+  .year-buttons:after {
+    font-size: 20px;
+    color: $accentcolor;
+    margin-bottom: 2px;
+    position: absolute;
+    right: 12px;
+    font-family: "FontAwesome"; 
+    content: "\f078";
+  }
 
 /* Timeline section */
 
@@ -424,7 +598,6 @@ h2.filter-title {
     @include flex-center;
     flex-direction: column;
     gap: 20px;
-    min-width: 49%;
     background: #ffffff;
     @include whiteborder;
     margin: 20px auto;
@@ -439,9 +612,10 @@ h2.filter-title {
         text-transform: uppercase;
         font-family: $primaryfont;
         font-weight: 100;
-        background: $beigecolor;
+        color: $beigecolor;
+        background: $accentcolor;
         cursor: pointer;
-        border-right: 4px solid #8686b7;
+        border-right: 4px solid #ffffff;
     }
 
       button:last-child { border-right: none; }
@@ -456,13 +630,22 @@ button.active, button:focus {
     border-right: none;
     z-index: 999;
     position: relative;
-    box-shadow: 0 0 21px #b2b2c3;
+    box-shadow: 0 0 21px #363646;
    }
 
-.button-map-section button.active,
-.button-map-section button:focus {
+   .button-map-section button.active,
+   .button-map-section button:focus {
     position: absolute;
 }
+
+.button-map-section button.active:not(.All),
+.button-map-section button:focus:not(.All) {
+    color: black;
+    outline: none;
+    box-shadow: none;
+}
+
+.button-map-section button.active.All {  box-shadow: 0 0 21px $accentcolor;} 
 
 /* Mobile Styles */
 
@@ -479,6 +662,10 @@ button.active, button:focus {
 
     .compflex .timeline-section { margin: 20px auto;}
 
+    .compflex>div:first-child, .compflex>div:last-child {
+        width: 90%;
+    }
+
     .card { gap: 40px; }
 
     .button-map-section, .timeline-section {
@@ -487,17 +674,27 @@ button.active, button:focus {
 
         button, button.active, button:focus {
             position: static;
-            margin: 10px;
         }
 
+       button:not(.All) { display: inline ;}
+
+       span.hidden {
+        display: block;
+        font-size: 14px;
+      }
+
+      .active .hidden { position: static; font-size: 14px; padding-left: 0px; }
+
     }
+
+    .button-map-section button { margin: 6px; }
 
 
 
     .timeline-section .timeline-buttons {
         @include flex-center;
         flex-wrap: wrap;
-        gap: 20px;
+        gap: 10px;
 
 
         button:last-child { border-right: 4px solid #8686b7; }

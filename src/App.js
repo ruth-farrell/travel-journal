@@ -1,26 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Card from "./components/Card";
 import Banner from "./components/Banner";
 import Footer from "./components/Footer";
 import Year from "./components/Year";
+import Breadcrumb from "./components/Breadcrumb";
 import Number from "./components/Number";
-import Buttons from "./components/Button";
+import Map from "./components/Map";
 import Timeline from "./components/Timeline";
 import travelData from "./data";
 
 export default function App() {
-  const currentYear = new Date().getFullYear().toString();
 
-  const [travelYear, setTravelYear] = useState(currentYear);
+  const [travelYear, setTravelYear] = useState('');
 
   const [travelMonth, setTravelMonth] = useState([]);
 
   const [travelLocation, setTravelLocation] = useState([]);
 
-  const travelDataByYear = travelData.filter((item) =>
-    item.startDate.includes(travelYear)
-  );
+  const [query, setQuery] = useState("");
 
   const [item, setItem] = useState(travelData);
 
@@ -32,6 +30,18 @@ export default function App() {
     ),
   ];
 
+  const monthItems = [
+    ...new Set(
+      travelData
+        .filter((item) => item.startDate.includes(travelYear))
+        .map((item) => item.startDate.slice(2,-4).replaceAll(' ', ''))
+    ),
+  ];
+
+  console.log(monthItems);
+
+
+
   const titleItems = [
     ...new Set(
       travelData
@@ -40,52 +50,102 @@ export default function App() {
     ),
   ];
 
+  const continentItems = [
+    ...new Set(
+      travelData
+        .filter((item) => item.startDate.includes(travelYear))
+        .map((item) => item.continent)
+    ),
+  ];
+
   const numberCountries = locationItems.length;
 
   const numberCities = titleItems.length;
+
+  const numberContinents = continentItems.length;
 
   const yearItems = [
     ...new Set(travelData.map((item) => item.startDate.slice(-4))),
   ];
 
-  const monthItems = [
-    ...new Set(
-      travelData
-        .filter((item) => item.startDate.includes(travelYear))
-        .map((item) => item.startDate.slice(2, -4).replace(/\s/g, ""))
-    ),
-  ];
+  const months = ['January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'];
+  
 
   const filterLocation = (curlocation) => {
-    setTravelMonth([]);
     setTravelLocation(curlocation);
-    const newItem = travelData.filter((newVal) => {
-      return (
-        newVal.location === curlocation &&
-        newVal.startDate.slice(-4) === travelYear
-      );
-    });
-    setItem(newItem);
+    filterAllItems();
   };
 
   const filterYear = (curlocation) => {
-    setTravelMonth([]);
-    setTravelLocation([]);
     setTravelYear(curlocation);
-    const newItem = travelData.filter((newVal) => {
-      return newVal.startDate.slice(-4) === curlocation;
-    });
-    setItem(newItem);
+    filterAllItems();
   };
 
   const filterMonth = (curlocation) => {
-    setTravelLocation([]);
     setTravelMonth(curlocation);
-    const newItem = travelData.filter((newVal) => {
-      return newVal.startDate.slice(2, -4).replace(/\s/g, "") === curlocation;
-    });
-    setItem(newItem);
+    filterAllItems();
   };
+
+  useEffect(() => {
+    filterAllItems();
+  }, [travelMonth]);
+
+  useEffect(() => {
+    filterAllItems();
+  }, [travelLocation]);
+
+  useEffect(() => {
+    filterAllItems();
+  }, [travelYear]);
+
+
+
+
+function checkItems(newVal) {
+  if (travelMonth.length && travelYear.length && travelLocation.length) {
+    return newVal.startDate.slice(2, -4).replace(/\s/g, "") === travelMonth &&
+           newVal.startDate.slice(-4) === travelYear &&
+           newVal.location === travelLocation 
+  }
+  if (travelMonth.length && travelLocation.length) {
+    return newVal.startDate.slice(2, -4).replace(/\s/g, "") === travelMonth &&
+           newVal.location === travelLocation 
+  }
+
+  if (travelYear.length && travelLocation.length) {
+    return newVal.startDate.slice(-4) === travelYear &&
+           newVal.location === travelLocation 
+  }
+
+  if (travelYear.length && travelMonth.length) {
+    return newVal.startDate.slice(-4) === travelYear &&
+          newVal.startDate.slice(2, -4).replace(/\s/g, "") === travelMonth
+  }
+
+  if (travelMonth.length) {
+    return newVal.startDate.slice(2, -4).replace(/\s/g, "") === travelMonth 
+  }
+
+  if (travelLocation.length) {
+    return newVal.location === travelLocation  
+  }
+
+  if (travelYear.length) {
+    return newVal.startDate.slice(-4) === travelYear  
+  }
+
+  if (!travelYear.length && !travelLocation.length && !travelMonth.length) {
+    return newVal === newVal 
+  }
+}   
+
+const filterAllItems = () => {
+  const newItem = travelData.filter(checkItems);
+  setItem(newItem);
+ };
+
+
 
   return (
     <>
@@ -97,41 +157,40 @@ export default function App() {
             yearItems={yearItems}
             travelYear={travelYear}
             filterYear={filterYear}
+            setTravelYear={setTravelYear}
           />
           <Number
-            yearItems={yearItems}
             travelYear={travelYear}
-            filterYear={filterYear}
             numberCountries={numberCountries}
             numberCities={numberCities}
-            titleItems
+            numberContinents={numberContinents}
           />
         </div>
-        <Buttons
-          setItem={setItem}
+        <Map
           locationItems={locationItems}
           filterLocation={filterLocation}
           travelYear={travelYear}
           travelLocation={travelLocation}
-          setTravelMonth={setTravelMonth}
-          travelDataByYear={travelDataByYear}
           setTravelLocation={setTravelLocation}
         />
         <Timeline
-          setItem={setItem}
-          monthItems={monthItems}
+          months={months}
           travelYear={travelYear}
           travelMonth={travelMonth}
+          monthItems={monthItems}
           setTravelMonth={setTravelMonth}
-          setTravelLocation={setTravelLocation}
-          travelDataByYear={travelDataByYear}
           filterMonth={filterMonth}
         />
-        <Card
-          item={item}
+        <Breadcrumb
           travelYear={travelYear}
           travelMonth={travelMonth}
           travelLocation={travelLocation}
+          setQuery={setQuery}
+          query={query}
+        />
+        <Card
+          item={item}
+          query={query}
         />
       </main>
       <Footer />

@@ -1,21 +1,37 @@
 import React from "react";
 
-export default function Year({ yearItems, filterYear, travelYear }) {
+export default function Year({ yearItems, filterYear, travelYear, setTravelYear }) {
+
+  const handleChange = event => {
+    if (event.target.value === 'All') {
+      setTravelYear('');
+    } else {
+    filterYear(event.target.value); }
+  };
+
   return (
     <div className="timeline-section">
       <h2 className="filter-title">Select Year</h2>
-      <div className="timeline-buttons">
+      <div className="year-buttons">
+      <select onChange={handleChange} defaultValue={'All'}>
+        <option
+            className={"All" + (!travelYear.length ? " active" : "")}
+            value="All"
+          >
+            See All
+          </option>
         {yearItems.map((Val, id) => {
           return (
-            <button
+            <option
               className={Val + (travelYear === Val ? " active" : "")}
-              key={id}
-              onClick={() => filterYear(Val)}
+              key={id} 
+              value={Val}
             >
-              <i className="far fa-calendar-alt"></i> {Val}
-            </button>
+               {Val}
+            </option>
           );
         })}
+        </select>
       </div>
     </div>
   );
