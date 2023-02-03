@@ -13,7 +13,7 @@ export default function Year({ yearItems, filterYear, travelYear, setTravelYear 
     <div className="timeline-section">
       <h2 className="filter-title">Select Year</h2>
       <div className="year-buttons">
-      <select onChange={handleChange} defaultValue={'All'}>
+      <select className="year-select" onChange={handleChange} defaultValue={'All'}>
         <option
             className={"All" + (!travelYear.length ? " active" : "")}
             value="All"

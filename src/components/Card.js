@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Card = ({ item, query }) => {
 
-  const handleClick = (e) => {
-    e.currentTarget.classList.toggle("card-open");
-  };
+  // const handleCardClick = (e) => {
+  //   e.currentTarget.classList.toggle("card-open");
+  // };
 
-  const handleEnter = (e) => {
+  const handleCardEnter = (e) => {
     e.currentTarget.classList.add("card-open");
   };
 
-  const handleLeave = (e) => {
+  const handleCardLeave = (e) => {
     e.currentTarget.classList.remove("card-open");
   };
 
@@ -28,8 +28,8 @@ const Card = ({ item, query }) => {
         {filteredCards.length ? (
           filteredCards.map((Val) => {
             return (
-              <div key={Val.id} className="card" onClick={handleClick} onMouseEnter={handleEnter}   onMouseLeave={handleLeave}>
-                <div className="card_left">
+              <div key={Val.id} className="card" onMouseEnter={handleCardEnter}   onMouseLeave={handleCardLeave}>
+                <div className="card-left">
                   <img
                     src={process.env.PUBLIC_URL + `/images/${Val.imageUrl}`}
                     className="travel_img"
@@ -39,18 +39,18 @@ const Card = ({ item, query }) => {
                   />
                   <h3 className="travel_title2">{Val.title}</h3>
                 </div>
-                <div className="card_right">
+                <div className="card-right">
                   <div className="travel_locationData">
                     <div>
-                      <i className="fas fa-map-marker-alt"></i>
-                      <span className="travel_location">{Val.location}</span>
+                      <span className={"fi fi-" + (Val.country.code)}></span>
+                      <span className="travel_location">{Val.country.name}</span>
                     </div>
                     <a
                       href={Val.googleMapsUrl}
                       target="_blank"
                       rel="noreferrer"
                     >
-                      View on Google Maps
+                     <i className="fas fa-map-marker-alt"></i> View on Google Maps
                     </a>
                   </div>
 

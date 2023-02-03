@@ -5,10 +5,10 @@ const Breadcrumb = ({ travelYear, travelMonth, travelLocation, setQuery, query }
       <div className="timeline-section bread-search">
       <div className="breadcrumb">
       <h2 className="filter-title">
-        Destinations
+        Displaying {travelLocation.length || travelMonth.length || travelYear.length || query.length ? "" : "all"} Destinations
         {travelYear.length ? ` > ${travelYear}` : ""}
-        {travelMonth.length ? ` > ${travelMonth}` : ""}
         {travelLocation.length ? ` > ${travelLocation}` : ""}
+        {travelMonth.length ? ` > ${travelMonth}` : ""}
         {query.length ? ` > "${query}"` : ""}
       </h2>
       </div>

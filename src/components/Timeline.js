@@ -5,23 +5,23 @@ const Timeline = ({
   travelMonth,
   setTravelMonth,
   filterMonth,
-  months, 
+  months,
   monthItems
 }) => {
 
   return (
     <>
       <div className="timeline-section">
-        <h2 className="filter-title">Filter {travelYear} By Month</h2>
+        <h2 className="filter-title">Filter {travelYear} Destinations By Month</h2>
         <div className="timeline-buttons">
           {months.map((Val, index) => {
             return (
               <button
                 key={index}
-                onClick={() => { 
+                onClick={() => {
                   filterMonth(Val);
                 }}
-                className={Val + (travelMonth === Val ? " active" : "") + (monthItems.includes(Val) ? "" :  " deactivate") }
+                className={Val + (travelMonth === Val ? " active" : "") + (monthItems.includes(Val) ? "" : " deactivate")}
               >
                 {Val.slice(0, 3)}
               </button>

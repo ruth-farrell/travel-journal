@@ -4,6 +4,7 @@ $primaryfont: "Work Sans", sans-serif;
 $secondaryfont: "Indie Flower", cursive;
 
 $accentcolor: #8686b8;
+$accentcolor2: #b6b6ce;
 $beigecolor: #f3f3f2;
 
 $box-shadow: 0 0 21px #b2b2c3;
@@ -38,6 +39,13 @@ html, body, p, h1, h2, h3 {
     font-weight: 300;
 }
 
+ul {
+    margin: 0;
+    list-style-type: none;
+    padding-left: 0px;
+    text-align: left;
+}
+
 /* Element styles */
 
 body {
@@ -45,6 +53,7 @@ body {
     font-family: $primaryfont;
     letter-spacing: 1.0px;
     background-image: url("./whitemap.png");
+    //  background-image: url("./world.svg");
     background-position: top center;
    }
 
@@ -64,7 +73,16 @@ h1 {
 
 }
 
-h2 { text-transform: uppercase; }
+button { cursor: pointer; }
+
+h2 { 
+    text-transform: uppercase;
+    
+    i {
+        padding-right: 20px;
+    }
+
+}
 
 
 /* Header and Footer */
@@ -77,7 +95,11 @@ header, footer {
     gap: 12px;
 }
 
-header { margin-bottom: 50px; }
+header { 
+    position: fixed;
+    z-index: 9;
+    width: 100%;
+ }
 
 header nav button {
     border: none;
@@ -92,6 +114,26 @@ header nav button {
     margin-right: 20px;
      }
 
+
+   header .filter-button {
+        padding: 12px 20px;
+        background: #f3f3f2;
+        color: #8686b8;
+        letter-spacing: 2px;
+        font-size: 11px;
+        font-family: "Work Sans";
+        border: none;
+        border-radius: 2px;
+        margin-left: 10px;
+        text-transform: uppercase;
+    } 
+
+    header .filter-button:hover {
+        opacity: 80%;
+        background: #f3f3f2;
+        color: #8686b8;
+    }
+
 nav button:last-child {
     margin-right: 0px;
     }
@@ -99,18 +141,16 @@ nav button:last-child {
 footer {
     font-size: 12px;
     color: $beigecolor;
-    margin-top: 100px;
-}
-
-footer .social-icons a {
-    font-size: 18px;
-    color: $beigecolor;
-    margin: 5px;
+    margin-top: 150px;
 }
 
 main, .banner, .container {
     margin: 0 auto;
     max-width: 1150px;
+}
+
+main {
+    margin: 50px auto 0px auto;
 }
 
 /* Breadcrumb */
@@ -170,7 +210,7 @@ main, .banner, .container {
 .cards-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     gap: 48px;
 }
 
@@ -181,7 +221,7 @@ main, .banner, .container {
     position: relative;
 }
 
-.card_left {
+.card-left {
     position: relative;
     border: none;
     padding: 0;
@@ -197,21 +237,22 @@ main, .banner, .container {
 }
 
 
-.card .card_right {
+.card .card-right {
         padding-left: 20px;
         line-height: 2.0;
         @include flex-center;
         flex-direction: column;
         width: 100%;
+        border-radius: 4px;
 
         > div {
             margin: 5px 0px;
         }
     }
 
-.card .card_right { display: none; }
+.card .card-right { display: none; }
 
-.card.card-open .card_right {
+.card.card-open .card-right {
     display: flex;
     position: absolute;
     background: #ffffff;
@@ -251,7 +292,7 @@ span.travel_description {
 }
 
 .travel_locationData a {
-    text-underline-offset: 4px;
+    text-decoration: none;
 }
 
 .travel_title {
@@ -291,6 +332,28 @@ justify-content: space-between;
 flex-wrap: wrap;
 }
 
+/* Header */
+
+header.fixed-header {
+    position: fixed;
+    z-index: 99999;
+    justify-content: space-between;
+    width: 100%;
+    padding: 15px;
+} 
+
+header.fixed-header .container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.header-filter { display: none; }
+
+header.fixed-header .header-filter { color: #ffffff; display: block; text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px; }
 
 
 /* Banner */
@@ -298,11 +361,11 @@ flex-wrap: wrap;
 .banner {
     display: flex;
     gap: 20px;
-    justify-content: space-between;
-    margin-bottom: 50px;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 150px;
 
     > div {
-        width: 100%;
         @include flex-center;
         text-align: center;
     }
@@ -319,23 +382,69 @@ flex-wrap: wrap;
 
 }
 
+.social-icons-row a {
+    font-size: 100px;
+    margin: auto 30px;
+    color: $accentcolor;
+    cursor: pointer;
+}
+
 
 .ninety-days-banner {
-    h2 {
+
+    position: relative; 
+
+    .ninety-days-banner-rotate {
     position: absolute;
     color: $beigecolor;
     @include transform(rotate(-12deg));
     line-height: 3;
     letter-spacing: 6px;
-    max-width: 303px;
-    font-size: 21px;
+    max-width: 300px;
+    font-size: 12px;
     font-family: $secondaryfont;
     }
 
     img {
-        max-width: 420px;
+        max-width: 440px;
         position: relative;
     }
+}
+
+.bucketlist .ninety-days-banner img {
+    max-width: 100%;
+    height: auto;
+    transform: rotate(8.5deg);
+}
+
+.bucketlist .ninety-days-banner li:before {
+    content: '\f0c8';
+    font-family: "Font Awesome 5 Free";
+    margin-right: 10px;
+    font-weight: 400;
+}
+
+.bucketlist .ninety-days-banner li.checked:before {
+    content: '\f14a';
+    margin-right: 10px;
+    font-weight: 400;
+}
+
+.bucketlist .ninety-days-banner ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.bucketlist .ninety-days-banner li {
+    font-size: 18px;
+    text-align: left;
+}
+
+.bucketlist .ninety-days-banner .ninety-days-banner-rotate {
+    max-width: 100%;
+    font-size: 20px;
+    transform: rotate(0deg);
+    top: 15%;
 }
 
 /* Sidebyside components */
@@ -360,13 +469,21 @@ flex-wrap: wrap;
 
 /* Map Filter */
 
-img.button-map {
+.button-map-section {
     @include whiteborder;
     background-color: $beigecolor;
     width: 100%;
     height: auto;
     border-top: white 100px solid;
     border-bottom: white 20px solid;
+}
+
+img.button-map { max-width: 100%; }
+
+
+.map-buttons-container {
+    overflow: hidden;
+    background: #ffffff;
 }
 
 .button-map-section {
@@ -399,153 +516,282 @@ img.button-map {
 .hidden { display: none; font-family: "Indie Flower", cursive; }
 
 .active .hidden {
-    display: block;
+    display: flex;
     position: absolute;
-    font-size: 22px;
+    font-size: 11px;
     font-weight: 400;
-    padding-left: 25px;
+    margin-left: 25px;
+    background: $accentcolor2;
+    padding: 5px 8px;
+    color: white;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    width: max-content;
 }
 
-button.deactivate {
-    opacity: 40%;
+.active .hidden:before {
+    content: "";
+    position: absolute;
+    left: -12.6px;
+    top: 0px;
+    width: 0px;
+    height: 0px;
+    border-top: 13px solid transparent;
+    border-bottom: 13px solid transparent;
+    border-right: 13px solid $accentcolor2;
+}
+
+.map-buttons .fi { margin-left: 5px;}
+
+button.deactivate, .deactivate button {
+    opacity: 55%;
     pointer-events: none;
 }
+
+.timeline-section button.deactivate {
+    opacity: 40%;
+}
+
 button.active.deactivate {
     box-shadow: 0 0 21px #000000; 
+}
+
+
+/* Zoom Buttons */
+
+.map-buttons {
+    transform: scale(1.2);
+    transform-origin: top;
+}
+
+.zoom-directions {
+    position: absolute;
+    display: flex;
+    left: 105.39px;
+} 
+
+.zoom-controls button {
+    left: 0px;
+    box-shadow: 0px 2px 3px #b2b2c3;
+}
+
+
+.zoom-directions button {
+    position: relative;
+}
+
+.zoom-controls {
+    position: relative;
+    z-index: 9;
+}
+
+.map-buttons svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.map-buttons {
+    position: relative;
+    height: 550px;
+}
+
+/* Zoom directions */ 
+
+.zoom-on {
+    transform: scale(1.8);
+}
+
+.map-buttons.zoom-on.zoom-up.zoom-left.zoom-center {
+    transform-origin: top left;
+}
+
+.map-buttons.zoom-on.zoom-up.zoom-center {
+    transform-origin: top;
+}
+
+.map-buttons.zoom-on.zoom-down.zoom-center {
+    transform-origin: bottom;
+}
+
+.map-buttons.zoom-on.zoom-left.zoom-center {
+    transform-origin: left;
+}
+
+.map-buttons.zoom-on.zoom-right.zoom-center {
+    transform-origin: right;
+}
+
+.map-buttons.zoom-on.zoom-up.zoom-right.zoom-center {
+    transform-origin: top right;
+}
+
+.map-buttons.zoom-on.zoom-down.zoom-right.zoom-center {
+    transform-origin: bottom right;
+}
+
+.map-buttons.zoom-on.zoom-down.zoom-left.zoom-center {
+    transform-origin: bottom left;
+}
+
+.map-buttons.zoom-on.zoom-center {
+    transform-origin: top center;
 }
 
 
 /* Map Buttons */
 
 
-.button-map-section button:hover {
+.button-map-section .map-buttons-container button i:hover {
     opacity: 65%;
 }
 
-.button-map-section {
+.button-map-section .map-buttons-container {
 
-        button.Greece {
-            left: 47%;
-            top: 37%;
+        button.gr {
+            left: 54.6%;
+            top: 22.3%;
         }
 
-        button.Morrocco {
-            top: 41%;
-            right: 60%;
+        button.ma {
+            top: 26.5%;
+            right: 51.8%;
         }
 
-        button.Spain {
-            top: 35%;
-            right: 58.5%;
-        }
-
-        button.Italy {
-            top: 36%;
-            right: 53%;
-        }
-
-        button.Vatican.City {
-            top: 33%;
-            right: 54%;
-        }
-
-        button.Germany {
-            top: 28%;
-            right: 54.5%;
-        }
-
-        button.Northern.Ireland {
-            top: 27%;
-            right: 58.8%;
-        }
-
-        button.England {
-            top: 28%;
-            right: 57.5%;
-        }
-
-        button.France {
-            top: 32%;
-            right: 57%;
-        }
-
-        button.Malta {
-            top: 38%;
-            right: 53.8%;
-        }
-
-        button.Cyprus {
-            top: 38%;
-            right: 48.5%;
-        }
-
-        button.Austria {
-            top: 31%;
-            right: 53.5%;
-        }
-
-        button.Czech.Republic {
-            top: 29.5%;
-            right: 53.5%;
-        }
-
-        button.Belgium {
-            top: 29.5%;
-            right: 56%;
-        }
-
-        button.Netherlands {
-            top: 27.5%;
-            right: 55.5%;
-        }
-
-        button.Hungary {
-            top: 31%;
-            right: 52%;
-        }
-
-        button.All {
-            top: 8%;
-            right: 7%;
-            padding: 10px 20px;
-            background: #f3f3f2;
-            color: #8686b8;
-            font-weight: 400;
-        }
-
-        button.Latvia {
-            top: 25%;
+        button.es {
+            top: 22%;
             right: 51%;
         }
 
-        button.United.States {
-            left: 14%;
-            top: 36%;
+        button.it {
+            top: 18%;
+            right: 47.5%;
         }
 
-        button.Poland {
-            top: 28%;
-            right: 53%;
+        button.va {
+            top: 20.2%;
+            right: 46%;
         }
 
-       button:not(.All) {
-            font-size: 25px;
+        button.de {
+            top: 14%;
+            right: 47.5%;
+        }
+
+        button.gb-nir {
+            top: 12%;
+            right: 51.5%;
+        }
+
+        button.gb-eng {
+            top: 13.8%;
+            right: 50.3%;
+        }
+
+        button.ie {
+            top: 13.4%;
+            right: 52.1%;
+        }
+
+        button.gb-sct {
+            top: 10.5%;
+            right: 50.9%;
+        }
+
+        button.fr {
+            top: 18%;
+            right: 49.5%;
+        }
+
+        button.mt {
+            top: 23.5%;
+            right: 46.1%;
+        }
+
+        button.cy {
+            top: 24%;
+            right: 41.2%;
+        }
+
+        button.at {
+            top: 16.4%;
+            right: 46.8%;
+        }
+
+        button.cz {
+            top: 15%;
+            right: 46.2%;
+        }
+
+        button.be {
+            top: 14.2%;
+            right: 49.1%;
+        }
+
+        button.nl {
+            top: 12.8%;
+            right: 48.5%;
+        }
+
+        button.hu {
+            top: 16.5%;
+            right: 45%;
+        }
+
+        button.lv {
+            top: 10.5%;
+            right: 44.1%;
+        }
+
+        button.us {
+            left: 23%;
+            top: 23%;
+        }
+
+        button.pl {
+            top: 13%;
+            right: 45.4%;
+        }
+
+        button.bs {
+            top: 30.4%;
+            left: 27.3%;
+        }
+
+       button {
+            font-size: 16px;
             color: #8686b8;
             background: none;
             padding: 0px;
             display: flex;
             align-items: center;
+            text-transform: capitalize;
         }
 
+}
+
+
+.button-map-section button {
+    padding: 10px 20px;
+    background: #f3f3f2;
+    color: #8686b8;
+    font-weight: 400;
+}
+
+.button-map-section button.All {
+    top: 2px;
+    right: 2px; 
 }
 
 h2.filter-title {
     position: absolute;
     width: 100%;
     @include flex-center;
-    top: 45px;
-    font-family: $secondaryfont;
+    top: -50px;
     letter-spacing: 5px;
+    font-size: 16px;
 }
 
 /* Year */
@@ -612,7 +858,7 @@ h2.filter-title {
         text-transform: uppercase;
         font-family: $primaryfont;
         font-weight: 100;
-        color: $beigecolor;
+        color: $beigecolor; 
         background: $accentcolor;
         cursor: pointer;
         border-right: 4px solid #ffffff;
@@ -625,6 +871,8 @@ h2.filter-title {
 
 /* Button focus styles */
 
+:focus { outline: 4px solid white;  box-shadow: 0 0 21px #363646; }
+
 button.active, button:focus {
     outline: 4px solid white;
     border-right: none;
@@ -634,27 +882,114 @@ button.active, button:focus {
    }
 
    .button-map-section button.active,
-   .button-map-section button:focus {
+   .button-map-section  button:focus {
     position: absolute;
 }
 
-.button-map-section button.active:not(.All),
-.button-map-section button:focus:not(.All) {
-    color: black;
+.map-buttons-container button.active:not(.All),
+.map-buttons-container button:focus:not(.All) {
+    color: $accentcolor2;
     outline: none;
     box-shadow: none;
 }
 
+.map-buttons button:hover {
+    opacity: 100%;
+}
+
+.zoom-directions button:focus {
+    position: relative;
+}
+
 .button-map-section button.active.All {  box-shadow: 0 0 21px $accentcolor;} 
+
+button:hover {
+    opacity: 35%;
+    background: $accentcolor;
+    color: $beigecolor;
+}
+
+.timeline-section button:hover  { opacity: 75%; }
+
+/* Bucket */ 
+
+.bucketlistslogan h2 { 
+    line-height: 2;
+    font-size: 35px;
+    letter-spacing: 5px;
+    font-family: 'Indie Flower';
+}
+
+.bucketlist .polaroid-banner img { max-width: 400px; }
+
+.suitcase {
+    text-align: center;
+    padding-bottom: 20px;
+    font-size: 50px;
+}
+
+
+/* Quote */
+
+.quote blockquote {
+    font-size: 40px;
+    line-height: 2.0;
+    padding: 0px 60px;
+    margin: 0px;
+    letter-spacing: 5px;
+    font-family: 'Indie Flower';
+} 
+
+.quote small {
+    font-size: 25px;
+}
+
+
+/* Comingsoon */
+
+.coming-soon ul li { 
+    font-family: 'Indie Flower'; 
+    font-size: 25px;
+
+}
+
 
 /* Mobile Styles */
 
+@media screen and (max-width: 1150px) {
+    .cards-container { justify-content: space-evenly; }
+    .banner { flex-wrap: wrap; }
+
+ }
+
+
+
 @media screen and (max-width: 768px) {
 
-    .ninety-days-banner h2 {
-        font-size: 4.1vw;
-        max-width: 65%;
+    header.fixed-header .container {
+        flex-direction: column;
+        gap: 10px;
     }
+
+    header.fixed-header .header-filter {
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+    }
+
+    .zoom-on {
+        transform: none;
+    }
+
+    .map-buttons.zoom-on.zoom-up.zoom-left.zoom-center {
+        transform: none;
+    }
+
+    .map-buttons .fa-map-pin {
+        display: none;
+    }
+
+    .map-buttons { height: auto; }
 
     .banner, .card {
         flex-direction: column;
@@ -667,6 +1002,31 @@ button.active, button:focus {
     }
 
     .card { gap: 40px; }
+
+    .button-map-section {
+        background: white;
+        border: #ffffff 45px solid;
+        box-shadow: 0 0 21px #b2b2c3;
+    }
+
+    img.button-map {
+        border: white solid 20px;
+        box-shadow: none;
+    }
+
+    .zoom-controls {
+        display: none;
+    }
+
+    .button-map-section .filter-title {
+        position: static;
+    }
+
+     .button-map-section .map-buttons button {
+        border: 1px solid;
+        border-radius: 4px;
+        padding: 4px 8px;
+    }
 
     .button-map-section, .timeline-section {
         max-width: 90%;
@@ -683,11 +1043,14 @@ button.active, button:focus {
         font-size: 14px;
       }
 
-      .active .hidden { position: static; font-size: 14px; padding-left: 0px; }
+      .active .hidden { position: static; font-size: 14px; padding: 0px; margin-left: 0px; }
 
     }
 
     .button-map-section button { margin: 6px; }
+
+    .map-buttons-container button.active:not(.All), 
+    .map-buttons-container button:focus:not(.All) { background: $accentcolor2; } 
 
 
 
@@ -701,8 +1064,31 @@ button.active, button:focus {
 
     }
 
+    .bucketlist .ninety-days-banner img, .polaroid-banner img {
+        max-width: 100%;
+        height: auto;
+    }
 
-    .polaroid-banner img, .ninety-days-banner img {  max-width: 90%; }
+
+    .polaroid-banner {  max-width: 90%; }
+
+    .social-icons-row a { font-size: 60px;}
+
+    .banner > div { overflow: hidden;}
+
+    .bucketlist .ninety-days-banner li { font-size: 14px; }
+
+    .bucketlist .ninety-days-banner .ninety-days-banner-rotate {
+        max-width: 80%;
+        position: static;
+        color: #000000;
+    }
+
+    .ninety-days-banner img, .bucketlist .polaroid-banner img { max-width: 100%; }
+
+    .bucketlist .ninety-days-banner img { display: none; }
+
+    .quote blockquote { font-size: 30px; }
 
 
 }
