@@ -1,0 +1,18 @@
+@use "./variables.scss" as *;
+
+/* Quote */
+
+.quote  {
+  blockquote {
+    font-size: 40px;
+    font-family: $secondaryfont;
+    line-height: 2.0;
+    padding: 0px 60px;
+    margin: 0px;
+    letter-spacing: 5px;
+  } 
+
+  small {
+    font-size: 25px;
+  }
+}

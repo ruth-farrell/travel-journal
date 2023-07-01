@@ -11,13 +11,14 @@ const Timeline = ({
 
   return (
     <>
-      <div className="timeline-section">
-        <h2 className="filter-title">Filter {travelYear} Destinations By Month</h2>
+      <div className="section">
+        <h2 className="title">Filter {travelYear} Destinations By Month</h2>
         <div className="timeline-buttons">
           {months.map((Val, index) => {
             return (
               <button
                 key={index}
+                disabled={monthItems.includes(Val) ? false : true}
                 onClick={() => {
                   filterMonth(Val);
                 }}

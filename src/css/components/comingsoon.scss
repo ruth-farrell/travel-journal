@@ -1,0 +1,23 @@
+@use "./variables.scss" as *;
+
+/* Comingsoon */
+
+.coming-soon {
+  ul li { 
+    font-family: $secondaryfont; 
+    font-size: 25px;
+  }
+
+  .slogan h2 { 
+    line-height: 2;
+    font-size: 35px;
+    letter-spacing: 5px;
+    font-family: $secondaryfont;
+  }
+
+  .suitcase {
+    text-align: center;
+    padding-bottom: 20px;
+    font-size: 50px;
+  }
+}

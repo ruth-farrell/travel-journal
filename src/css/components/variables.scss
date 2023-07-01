@@ -1,0 +1,35 @@
+/* Variables */
+
+$primaryfont: "Work Sans", sans-serif;
+$secondaryfont: "Indie Flower", serif;
+
+$accentcolor: #8686b8;
+$accentcolor2: #b6b6ce;
+$beigecolor: #f3f3f2;
+$bluecolor: #bddfe8;
+$greycolor: #f3f3f2;
+$darkgreycolor: #808080;
+$whitecolor: #ffffff;
+
+$box-shadow: 0 0 21px #b2b2c3;
+
+/* Mixin */
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@mixin transform($property) {
+  -webkit-transform: $property;
+  -ms-transform: $property;
+  transform: $property;
+}
+
+@mixin whiteborder {
+  box-shadow: $box-shadow;
+  border-radius: 4px;
+  border: $whitecolor 45px solid;
+}

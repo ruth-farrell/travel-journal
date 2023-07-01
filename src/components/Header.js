@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
+import Breadcrumb from './Breadcrumb';
 
 const Header = ({ 
   query,
   travelYear, 
   travelMonth, 
   travelLocation, 
+  tagName,
   setQuery,
   setTravelYear, 
   setTravelMonth, 
-  setTravelLocation 
+  setTravelLocation,
+  setTagName
 }) => {
 
   const [scroll, setScroll] = useState(false);
@@ -31,21 +34,23 @@ const Header = ({
         <h1>
           <i className="fas fa-atlas"></i>Ruth's Travel Journal
         </h1>
-        <div className="header-filter"><span >Displaying   {travelLocation.length || travelMonth.length || travelYear.length || query.length ? "" : "all"} destinations
-          {travelYear.length ? ` > ${travelYear}` : ""} 
-          {travelLocation.length ? ` > ${travelLocation}` : ""}
-          {travelMonth.length ? ` > ${travelMonth}` : ""}
-          {query.length ? ` > "${query}"` : ""}
-        </span>
-        {travelLocation.length || travelMonth.length || travelYear.length || query.length ? <button className="filter-button" onClick={() => {
-              setTravelLocation([]);
-              setTravelMonth([]);
-              setTravelYear([]);
-              setQuery('');
-              handleYearSelectQueryInput();
-            }}><i className="fa-solid fa-filter-circle-xmark"></i> Clear All Filters</button>
-           : ""} 
-
+        <div className="header-filter">
+          <Breadcrumb travelYear={travelYear}
+            travelMonth={travelMonth}
+            travelLocation={travelLocation}
+            tagName={tagName}
+            query={query}
+             />
+            {travelLocation.length || travelMonth.length || travelYear.length || query.length 
+             || tagName.length ? <button className="grey" onClick={() => {
+                  setTravelLocation([]);
+                  setTravelMonth([]);
+                  setTravelYear([]);
+                  setTagName([]);
+                  setQuery('');
+                  handleYearSelectQueryInput();
+                }}><i className="fa-solid fa-filter-circle-xmark"></i> Clear All Filters</button>
+              : ""} 
         </div>
       </div>
     </header>

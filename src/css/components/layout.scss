@@ -1,0 +1,80 @@
+@use "./variables.scss" as *;
+
+/* Sidebyside components */
+
+.compflex {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2%;
+
+  .section {
+      margin: 20px 0px;
+  }
+}
+
+.compflex.twothirds { 
+  > div:first-child {
+      flex-basis: 38%;
+  }
+
+  > div:last-child {
+      flex-basis: 60%;
+  }
+}
+
+.items-container {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Section */
+
+.section {
+  @include flex-center;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  background: $whitecolor;
+  @include whiteborder;
+  margin: 20px auto;
+
+  .title { 
+      position: static; 
+  }
+
+  
+}
+
+.timeline-buttons button {
+  border: none;
+  padding: 10px 20px;
+  letter-spacing: 3px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-family: $primaryfont;
+  font-weight: 100;
+  color: $greycolor; 
+  background: $accentcolor;
+  cursor: pointer;
+  border-right: 4px solid  $whitecolor;
+}
+
+.section button:hover  { 
+  opacity: 75%; 
+}
+
+.section button.deactivate {
+  opacity: 40%;
+}
+
+/* Title */
+
+.title {
+  width: 100%;
+  @include flex-center;
+  letter-spacing: 5px;
+  font-size: 16px;
+}

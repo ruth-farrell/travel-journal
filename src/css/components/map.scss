@@ -1,0 +1,352 @@
+@use "./variables.scss" as *;
+
+/* Map Filter */
+
+.map {
+  @include whiteborder;
+  background-color: $greycolor;
+  width: 100%;
+  height: auto;
+  border-top: $whitecolor 100px solid;
+  position: relative;
+  text-align: center;
+
+  button {
+    position: absolute;
+  }
+
+  .map-img { 
+    max-width: 100%; 
+  }
+  
+  .map-buttons-container {
+    overflow: hidden;
+    background: $whitecolor;
+  }
+}
+
+
+.map-buttons {
+  position: relative;
+  padding: 10px;
+  background-color: $bluecolor;
+  transform: scale(1.0);
+  transform-origin: top;
+
+  .active .hidden {
+  display: flex;
+  letter-spacing: 3px;
+  position: absolute;
+  font-size: 11px;
+  font-weight: 400;
+  margin-left: 25px;
+  background: $greycolor;
+  padding: 5px 8px;
+  color: $accentcolor;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  box-shadow: 2px 2px 2px #b2b2c3;
+  width: max-content;
+  font-family: "Indie Flower", cursive; 
+  }
+
+  .active .hidden:before {
+    content: "";
+    position: absolute;
+    left: -12.6px;
+    top: 0px;
+    width: 0px;
+    height: 0px;
+    border-top: 13px solid transparent;
+    border-bottom: 13px solid transparent;
+    border-right: 13px solid $greycolor;
+  }
+
+  .fi { 
+    margin-left: 5px;
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+}
+
+
+/* Zoom Buttons */
+
+.zoom-directions {
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr; 
+  gap: 5px 5px; 
+  grid-template-areas: 
+    ". up ."
+    "left center right"
+    ". down ."; 
+
+  .left { grid-area: left; }
+  .center { grid-area: center; }
+  .up { grid-area: up; }
+  .right { grid-area: right; }
+  .down { grid-area: down; }
+} 
+
+.zoom-controls {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  z-index: 9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  button {
+    min-width: 100%;
+    position: static;
+  }
+}
+
+
+/* Zoom directions */ 
+
+.zoom-directions button i {
+  height: 12px;
+  width: 12px;
+  font-size: 12px; 
+}
+
+.zoom-on {
+    transform: scale(1.8);
+}
+
+.map-buttons.zoom-on.zoom-up.zoom-center {
+    transform-origin: top;
+}
+
+.map-buttons.zoom-on.zoom-down.zoom-center {
+    transform-origin: bottom;
+}
+
+.map-buttons.zoom-on.zoom-left.zoom-center {
+    transform-origin: left;
+}
+
+.map-buttons.zoom-on.zoom-right.zoom-center {
+    transform-origin: right;
+}
+
+.map-buttons.zoom-on.zoom-center {
+    transform-origin: center;
+}
+
+.map-buttons.zoom-on.zoom-up.zoom-left.zoom-center {
+    transform-origin: top left;
+}
+
+.map-buttons.zoom-on.zoom-up.zoom-right.zoom-center {
+    transform-origin: top right;
+}
+
+.map-buttons.zoom-on.zoom-down.zoom-left.zoom-center {
+    transform-origin: bottom left;
+}
+
+.map-buttons.zoom-on.zoom-down.zoom-right.zoom-center {
+    transform-origin: bottom right;
+}
+
+/* Map Buttons */
+
+.map .map-buttons-container {
+    button i:hover {
+      opacity: 65%;
+    }
+
+    button.gr {
+      left: 54.5%;
+      top: 27.3%;
+    }
+
+    button.ma {
+      top: 32%;
+      right: 51.8%;
+    }
+
+    button.es {
+      top: 26%;
+      right: 51%;
+    }
+
+    button.it {
+      top: 22%;
+      right: 47.5%;
+    }
+
+    button.va {
+      top: 24.2%;
+      right: 46.7%;
+    }
+
+    button.de {
+      top: 18%;
+      right: 47.5%;
+    }
+
+    button.gb-nir {
+      top: 16%;
+      right: 51.5%;
+    }
+
+    button.gb-eng {
+      top: 17.8%;
+      right: 50.3%;
+    }
+
+    button.ie {
+      top: 18%;
+      right: 52.1%;
+    }
+
+    button.gb-sct {
+      top: 14.5%;
+      right: 50.9%;
+    }
+
+    button.fr {
+      top: 22%;
+      right: 49.5%;
+    }
+
+    button.mt {
+      top: 29%;
+      right: 46.1%;
+    }
+
+    button.cy {
+      top: 29.5%;
+      right: 41.2%;
+    }
+
+    button.at {
+      top: 20.7%;
+      right: 46.8%;
+    }
+
+    button.cz {
+      top: 19%;
+      right: 46.2%;
+    }
+
+    button.be {
+      top: 18.4%;
+      right: 49.1%;
+    }
+
+    button.nl {
+      top: 16.8%;
+      right: 48.5%;
+    }
+
+    button.hu {
+      top: 20.5%;
+      right: 45%;
+    }
+
+    button.lv {
+      top: 14.5%;
+      right: 44.1%;
+    }
+
+    button.us {
+      top: 27%;
+      left: 23%;
+    }
+
+    button.pl {
+      top: 17%;
+      right: 45.4%;
+    }
+
+    button.bs {
+      top: 37.4%;
+      left: 27.7%;
+    }
+
+    button.cl {
+      bottom: 24%;
+      left: 30%;
+    }
+
+    button.ar {
+      bottom: 18%;
+      left: 32%;
+    }
+
+    button.bo {
+      bottom: 30%;
+      left: 31%;
+    }
+
+    button.co {
+      bottom: 44%;
+      left: 28%;
+    }
+
+    button.ec {
+      bottom: 41%;
+      left: 27%;
+    }
+
+    button {
+      font-size: 16px;
+      color: #8686b8;
+      background: none;
+      padding: 0px;
+      display: flex;
+      align-items: center;
+      text-transform: capitalize;
+    }
+}
+
+
+.map button.all {
+  top: 10px;
+  right: 10px; 
+}
+
+.map .title {
+  position: absolute;
+  top: -50px;
+}
+
+
+/* Map Button Styles */
+
+.map-buttons-container button.active:not(.All),
+.map-buttons-container button:focus:not(.All) {
+ color: $greycolor;
+ outline: none;
+ box-shadow: none;
+}
+
+.map-buttons button:hover {
+ opacity: 100%;
+}
+
+.map-buttons .fa-house {
+ font-size: 14px;
+}
+
+.map-buttons .fa-person-walking-luggage {
+ font-size: 19px;
+}
+
+.zoom-directions button:focus {
+ position: relative;
+}

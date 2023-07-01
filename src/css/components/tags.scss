@@ -1,0 +1,36 @@
+@use "./variables.scss" as *;
+
+/* Tags */
+
+.travel_tags  {
+  text-align: center;
+}
+
+.travel_tags span {
+    background: $greycolor;
+    -webkit-border-bottom-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    -webkit-border-top-right-radius: 2px;
+    border-top-right-radius: 2px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: .7rem;
+    height: 28px;
+    letter-spacing: 1px;
+    line-height: 28px;
+    margin-bottom: 10px;
+    padding: 0 10px 0 10px;
+    position: relative;
+}
+
+.travel_tags span:before {
+    border-color: transparent $greycolor transparent transparent;
+    border-style: solid;
+    border-width: 14px 14px 14px 0;
+    content: "";
+    height: 0;
+    left: -13.5px;
+    position: absolute;
+    top: 0;
+    width: 0;
+}

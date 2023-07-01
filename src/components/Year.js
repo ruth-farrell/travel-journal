@@ -9,11 +9,15 @@ export default function Year({ yearItems, filterYear, travelYear, setTravelYear 
     filterYear(event.target.value); }
   };
 
+  const handleHover = event => {
+    event.target.parentElement.classList.toggle("btn-hover");
+  };
+
   return (
-    <div className="timeline-section">
-      <h2 className="filter-title">Select Year</h2>
+    <div className="section">
+      <h2 className="title">Select Year</h2>
       <div className="year-buttons">
-      <select className="year-select" onChange={handleChange} defaultValue={'All'}>
+      <select className="year-select" onMouseEnter={handleHover} onMouseLeave={handleHover} onChange={handleChange} defaultValue={'All'}>
         <option
             className={"All" + (!travelYear.length ? " active" : "")}
             value="All"
@@ -25,8 +29,7 @@ export default function Year({ yearItems, filterYear, travelYear, setTravelYear 
             <option
               className={Val + (travelYear === Val ? " active" : "")}
               key={id} 
-              value={Val}
-            >
+              value={Val}>
                {Val}
             </option>
           );

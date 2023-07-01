@@ -1,0 +1,97 @@
+@use "./variables.scss" as *;
+
+/* Banner */
+
+.banner {
+  display: flex;
+  gap: 20px;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 150px;
+
+  > div {
+      @include flex-center;
+      text-align: center;
+  }
+}
+
+.polaroid-banner {
+  position: relative;
+
+  img {
+      max-width: 380px;
+      @include whiteborder;
+      border-bottom: 80px white solid;
+  }
+
+}
+
+.social-icons-row a {
+    font-size: 100px;
+    margin: auto 30px;
+    color: $accentcolor;
+    cursor: pointer;
+}
+
+.social-icons-row a:hover {
+  opacity: 75%;
+}
+
+.post-it {
+
+    position: relative; 
+
+    .post-it-rotate {
+    position: absolute;
+    color: $greycolor;
+    @include transform(rotate(-12deg));
+    line-height: 3;
+    letter-spacing: 6px;
+    max-width: 300px;
+    font-size: 12px;
+    font-family: $secondaryfont;
+    }
+
+    img {
+        max-width: 440px;
+        position: relative;
+    }
+}
+
+.bucketlist .post-it {
+  img {
+      max-width: 100%;
+      height: auto;
+      transform: rotate(8.5deg);
+  }
+
+  ul {
+      list-style-type: none;
+      padding-left: 0;
+  }
+
+  li:before {
+      content: '\f0c8';
+      font-family: "Font Awesome 5 Free";
+      margin-right: 10px;
+      font-weight: 400;
+  }
+
+  li.checked:before {
+      content: '\f14a';
+      margin-right: 10px;
+      font-weight: 400;
+  }
+
+  li {
+      font-size: 18px;
+      text-align: left;
+  }
+
+  .post-it-rotate {
+      max-width: 100%;
+      font-size: 20px;
+      transform: rotate(0deg);
+      top: 15%;
+  }
+}

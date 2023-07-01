@@ -1,0 +1,183 @@
+@use "./variables.scss" as *;
+
+/* Mobile Styles */
+
+@media screen and (max-width: 1150px) {
+  .cards-container { 
+      justify-content: space-evenly; 
+  }
+  .banner { 
+      flex-wrap: wrap; 
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  header.fixed-header  {
+      .header-filter {
+          display: flex;
+          gap: 20px;
+          flex-direction: column;
+      }
+      
+      .container {
+          flex-direction: column;
+          gap: 10px;
+      }
+  }
+
+  .zoom-on {
+      transform: none;
+  }
+
+  .map-buttons.zoom-on.zoom-up.zoom-left.zoom-center {
+      transform: none;
+  }
+
+  .map-buttons { 
+      height: auto; 
+      background: transparent;
+
+      .fa-map-pin {
+          display: none;
+      }
+      .fa-house {
+          display: none;
+      }
+  }
+
+  .map {
+      background: white;
+      border: $whitecolor 45px solid;
+      box-shadow: 0 0 21px #b2b2c3;
+
+      .title {
+          position: static;
+      }
+
+      .map-buttons button {
+          border: 1px solid;
+          border-radius: 4px;
+          padding: 4px 8px;
+      }
+
+      button { 
+          margin: 6px; 
+      }
+  }
+
+  .map-img {
+      border: $whitecolor solid 20px;
+      box-shadow: none;
+  }
+
+  .zoom-controls {
+      display: none;
+  }
+
+  .map, .section {
+      max-width: 90%;
+      margin: 20px auto;
+
+      button, button.active, button:focus {
+          position: static;
+      }
+
+     button:not(.All) { display: inline ;}
+
+     span.hidden {
+      display: block;
+      font-size: 14px;
+      font-family: $secondaryfont;
+    }
+
+    .active .hidden { 
+      position: static; 
+      font-size: 14px; 
+      margin-left: 0px;
+      background: $accentcolor2;
+      color: $whitecolor;
+     }
+  }
+
+  .map-buttons-container button.active:not(.All), 
+  .map-buttons-container button:focus:not(.All) { 
+      background: $accentcolor2; 
+  } 
+
+  .section .timeline-buttons {
+      @include flex-center;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      button:last-child { 
+          border-right: 4px solid #8686b7; 
+      }
+  }
+
+  .bucketlist .post-it img, .polaroid-banner img {
+      max-width: 100%;
+      height: auto;
+  }
+
+  .polaroid-banner {  
+      max-width: 90%; 
+  }
+
+  .social-icons-row a { 
+      font-size: 60px;
+  }
+
+  .bucketlist {
+      .post-it li { 
+          font-size: 14px; 
+      }
+
+      .post-it .post-it-rotate {
+          max-width: 80%;
+          position: static;
+          color: #000000;
+      }
+
+      .post-it img { 
+          display: none; 
+      }
+  }    
+
+  .post-it .post-it-rotate {
+    font-size: 10px;
+    max-width: 250px;
+}
+
+  .bucketlist .polaroid-banner img { 
+    max-width: 100%; 
+  }
+
+  .post-it img {
+    max-width: 80%;
+  }
+
+  .quote blockquote { 
+      font-size: 30px; 
+  }
+
+  .banner > div { 
+      overflow: hidden;
+  }
+
+  .banner, .card {
+      flex-direction: column;
+  }
+
+  .card { 
+      gap: 40px; 
+  }
+
+  .compflex .section { 
+      margin: 20px auto;
+  }
+
+  .compflex > div:first-child, .compflex > div:last-child, .compflex.twothirds > div:first-child, .compflex.twothirds > div:last-child {
+      width: 90%;
+  }
+}
