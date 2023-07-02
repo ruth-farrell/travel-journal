@@ -12,7 +12,7 @@ const Timeline = ({
   return (
     <>
       <div className="section">
-        <h2 className="title">Filter {travelYear} Destinations By Month</h2>
+        <h2 className="section-title">Filter {travelYear} Destinations By Month</h2>
         <div className="timeline-buttons">
           {months.map((Val, index) => {
             return (

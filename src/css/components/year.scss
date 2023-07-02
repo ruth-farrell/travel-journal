@@ -2,44 +2,6 @@
 
 /* Year */
 
-.year-buttons { 
-  display: flex; 
-  align-items: center; 
-  justify-content: center;
-  position: relative;
-  pointer-events: none;
-
-  select {
-    font-family: $primaryfont;
-    letter-spacing: 1.5px;
-    font-weight: 100;
-    cursor: pointer;
-    background: $greycolor;
-    border: none;
-    padding: 14px 45px 14px 45px;
-    font-size: 13px;
-    text-transform: uppercase;
-    appearance: none;
-    pointer-events: all;
-  }
-}
-
-.year-buttons:before {
-  font-family: "Font Awesome 6 Free"; 
+.year .select-buttons:before { 
   content: "\f073";
-  font-size: 20px;
-  color: $accentcolor;
-  margin-bottom: 2px;
-  position: absolute;
-  left: 12px;
-}
-
-.year-buttons:after {
-  font-family: "FontAwesome";
-  content: "\f078";
-  font-size: 20px;
-  color: $accentcolor;
-  margin-bottom: 2px;
-  position: absolute;
-  right: 12px;
 }

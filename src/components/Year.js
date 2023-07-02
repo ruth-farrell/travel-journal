@@ -14,10 +14,10 @@ export default function Year({ yearItems, filterYear, travelYear, setTravelYear 
   };
 
   return (
-    <div className="section">
-      <h2 className="title">Select Year</h2>
-      <div className="year-buttons">
-      <select className="year-select" onMouseEnter={handleHover} onMouseLeave={handleHover} onChange={handleChange} defaultValue={'All'}>
+    <div className="section year">
+      <h2 className="section-title">Select Year</h2>
+      <div className="select-buttons">
+      <select className="select-default" onMouseEnter={handleHover} onMouseLeave={handleHover} onChange={handleChange} defaultValue={'All'}>
         <option
             className={"All" + (!travelYear.length ? " active" : "")}
             value="All"

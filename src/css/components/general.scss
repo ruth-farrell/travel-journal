@@ -23,6 +23,10 @@ button {
   border: none; 
 }
 
+a { 
+  text-decoration: none; 
+}
+
 * { 
   box-sizing: border-box; 
 }
@@ -58,18 +62,56 @@ h2 {
   }
 }
 
-main, .banner, .container {
+main, .banner, .header-container {
   margin: 0 auto;
   max-width: 1150px;
 }
 
-/* Button styles */
+/* Select Styles */
 
-button:hover {
-  opacity: 75%;
-  background: $accentcolor;
-  color: $greycolor;
+.select-buttons { 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  position: relative;
+  pointer-events: none;
+
+  .select-default {
+    font-family: $primaryfont;
+    letter-spacing: 1.5px;
+    font-weight: 100;
+    cursor: pointer;
+    background: $greycolor;
+    border: none;
+    padding: 14px 45px 14px 45px;
+    font-size: 13px;
+    text-transform: uppercase;
+    appearance: none;
+    pointer-events: all;
+  }
 }
+
+.select-buttons:before {
+  font-family: "Font Awesome 6 Free"; 
+  content: "\f073";
+  font-size: 20px;
+  color: $accentcolor;
+  margin-bottom: 2px;
+  position: absolute;
+  left: 12px;
+}
+
+.select-buttons:after {
+  font-family: "FontAwesome";
+  content: "\f078";
+  font-size: 20px;
+  color: $accentcolor;
+  margin-bottom: 2px;
+  position: absolute;
+  right: 12px;
+}
+
+/* Button styles */
 
 button.active {
   outline: 4px solid white;
@@ -83,8 +125,30 @@ button.active {
   border-right: none;
 }
 
+.timeline-buttons button {
+  border: none;
+  padding: 10px 20px;
+  letter-spacing: 3px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-family: $primaryfont;
+  font-weight: 100;
+  color: $greycolor; 
+  background: $accentcolor;
+  cursor: pointer;
+  border-right: 4px solid  $whitecolor;
+}
+
+.section button:hover  { 
+  opacity: 75%; 
+}
+
+.section button.deactivate {
+  opacity: 40%;
+}
+
 button.deactivate, .deactivate button {
-  opacity: 55%;
+  opacity: 45%;
   pointer-events: none;
 }
 
@@ -148,4 +212,16 @@ button.grey.shadow {
 
 .hidden { 
   display: none; 
+}
+
+@media screen and (max-width: 768px) {
+  .section .timeline-buttons {
+    @include flex-center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    button:last-child { 
+      border-right: 4px solid #8686b7; 
+    }
+  }
 }

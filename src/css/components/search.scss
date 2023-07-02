@@ -3,36 +3,41 @@
 /* Search */
 
 .search { 
-  position: relative;
+  &.section {
+    border: $whitecolor 25px solid;
+    flex-direction: row;
+    justify-content: space-between;
+    border-left-width: 45px;
+    border-right-width: 45px;
+  }
+
+  .search-input {
+    position: relative;
+  }
 
   input {
-      font-family: "Work Sans";
-      background: $greycolor;
-      padding: 14px 20px 14px 40px;
-      font-size: 11px;
-      border: none;
-      letter-spacing: 1.5px;
-      display: inline;
-      width: 100%;
-      text-transform: uppercase;
+    font-family: "Work Sans";
+    background: $greycolor;
+    padding: 14px 20px 14px 40px;
+    font-size: 11px;
+    border: none;
+    letter-spacing: 1.5px;
+    display: inline;
+    width: 100%;
+    text-transform: uppercase;
   }
 
   i {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      color: $accentcolor;
-      display: inline-block;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    color: $accentcolor;
+    display: inline-block;
   }
 
-  .input-hidden-label {
-      height: 0;
-      visibility: hidden;
-      padding: 0px 20px;
+  .search-input-hidden-label {
+    height: 0;
+    visibility: hidden;
+    padding: 0px 20px;
   }
-}
-
-.no-results {
-  font-size: 18px;
-  margin: 45px 20px 0px 20px;
 }

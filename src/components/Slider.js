@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const Slider = ({
   slides,
@@ -44,7 +44,7 @@ const Slider = ({
                 <img className="slider-content -img" src={process.env.PUBLIC_URL + `/images/${slide}`} alt=""/>
                 : <div className="slider-content -text"><p>{slide}</p></div> }
                 <div className="slider-destination-info">
-                  <p>{slidecountry} : {slidetitle} : {index + 1} / {slides.length}</p>
+                  <p>{slidetitle} - {slidecountry} - {index + 1} / {slides.length}</p>
                 </div>
               </div> 
               </React.Fragment>

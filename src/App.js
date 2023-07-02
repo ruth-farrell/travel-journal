@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Card from "./components/Card";
-import Banner from "./components/Banner";
+import Hero from "./components/Hero";
 import Footer from "./components/Footer";
 import Year from "./components/Year";
 import Search from "./components/Search";
@@ -27,7 +27,21 @@ export default function App() {
   const countryItemsNotUnique = 
     travelData.filter((item) => item.startDate.includes(travelYear)).map((item) => item.country); 
 
-  const countryItems = Array.from(new Set(countryItemsNotUnique.map(JSON.stringify)), JSON.parse)
+  const countryItems = Array.from(new Set(countryItemsNotUnique.map(JSON.stringify)), JSON.parse);
+
+  function dynamicSort(property) {
+    const sortOrder = 1;
+    if(property[0] === "-") {
+      sortOrder = -1;
+      property = property.substr(1);
+    }
+    return function (a,b) {
+      const result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+      return result * sortOrder;
+    }
+  }
+
+  countryItems.sort(dynamicSort("name"));
 
   const monthItems = [
     ...new Set(
@@ -222,7 +236,7 @@ export default function App() {
         setTagName={setTagName}
         setQuery={setQuery}
       />
-      <Banner />
+      <Hero />
       <main>
         <div className="compflex twothirds">
           <Year

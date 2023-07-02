@@ -22,10 +22,10 @@ const Tags = ({
 
   return (
     <div className="section">
-      <h2 className="title">
+      <h2 className="section-title">
         Filter Destinations By Tag
       </h2>
-      <div className="items-container">
+      <div className="section-container">
         {uniqueTagNames.map(tag => tag.map((elem, index) => 
         <button className={(tagName === elem ? " active" : "") + " default"} key={index} onClick={() => {filterTag(elem);}}><i className={renderIcon(elem)}></i> {elem.replace( /([a-z])([A-Z])/g, "$1 $2")}</button> 
         ))}

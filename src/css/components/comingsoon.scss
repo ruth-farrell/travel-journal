@@ -4,20 +4,24 @@
 
 .coming-soon {
   ul li { 
-    font-family: $secondaryfont; 
+    font-size: 18px;
+    line-height: 3.0;
+  }
+
+  &-slogan h2 { 
+    line-height: 2;
     font-size: 25px;
   }
 
-  .slogan h2 { 
-    line-height: 2;
-    font-size: 35px;
-    letter-spacing: 5px;
-    font-family: $secondaryfont;
-  }
-
-  .suitcase {
+  &-slogan-suitcase i {
     text-align: center;
-    padding-bottom: 20px;
     font-size: 50px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .coming-soon-slogan h2 {
+    line-height: 2;
+    font-size: 20px;
   }
 }

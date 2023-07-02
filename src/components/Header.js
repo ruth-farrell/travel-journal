@@ -23,14 +23,15 @@ const Header = ({
   }, []);
 
 
-  const handleYearSelectQueryInput = event => {
-    document.querySelector('.year-select').value = 'All';
+  const handleSelectQueryInput = event => {
+    const selects = document.querySelectorAll('.select-default');
+    selects.forEach(select => select.value = 'All');
     document.querySelector('.search input').value = '';
   }
 
   return (
-    <header className={scroll ? "fixed-header" : ""}>
-      <div className="container">
+    <header className={`header ${scroll ? "fixed" : ""}`}>
+      <div className="header-container">
         <h1>
           <i className="fas fa-atlas"></i>Ruth's Travel Journal
         </h1>
@@ -48,7 +49,7 @@ const Header = ({
                   setTravelYear([]);
                   setTagName([]);
                   setQuery('');
-                  handleYearSelectQueryInput();
+                  handleSelectQueryInput();
                 }}><i className="fa-solid fa-filter-circle-xmark"></i> Clear All Filters</button>
               : ""} 
         </div>

@@ -9,7 +9,7 @@
   gap: 2%;
 
   .section {
-      margin: 20px 0px;
+      margin-bottom: 0px;
   }
 }
 
@@ -23,13 +23,6 @@
   }
 }
 
-.items-container {
-  display: flex;
-  gap: 15px;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
 /* Section */
 
 .section {
@@ -40,41 +33,30 @@
   background: $whitecolor;
   @include whiteborder;
   margin: 20px auto;
-
-  .title { 
-      position: static; 
-  }
-
-  
 }
 
-.timeline-buttons button {
-  border: none;
-  padding: 10px 20px;
-  letter-spacing: 3px;
-  font-size: 12px;
-  text-transform: uppercase;
-  font-family: $primaryfont;
-  font-weight: 100;
-  color: $greycolor; 
-  background: $accentcolor;
-  cursor: pointer;
-  border-right: 4px solid  $whitecolor;
-}
-
-.section button:hover  { 
-  opacity: 75%; 
-}
-
-.section button.deactivate {
-  opacity: 40%;
-}
-
-/* Title */
-
-.title {
+.section-title {
   width: 100%;
   @include flex-center;
   letter-spacing: 5px;
   font-size: 16px;
+  line-height: 2.0;
+}
+
+.section-container {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+  .compflex > div:first-child, 
+  .compflex > div:last-child, 
+  .compflex.twothirds > div:first-child, 
+  .compflex.twothirds > div:last-child,
+  .section {
+    width: 90%;
+    flex-basis: 90%;
+  }
 }
