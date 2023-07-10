@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
-import Card from "./components/Card";
+import Destinations from "./components/Destinations";
 import Hero from "./components/Hero";
 import Footer from "./components/Footer";
 import Year from "./components/Year";
@@ -9,6 +9,7 @@ import Number from "./components/Number";
 import Map from "./components/Map";
 import Timeline from "./components/Timeline";
 import Bucketlist from "./components/Bucketlist";
+import Backtotop from "./components/Backtotop";
 import Quote from "./components/Quote";
 import Comingsoon from "./components/Comingsoon";
 import travelData from "./data";
@@ -17,21 +18,30 @@ import "/node_modules/flag-icons/css/flag-icons.min.css";
 
 export default function App() {
 
-  const [travelYear, setTravelYear] = useState('');
-  const [travelMonth, setTravelMonth] = useState([]);
-  const [travelLocation, setTravelLocation] = useState(false);
-  const [tagName, setTagName] = useState([]);
+  // State Data
+  const [travelYear, setTravelYear] = useState("");
+  const [travelMonth, setTravelMonth] = useState("");
+  const [travelLocation, setTravelLocation] = useState("");
+  const [tagName, setTagName] = useState("");
   const [query, setQuery] = useState("");
+  const [sort, setSort] = useState(true);
   const [item, setItem] = useState(travelData);
 
-  const countryItemsNotUnique = 
-    travelData.filter((item) => item.startDate.includes(travelYear)).map((item) => item.country); 
+  // Sorting Data Functions 
 
-  const countryItems = Array.from(new Set(countryItemsNotUnique.map(JSON.stringify)), JSON.parse);
+  // Merge Arrays
+  let newArray = [];
+  const mergeArrays = (...arrays) => {
+    for (let i = 0; i < arrays.length; i++ ) {
+      newArray.push(...arrays[i]);
+    }
+    return newArray;
+  }
 
-  function dynamicSort(property) {
-    const sortOrder = 1;
-    if(property[0] === "-") {
+  // Sort Alphabetically
+  const dynamicSort = (property) => {
+    let sortOrder = 1;
+    if (property[0] === "-") {
       sortOrder = -1;
       property = property.substr(1);
     }
@@ -41,8 +51,21 @@ export default function App() {
     }
   }
 
+  // Travel Data Items
+  const countryItemsNotUnique = 
+    travelData
+      .filter((item) => item.startDate.includes(travelYear))
+      .filter((item) => item.startDate.includes(travelMonth))
+      .map((item) => item.country); 
+
+  const countryItems = Array.from (
+    new Set(countryItemsNotUnique.map(JSON.stringify)),
+     JSON.parse);
+
   countryItems.sort(dynamicSort("name"));
 
+  const months = ['January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'];
   const monthItems = [
     ...new Set(
       travelData
@@ -50,52 +73,6 @@ export default function App() {
         .map((item) => item.startDate.slice(2, -4).replaceAll(' ', ''))
     ),
   ];
-
-  const titleItems = [
-    ...new Set(
-      travelData
-        .filter((item) => item.startDate.includes(travelYear))
-        .map((item) => item.title)
-    ),
-  ];
-
-  const continentItems = [
-    ...new Set(
-      travelData
-        .filter((item) => item.startDate.includes(travelYear))
-        .map((item) => item.continent)
-    ),
-  ];
-
-  const tags = [
-    ...new Set(
-      travelData
-        .map((item) => item.tags)
-    ),
-  ];
-
-  const tagNames = tags.map(elem =>{ return Object.keys(elem)});
-  const uniqueTagNames = Array.from(new Set(tagNames.map(JSON.stringify)), JSON.parse);
-
-  const currentLocationItem = [
-    ...new Set(
-      travelData
-        .filter((item) => item.tags.currentLocation === true)
-        .map((item) => item.country)
-    ),
-  ];
-
-  const homeLocationItem = [
-    ...new Set(
-      travelData
-        .filter((item) => item.tags.homeCountry === true)
-        .map((item) => item.country)
-    ),
-  ];
-
-  const numberCountries = countryItems.length;
-  const numberCities = titleItems.length;
-  const numberContinents = continentItems.length;
 
   const yearItems = [
     ...new Set(
@@ -105,10 +82,60 @@ export default function App() {
     ),
   ];
 
-  const months = ['January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'];
+  const titleItems = [
+    ...new Set(
+      travelData
+        .filter((item) => item.startDate.includes(travelYear))
+        .filter((item) => item.startDate.includes(travelMonth))
+        .map((item) => item.title)
+    ),
+  ];
 
+  const continentItems = [
+    ...new Set(
+      travelData
+        .filter((item) => item.startDate.includes(travelYear))
+        .filter((item) => item.startDate.includes(travelMonth))
+        .map((item) => item.continent)
+    ),
+  ];
 
+  const tags = [
+    ...new Set(
+      travelData
+        .filter((item) => (item.startDate.includes(travelYear)) && 
+        (item.startDate.includes(travelMonth)) && (item.country.name.includes(travelLocation)))
+        .map((item) => item.tags)
+    ),
+  ];
+
+  tags.forEach(array => mergeArrays(array));
+
+  const tagItems = Array.from(new Set(newArray.map(JSON.stringify)), JSON.parse);
+
+  // Number Data 
+  const numberCountries = countryItems.length;
+  const numberCities = titleItems.length;
+  const numberContinents = continentItems.length;
+
+  // Tag Icon Data in Map
+  const currentLocationItem = [
+    ...new Set(
+      travelData
+        .filter((item) => item.tags.includes("Current Location"))
+        .map((item) => item.country)
+    ),
+  ];
+
+  const homeLocationItem = [
+    ...new Set(
+      travelData
+        .filter((item) => item.tags.includes("Home Country"))
+        .map((item) => item.country)
+    ),
+  ];
+
+   // Filter Travel Destinations
   const filterLocation = (curlocation) => {
     setTravelLocation(curlocation);
     filterAllItems();
@@ -129,92 +156,11 @@ export default function App() {
     filterAllItems();
   };
 
-  useEffect(() => {
-    filterAllItems();
-  }, [travelMonth, travelLocation, travelYear, tagName]);
-
-  function checkItems(newVal) {
-
-    if (travelMonth.length && travelYear.length && travelLocation.length && tagName.length) {
-      return newVal.startDate.slice(2, -4).replace(/\s/g, "") === travelMonth &&
-        newVal.startDate.slice(-4) === travelYear &&
-        newVal.country.name === travelLocation &&
-        newVal.tags[tagName] === true 
-    }
-
-    if (travelMonth.length && travelYear.length && travelLocation.length) {
-      return newVal.startDate.slice(2, -4).replace(/\s/g, "") === travelMonth &&
-        newVal.startDate.slice(-4) === travelYear &&
-        newVal.country.name === travelLocation
-    }
-
-    if (tagName.length && travelYear.length && travelLocation.length) {
-      return newVal.tags[tagName] === true &&
-        newVal.startDate.slice(-4) === travelYear &&
-        newVal.country.name === travelLocation
-    }
-
-    if (travelMonth.length && tagName.length && travelLocation.length) {
-      return newVal.startDate.slice(2, -4).replace(/\s/g, "") === travelMonth &&
-        newVal.tags[tagName] === true &&
-        newVal.country.name === travelLocation
-    }
-
-    if (travelMonth.length && travelYear.length && tagName.length) {
-      return newVal.startDate.slice(2, -4).replace(/\s/g, "") === travelMonth &&
-        newVal.startDate.slice(-4) === travelYear &&
-        newVal.tags[tagName] === true 
-    }
-
-    if (travelYear.length && travelLocation.length) {
-      return newVal.startDate.slice(-4) === travelYear &&
-        newVal.country.name === travelLocation
-    }
-
-    if (travelMonth.length && travelYear.length) {
-      return newVal.startDate.slice(2, -4).replace(/\s/g, "") === travelMonth &&
-        newVal.startDate.slice(-4) === travelYear
-    }
-
-    if (travelMonth.length && travelLocation.length) {
-      return newVal.startDate.slice(2, -4).replace(/\s/g, "") === travelMonth &&
-        newVal.country.name === travelLocation
-    }
-
-    if (tagName.length && travelLocation.length) {
-      return newVal.tags[tagName] === true &&
-        newVal.country.name === travelLocation
-    }
-
-    if (travelMonth.length && tagName.length) {
-      return newVal.startDate.slice(2, -4).replace(/\s/g, "") === travelMonth &&
-        newVal.tags[tagName] === true
-    }
-
-    if (travelYear.length && tagName.length) {
-      return newVal.startDate.slice(-4) === travelYear &&
-             newVal.tags[tagName] === true
-    }
-
-    if (travelMonth.length) {
-      return newVal.startDate.slice(2, -4).replace(/\s/g, "") === travelMonth
-    }
-
-    if (travelLocation.length) {
-      return newVal.country.name === travelLocation
-    }
-
-    if (travelYear.length) {
-      return newVal.startDate.slice(-4) === travelYear
-    }
-
-    if (tagName.length) {
-      return newVal.tags[tagName] === true
-    }
-
-    if (!travelYear.length && !travelLocation.length && !travelMonth.length && !tagName.length) {
-      return newVal
-    }
+  const checkItems = (newVal) => {
+    return (travelYear.length ? (travelYear === newVal.startDate.slice(-4)) : true) &&
+      (travelMonth.length ? (travelMonth === newVal.startDate.slice(2, -4).replace(/\s/g, "")) : true) &&
+      (travelLocation.length ? (travelLocation === newVal.country.name) : true) &&
+      (tagName.length ? (newVal.tags.includes(tagName)) : true);
   }
 
   const filterAllItems = () => {
@@ -222,80 +168,51 @@ export default function App() {
     setItem(newItem);
   };
 
+  useEffect(() => {
+    filterAllItems();
+  }, [travelMonth, travelLocation, travelYear, tagName]);
+
   return (
     <>
       <Header
-        travelYear={travelYear}
-        travelMonth={travelMonth}
-        travelLocation={travelLocation}
-        tagName={tagName}
-        query={query}
-        setTravelYear={setTravelYear}
-        setTravelMonth={setTravelMonth}
-        setTravelLocation={setTravelLocation}
-        setTagName={setTagName}
-        setQuery={setQuery}
+        {...{ travelYear, travelMonth, travelLocation, tagName, query, 
+          setTravelYear, setTravelMonth, setTravelLocation, setTagName, setQuery }}
       />
       <Hero />
       <main>
-        <div className="compflex twothirds">
+        <div className="compflex">
           <Year
-            yearItems={yearItems}
-            travelYear={travelYear}
-            filterYear={filterYear}
-            setTravelYear={setTravelYear}
+            {...{ yearItems, travelYear, filterYear, setTravelYear, setTravelMonth }}
           />
           <Number
-            travelYear={travelYear}
-            numberCountries={numberCountries}
-            numberCities={numberCities}
-            numberContinents={numberContinents}
+            {...{ travelYear, travelMonth, numberCountries, numberCities, numberContinents }}
           />
+          {travelYear.length ? 
+          <Timeline
+            {...{ months, travelMonth, travelYear, monthItems, setTravelMonth, filterMonth }}
+          />
+          : '' 
+          }
         </div>
-        { (travelYear.length)
-        ? <Timeline
-          months={months}
-          travelYear={travelYear}
-          travelMonth={travelMonth}
-          monthItems={monthItems}
-          setTravelMonth={setTravelMonth}
-          filterMonth={filterMonth}
-        />
-        : '' 
-        }
         <Map
-          countryItems={countryItems}
-          filterLocation={filterLocation}
-          travelYear={travelYear}
-          travelLocation={travelLocation}
-          setTravelLocation={setTravelLocation}
-          tagName={tagName}
-          currentLocationItem={currentLocationItem}
-          homeLocationItem={homeLocationItem}
+           {...{ countryItems, filterLocation, travelMonth, travelYear, travelLocation, 
+            setTravelLocation, tagName, currentLocationItem, homeLocationItem }}
         />
-         <Tags
-          uniqueTagNames = {uniqueTagNames}
-          tagName={tagName}
-          setTagName={setTagName}
-          filterTag={filterTag}
+        <Tags
+          {...{ tagItems, tagName, setTagName, filterTag }}
         /> 
         <Search
-          travelYear={travelYear}
-          travelMonth={travelMonth}
-          travelLocation={travelLocation}
-          tagName={tagName}
-          setQuery={setQuery}
-          query={query}
+          {...{ setQuery, setSort, sort }}
         />
-        <Card
-          item={item}
-          query={query}
+        <Destinations
+          {...{ item, query, sort }}
         />
       </main>
       <Quote />
       <Bucketlist />
       <Comingsoon />
       <Footer />
+      <Backtotop />
     </>
   );
 }

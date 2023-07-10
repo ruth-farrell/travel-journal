@@ -1,23 +1,16 @@
-import React from 'react'
-import Breadcrumb from './Breadcrumb';
+import React from 'react';
+import Sort from './Sort';
+import { FaMagnifyingGlass } from "react-icons/fa6";
 
-const Search = ({ travelYear, travelMonth, travelLocation, tagName, setQuery, query }) => {
+const Search = ({ setQuery, setSort, sort }) => {
   return (
     <div className="section search">
-      <div className="breadcrumb">
-        <h2 className="section-title">
-          <Breadcrumb travelYear={travelYear}
-          travelMonth={travelMonth}
-          travelLocation={travelLocation}
-          tagName={tagName}
-          query={query} />
-        </h2>
-      </div>
+      <Sort setSort={setSort} sort={sort}/>
       <div className="search-input">
         <div className="search-input-hidden-label" aria-hidden="true">
           Search by Destination...
         </div>
-        <i className="fa-solid fa-magnifying-glass"></i>  
+        <FaMagnifyingGlass/>
         <input placeholder="Search by Destination..." onChange={event => setQuery(event.target.value)} />
       </div>
     </div>

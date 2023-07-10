@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Breadcrumb from './Breadcrumb';
+import { FaBookAtlas, FaFilterCircleXmark } from "react-icons/fa6";
 
 const Header = ({ 
   query,
@@ -22,7 +23,6 @@ const Header = ({
     });
   }, []);
 
-
   const handleSelectQueryInput = event => {
     const selects = document.querySelectorAll('.select-default');
     selects.forEach(select => select.value = 'All');
@@ -33,7 +33,7 @@ const Header = ({
     <header className={`header ${scroll ? "fixed" : ""}`}>
       <div className="header-container">
         <h1>
-          <i className="fas fa-atlas"></i>Ruth's Travel Journal
+          <FaBookAtlas aria-hidden="true"/> Ruth's Travel Journal
         </h1>
         <div className="header-filter">
           <Breadcrumb travelYear={travelYear}
@@ -50,7 +50,7 @@ const Header = ({
                   setTagName([]);
                   setQuery('');
                   handleSelectQueryInput();
-                }}><i className="fa-solid fa-filter-circle-xmark"></i> Clear All Filters</button>
+                }}><FaFilterCircleXmark aria-hidden="true"/> Reset All</button>
               : ""} 
         </div>
       </div>

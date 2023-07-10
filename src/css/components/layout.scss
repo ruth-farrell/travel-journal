@@ -1,6 +1,11 @@
 @use "./variables.scss" as *;
 
-/* Sidebyside components */
+/* Main Layout */
+
+main, .banner, .header-container {
+  margin: 0 auto;
+  max-width: 1150px;
+}
 
 .compflex {
   display: flex;
@@ -13,12 +18,12 @@
   }
 }
 
-.compflex.twothirds { 
-  > div:first-child {
+.compflex { 
+  .year {
       flex-basis: 38%;
   }
 
-  > div:last-child {
+  .number {
       flex-basis: 60%;
   }
 }
@@ -50,13 +55,92 @@
   flex-wrap: wrap;
 }
 
+/* Banner */ 
+
+.banner {
+  display: flex;
+  gap: 20px;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 150px;
+  flex-wrap: wrap; 
+
+  > div {
+      @include flex-center;
+      text-align: center;
+  }
+
+  .post-it {
+    position: relative; 
+  
+    .post-it-rotate {
+      position: absolute;
+      color: $greycolor;
+      @include transform(rotate(-11deg));
+      line-height: 3;
+      letter-spacing: 6px;
+      max-width: 300px;
+      font-size: 11px;
+      font-family: $secondaryfont;
+    }
+  
+    .post-it-img {
+      max-width: 440px;
+      position: relative;
+    }
+  }
+}
+
+/* Hide and Show */
+
+.hidden { 
+  display: none; 
+}
+
+.desktop-only {
+  display: flex;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1170px) { 
+  main, .banner, .header-container {
+    padding-inline: 20px;
+  }
+}
+
 @media screen and (max-width: 768px) {
-  .compflex > div:first-child, 
-  .compflex > div:last-child, 
-  .compflex.twothirds > div:first-child, 
-  .compflex.twothirds > div:last-child,
+  .compflex .year , 
+  .compflex .number, 
   .section {
     width: 90%;
     flex-basis: 90%;
+  }
+
+  .banner {
+    flex-direction: column;
+
+    .post-it .post-it-rotate {
+      font-size: 10px;
+      max-width: 250px;
+    }
+
+    .post-it .post-it-img {
+      max-width: 85%;
+    }
+  }
+
+  .section.number {
+    order: 3;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+  
+  .mobile-only {
+    display: flex;
   }
 }

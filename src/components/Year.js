@@ -1,8 +1,9 @@
 import React from "react";
 
-export default function Year({ yearItems, filterYear, travelYear, setTravelYear }) {
+export default function Year({ yearItems, filterYear, travelYear, setTravelYear, setTravelMonth }) {
 
   const handleChange = event => {
+    setTravelMonth('');
     if (event.target.value === 'All') {
       setTravelYear('');
     } else {

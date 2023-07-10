@@ -2,7 +2,7 @@
 
 /* Card */
 
-.cards {
+.destinations {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -84,6 +84,9 @@
 
   &-google-data a {
     font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 
     &:hover {
       text-decoration: underline;
@@ -103,11 +106,8 @@
 
   &-tags span {
     background: $greycolor;
-    -webkit-border-bottom-right-radius: 2px;
     border-bottom-right-radius: 2px;
-    -webkit-border-top-right-radius: 2px;
     border-top-right-radius: 2px;
-    display: inline-block;
     text-transform: uppercase;
     font-size: .7rem;
     height: 28px;
@@ -116,6 +116,9 @@
     margin-bottom: 10px;
     padding: 0 10px 0 10px;
     position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 
     &:before {
       border-color: transparent $greycolor transparent transparent;
@@ -153,23 +156,25 @@
  }
 
 @media screen and (max-width: 1150px) {
-  .cards { 
+  .destinations { 
     justify-content: space-evenly; 
     gap: 20px;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .hero .card {
-   max-width: 90%;
-  }
+  .hero {
+    .card {
+    max-width: 90%;
 
-  .hero .card .card-left-img {
-    max-width: 100%;
-    height: 100%;
-  }
+      .card-right-social-icons-grid-row a {
+        font-size: 60px;
+      }
+    }
 
-  .card-left-social-icons-grid-row a {
-    font-size: 80px;
+    .card .card-left-img {
+      max-width: 100%;
+      height: 100%;
+    }
   }
 }

@@ -28,66 +28,44 @@
 
   .map-buttons {
     position: relative;
-    padding-top: 4px;
+    padding: 10px; 
     background-color: $bluecolor;
-  
-    &.zoom-on {
-      transform: scale(1.8);
-    }
+    transition: transform 0.3s, transform-origin 0.3s;
   
     .active .hidden {
     display: flex;
-    letter-spacing: 3px;
+    gap: 5px;
+    letter-spacing: 2.5px;
     position: absolute;
-    font-size: 11px;
-    font-weight: 400;
+    font-size: 12px;
     margin-left: 25px;
-    background: $greycolor;
-    padding: 5px 8px;
-    color: $accentcolor;
+    background: $darkgreycolor;
+    padding: 6px 8px;
+    color: $whitecolor;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
     width: max-content;
-    font-family: "Indie Flower", cursive; 
+    font-family: $primaryfont;
+    text-transform: uppercase;
     }
   
     .active .hidden:before {
       content: "";
       position: absolute;
-      left: -12.6px;
+      left: -12.5px;
       top: 0px;
       width: 0px;
       height: 0px;
       border-top: 13px solid transparent;
       border-bottom: 13px solid transparent;
-      border-right: 13px solid $greycolor;
-    }
-  
-    .fi { 
-      margin-left: 5px;
-    }
-  
-    .fa-house {
-      font-size: 14px;
-    }
-  
-    .fa-person-walking-luggage {
-      font-size: 19px;
-    }
-  
-    svg {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      left: 0;
-      right: 0;
+      border-right: 13px solid $darkgreycolor;
     }
   
     button.active, 
     button:focus {
-      color: $greycolor;
-      outline: none;
+      color: $darkgreycolor;
       box-shadow: none;
+      opacity: 100%;
     }
   }  
 }
@@ -106,8 +84,16 @@
   gap: 10px;
 
   button {
-    min-width: 100%;
     position: static;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+  }
+
+  .zoom-in-out {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
   }
 
   .zoom-directions {
@@ -125,12 +111,6 @@
     .up { grid-area: up; }
     .right { grid-area: right; }
     .down { grid-area: down; }
-  
-    button i {
-      height: 12px;
-      width: 12px;
-      font-size: 12px; 
-    }
   }
 }
 
@@ -138,6 +118,10 @@
 
 .map .map-buttons-container {
   overflow: hidden;
+
+  &.zoom-on {
+    cursor: grab;
+  }
 
   button {
     font-size: 16px;
@@ -147,6 +131,7 @@
     display: flex;
     align-items: center;
     text-transform: capitalize;
+    border: none;
   }
 
   button i:hover {
@@ -265,7 +250,7 @@
 
   button.cl {
     bottom: 24%;
-    left: 29.5%;
+    left: 30%;
   }
 
   button.ar {
@@ -289,105 +274,16 @@
   }
 }
 
-// @media screen and (max-width: 768px) {
-//   .map .map-buttons {
-//     background-color: $whitecolor;
-//   }
-
-//   .map-buttons { 
-//     height: auto; 
-//     background: transparent;
-
-//     .fa-map-pin {
-//         display: none;
-//     }
-//     .fa-house {
-//         display: none;
-//     }
-//   }
-
-//   .map {
-//     &.section {
-//       background: $whitecolor;
-//       border: $whitecolor 45px solid;
-//       box-shadow: 0 0 21px #b2b2c3;
-//     }
-
-//     .section-title {
-//         position: static;
-//     }
-
-//     .map-buttons button {
-//         border: 1px solid;
-//         border-radius: 4px;
-//         padding: 4px 8px;
-//         letter-spacing: 3px;
-//         font-size: 14px;
-//     }
-
-//     button { 
-//         margin: 6px; 
-//     }
-//   }
-
-//   .map-img {
-//       border: $whitecolor solid 20px;
-//       box-shadow: none;
-//   }
-
-//   .zoom-controls {
-//       display: none;
-//   }
-
-//   .map, .section {
-//       max-width: 90%;
-//       margin: 20px auto;
-
-//       button, button.active, button:focus {
-//           position: static;
-//       }
-
-//     button:not(.All) { display: inline ;}
-
-//     span.hidden {
-//       display: block;
-//       font-size: 14px;
-//       font-family: $secondaryfont;
-//     }
-
-//     .map-buttons .active .hidden { 
-//       position: static; 
-//       font-size: 14px; 
-//       margin-left: 0px;
-//       background: $accentcolor2;
-//       color: $whitecolor;
-//     }
-//   }
-
-//   .map-buttons-container button.active:not(.All), 
-//   .map-buttons-container button:focus:not(.All) { 
-//     background: $accentcolor2; 
-//   } 
-// }
-
-.map .select-buttons {
-  display: none;
-}
-
 @media screen and (max-width: 768px) {
   .map {
     &.section {
       border-inline: none;
-      border-bottom: #ffffff 20px solid;
-      border-top: #ffffff 130px solid;
+      border-bottom: $whitecolor 20px solid;
+      border-top: $whitecolor 45px solid;
     }
 
-    .map-buttons.zoom-on {
-      transform: scale(2.5);
-    }
-
-    .map-buttons button {
-      pointer-events: none;
+    .map-buttons {
+      padding: 5px;
     }
 
     .map-buttons .active .hidden {
@@ -400,27 +296,27 @@
     }
 
     .map-buttons .active .hidden:before {
-      border-top: 8px solid transparent;
-      border-bottom: 8px solid transparent;
-      border-right: 8px solid #f3f3f2;
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      border-right: 8px solid $darkgreycolor;
       left: -8px;
     }
 
     .map-buttons-container button {
-      font-size: 7px;
+      font-size: 6px;
     }
 
-    .map-buttons .fa-house {
-      font-size: 6px; 
+    .map-buttons-container {
+      height: 350px;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      background: $bluecolor;
     }
 
     .section-title {
       padding-inline: 45px;
-      top: -80px;
-    }
-
-    button.all {
-      display: none;
+      position: static;
     }
 
     .select-buttons:before { 
@@ -428,16 +324,12 @@
       font-weight: bold;
     }
 
-    .select-buttons {
-      display: flex;
-    }
-
     .zoom-controls {
       position: static;
       flex-direction: row;
       width: 100%;
       justify-content: space-evenly;
-      padding-inline: 45px;
+      padding-inline: 40px;
   
       button {
         min-width: auto;

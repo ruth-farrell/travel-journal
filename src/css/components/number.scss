@@ -2,15 +2,16 @@
 
 /* Number */
 
-.number {
-  font-weight: bold;
-  font-size: 30px;
-  letter-spacing: 6px;
-  color: $accentcolor;
-}
-
 .number-item {
   @include flex-center;
   font-size: 14px;
   margin: 0 20px;
+
+  &-count {
+    font-weight: bold;
+    font-size: 30px;
+    letter-spacing: 6px;
+    color: $accentcolor;
+  }
 }
+

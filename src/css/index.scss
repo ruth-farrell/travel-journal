@@ -1,5 +1,6 @@
 @use "components/variables.scss" as *;
 @use "components/general.scss" as *;
+@use "components/buttons.scss" as *; 
 @use "components/card.scss" as *;
 @use "components/headerandfooter.scss" as *;
 @use "components/breadcrumb.scss" as *;
@@ -8,12 +9,13 @@
 @use "components/slider.scss" as *;
 @use "components/layout.scss" as *;
 @use "components/number.scss" as *; 
-@use "components/banner.scss" as *;
 @use "components/map.scss" as *;
 @use "components/year.scss" as *;
 @use "components/quote.scss" as *;
 @use "components/comingsoon.scss" as *;
 @use "components/bucketlist.scss" as *;
+@use "components/backtotop.scss" as *;
+@use "components/timeline.scss" as *;
 
 
 

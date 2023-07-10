@@ -1,28 +1,24 @@
 import React from "react";
+import Card from "./Card";
 
 export default function Bucketlist() {
 
-  const handleCardHover = (e) => {
-    e.currentTarget.classList.toggle("card-open");
-  };
-    return (
-      <>
-		    <div className="coming-soon banner">
-          <div className="post-it">
-            <img
-              src={process.env.PUBLIC_URL + `/images/travelpostit.png`}
-              alt=""
-              className="post-it-img"
-            />
-            <div className="post-it-rotate">
-              <span className="coming-soon-slogan">
-                <div className="coming-soon-slogan-suitcase"><i className="fa-solid fa-suitcase"></i></div>
-                <h2 className="coming-soon-slogan-title">Onto the Next <br></br>Adventure...</h2>
-              </span>
-            </div>
-          </div>
-          <div className="card" onMouseEnter={handleCardHover} onMouseLeave={handleCardHover}>
-          <div className="card-left">
+  return (
+    <div className="banner coming-soon">
+      <div className="post-it">
+        <img
+          src={process.env.PUBLIC_URL + `/images/travelpostit.png`}
+          alt=""
+          className="post-it-img"
+        />
+        <div className="post-it-rotate">
+          <span className="coming-soon-slogan">
+            <h2 className="coming-soon-slogan-title">Onto the Next <br></br>Adventure...</h2>
+          </span>
+        </div>
+      </div>
+      <Card>
+        <div className="card-left">
           <img
             src={process.env.PUBLIC_URL + `/images/ruthsuitcase.jpeg`}
             alt="Ruth on the next adventure with a suitcase"
@@ -39,9 +35,7 @@ export default function Bucketlist() {
             <li><span className="fi fi-au"></span> Australia</li>
           </ul>
         </div>   
-      </div>
-      </div>
-      </>
-    );
-
+      </Card>
+    </div>
+  );
 }

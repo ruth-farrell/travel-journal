@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { FaMagnifyingGlassPlus, FaMagnifyingGlassMinus, FaArrowsToCircle, FaLocationDot, FaFilterCircleXmark,
+  FaPersonWalkingLuggage, FaHouseChimney, FaArrowUp, FaArrowDown, FaArrowLeft, FaArrowRight} from "react-icons/fa6";
 
 const Map = ({
   filterLocation,
   countryItems,
   travelLocation,
   travelYear,
+  travelMonth,
   setTravelLocation,
   currentLocationItem,
   homeLocationItem,
@@ -18,12 +21,23 @@ const Map = ({
     }
   };
 
-  const [isZoom, setZoom ] = useState(false);
-  const [transformX, setTransformX] = useState("center");
-  const [transformY, setTransformY] = useState("center");
+  const [isZoom, setIsZoom ] = useState(false);
+  const [zoomScale, setZoomScale] = useState(1);
+  const [transformX, setTransformX] = useState(50);
+  const [transformY, setTransformY] = useState(50);
 
-  const toggleMapZoom = () => {
-    setZoom(!isZoom);
+  const toggleMapZoom = (e) => {
+    const btnInOrOut = e.currentTarget.classList;
+
+    if (btnInOrOut.contains('in')) { 
+      setZoomScale(zoomScale + 0.25);
+      setIsZoom(true);
+    }
+
+    if (btnInOrOut.contains('out') && zoomScale !== 1 ) { 
+      zoomScale - 0.25 === 1 ? setIsZoom(false) : setIsZoom(true);
+      setZoomScale(zoomScale - 0.25);
+    }
   };
 
   const renderMapIcon = (code) => {
@@ -39,43 +53,87 @@ const Map = ({
   const handleMapDirections = (e) => {
     const btnDirection = e.currentTarget.classList;
 
-    if (btnDirection.contains('left')) {   
-      transformX === "right" ? setTransformX("center") : setTransformX("left");
+    if (btnDirection.contains('left')) {  
+      if ((transformX - 10) >= 0 ) {
+        setTransformX(transformX - 10);
+        return;
+      } 
       return;
     }
-    if (btnDirection.contains('right')) {   
-      transformX === "left" ? setTransformX("center") : setTransformX("right");
+    if (btnDirection.contains('right')) {  
+      if ((transformX + 10) <= 100 ) {
+        setTransformX(transformX + 10);
+        return;
+      } 
       return;
     }
     if (btnDirection.contains('up')) { 
-      transformY === "bottom" ? setTransformY("center") : setTransformY("top");
+      if ((transformY - 10) >= 0 ) {
+        setTransformY(transformY - 10);
+        return;
+      } 
       return;
     }
     if (btnDirection.contains('down')) { 
-      transformY === "top" ? setTransformY("center") : setTransformY("bottom");
+      if ((transformY + 10) <= 100 ) {
+        setTransformY(transformY + 10);
+        return;
+      } 
       return;
     }
 
-    setTransformX("center");
-    setTransformY("center");
+    setTransformX(50);
+    setTransformY(50);
+  }
+
+  const handleMapDrag = (e) => {
+    const xPercentage = Math.round(e.nativeEvent.offsetX / e.currentTarget.offsetWidth * 100);
+    const yPercentage = Math.round(e.nativeEvent.offsetY / e.currentTarget.offsetHeight * 100);
+
+    if (xPercentage > 50 && ((xPercentage + 15) < 100)) { 
+      setTransformX(xPercentage + 15); 
+    }
+    else if (xPercentage > 50) { 
+      setTransformX(100);
+    } 
+    else if (xPercentage < 50 && ((xPercentage - 15) > 0)) {
+      setTransformX(xPercentage - 15) 
+    } else {
+      setTransformX(0);
+    }
+
+    if (yPercentage > 50 && ((yPercentage + 15) < 100)) { 
+      setTransformY(yPercentage + 15); 
+    }
+    else if (yPercentage > 50) { 
+      setTransformY(100);
+    } 
+    else if (yPercentage < 50 && ((yPercentage - 15) > 0)) {
+      setTransformY(yPercentage - 15) 
+    } else {
+      setTransformY(0);
+    }
   }
 
   return (
     <>
       <div className="section map">
-        <h2 className="section-title">Filter {travelYear} Destinations By Country</h2>
+        <h2 className="section-title">Filter {travelMonth} {travelYear} Destinations By Country</h2>
         <div className="zoom-controls">
-          <button className="grey" onClick={toggleMapZoom}><i className={"fa-solid" + (isZoom ? " fa-magnifying-glass-minus" : " fa-magnifying-glass-plus")}></i>{" Zoom" + (isZoom ? " Out" : " In")}</button>
+          <div className="zoom-in-out">
+            <button className="grey square in" onClick={toggleMapZoom} aria-label="Zoom In"><FaMagnifyingGlassPlus aria-hidden="true"/></button>
+            <button disabled={isZoom ? false : true}  className={"grey square  out" + (!isZoom ? " deactivate" : "")} onClick={toggleMapZoom} aria-label="Zoom Out"><FaMagnifyingGlassMinus aria-hidden="true"/></button>
+          </div>
           <div className={"zoom-directions" + (!isZoom ? " deactivate" : "")}>
-            <button disabled={isZoom ? false : true} className="grey left" onClick={handleMapDirections}><i className="fa-solid fa-arrow-left"></i></button>
-            <button disabled={isZoom ? false : true} className="grey center" onClick={handleMapDirections}><i className="fa-solid fa-arrows-to-dot"></i></button>
-            <button disabled={isZoom ? false : true} className="grey up" onClick={handleMapDirections}><i className="fa-solid fa-arrow-up"></i></button>
-            <button disabled={isZoom ? false : true} className="grey right" onClick={handleMapDirections}><i className="fa-solid fa-arrow-right"></i></button>
-            <button disabled={isZoom ? false : true} className="grey down" onClick={handleMapDirections}><i className="fa-solid fa-arrow-down"></i></button>
+            <button disabled={(!isZoom || transformX === 0) ? true : false} className={"grey square left" + (transformX === 0 ? " deactivate" : "")} onClick={handleMapDirections} aria-label="Move Map Left"><FaArrowLeft aria-hidden="true"/></button>
+            <button disabled={isZoom ? false : true} className="grey square center" onClick={handleMapDirections} aria-label="Move Map to Center"><FaArrowsToCircle aria-hidden="true"/></button>
+            <button disabled={isZoom ? false : true} className={"grey square up" + (transformY === 0 ? " deactivate" : "")} onClick={handleMapDirections} aria-label="Move Map Up"><FaArrowUp aria-hidden="true"/></button>
+            <button disabled={isZoom ? false : true} className={"grey square right" + (transformX === 100 ? " deactivate" : "")} onClick={handleMapDirections} aria-label="Move Map Right"><FaArrowRight aria-hidden="true"/></button>
+            <button disabled={isZoom ? false : true} className={"grey square down" + (transformY === 100 ? " deactivate" : "")} onClick={handleMapDirections} aria-label="Move Map Down"><FaArrowDown aria-hidden="true"/></button>
           </div>
         </div>
-        <div className="map-buttons-container">
-          <div style={{transformOrigin:`${ transformX } ${ transformY }`}} className={"map-buttons" + (isZoom ? " zoom-on" : "")}>
+        <div className={"map-buttons-container" + (isZoom ? " zoom-on" : "")} onDragStart={handleMapDrag}>
+          <div style={{transformOrigin:`${ transformX }% ${ transformY }%`, transform: `scale(${zoomScale})`} } className={"map-buttons" + (isZoom ? " zoom-on" : "")} >
             <img
               src={process.env.PUBLIC_URL + `/images/world-green.svg`}
               alt="Map of Buttons"
@@ -86,9 +144,15 @@ const Map = ({
                   <button
                     key={index}
                     onClick={() => filterLocation(Val.name)}
+                    aria-label={Val.name}
                     className={Val.code + (travelLocation === Val.name ? " active" : "")}
                   >
-                   <i className={"fa-solid " + (renderMapIcon(Val.code))}></i><span className="hidden">{Val.name} <span className={"fi fi-" + (Val.code)}></span></span>
+                   {(homeLocationItem[0].code === Val.code) ? 
+                    <FaHouseChimney aria-hidden="true"/> : (currentLocationItem[0].code === Val.code) ? 
+                    <FaPersonWalkingLuggage aria-hidden="true"/> : <FaLocationDot aria-hidden="true"/> }
+                   <span className="hidden">{Val.name} 
+                    <span className={"fi fi-" + (Val.code)}></span>
+                   </span>
                 </button>
               );
             })}
@@ -96,14 +160,13 @@ const Map = ({
         </div>
         {travelLocation.length ? (
           <button
-            className="all grey"
+            className="all grey desktop-only"
             onClick={() => {
               setTravelLocation([]);
             }}
-          ><i className="fa-solid fa-filter-circle-xmark"></i> Clear Country
-          </button>
+          ><FaFilterCircleXmark aria-hidden="true"/>Reset Country</button>
         ) : ('')}
-        <div className="select-buttons">
+        <div className="select-buttons mobile-only">
           <select onChange={handleCountryChange} className="select-default">
           <option
             className={"All" + (!travelLocation.length ? " active" : "")}
@@ -116,6 +179,7 @@ const Map = ({
                   <option
                     key={index}
                     className={Val.code + (travelLocation === Val.name ? " active" : "")}
+                    selected={travelLocation === Val.name ? true : false}
                     value={Val.name}
                   >{Val.name}
                 </option>
