@@ -2,6 +2,8 @@
 
 /* Year */
 
-.year .select-buttons:before { 
-  content: "\f073";
+.year {
+  .select-buttons:before { 
+    content: "\f073";
+  }
 }

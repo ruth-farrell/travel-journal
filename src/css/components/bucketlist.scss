@@ -1,117 +1,108 @@
 @use "./variables.scss" as *;
 
-/* Bucket List */
-
 .bucketlist {
   @include flex-center;
   padding-top: 150px;
- }
 
-/* Lined Paper */
-
-.sheet {
-  font-family: $secondaryfont;
-  background-color: $whitecolor;
-  background: repeating-linear-gradient($whitecolor, $whitecolor 25px, $accentcolor 26px, $accentcolor 27px);
-  background-position-y: 49px;
-  height: 600px;
-  max-width: 650px;
-  padding: 0;
-
-  .sheet-header {
-    background-color: white;
-    background: linear-gradient($whitecolor, $whitecolor 48px, $accentcolor 49px, $accentcolor 50px);
-    height: 50px;
-  }
-
-  .sheet-title {
-    position: relative;
-    top: 20px;
-    font-size: 30px;
-    font-weight: bold;
-    padding-left: 10px;
-  }
-
-  .sheet-text {
-    position: relative;
-    top: 30px;
-    font-size: 22px;
-    width: 100%;
-    margin: 0 55px;
-
-    li {
-      line-height: 1.2;
-    }
-    
-    li:before {
-      content: '\f0c8';
-      font-family: "Font Awesome 5 Free";
-      margin-right: 10px;
-      font-weight: 400;
-      font-size: 20px;
-    }
-  
-    li.checked:before {
-      content: '\f14a';
-      margin-right: 10px;
-      font-weight: 400;
-      font-size: 20px;
-    }
-  }
-
-  .margin {
-    width: 49px;
-    height: 100%;
-  }
-
-  .l-margin {
-    float: left;
-    border-right: 2px solid pink;
-  }
-
-  .r-margin {
-    float: right;
-    border-left: 1px solid pink;
-  }
-
-  .l-margin {
-    position: relative;
-  }
-
-  .hole {
-    height: 20px;
-    width: 20px;
-    background-color: #ebebe8;
-    border-radius: 50%;
-    position: absolute;
-    left: 15px;
-  }
-
-  .first-hole {
-    top: 30px;
-  }
-
-  .second-hole {
-    top: 50%;
-  }
-
-  .third-hole {
-    bottom: 30px;
-  }
-}
-
- @media screen and (max-width: 768px) { 
   .sheet {
-    max-width: 90%;
-    height: 850px;
-    
-    .sheet-text {
-      width: 300px;
-      max-width: 100%;
+    font-family: $secondaryfont;
+    background-color: $whitecolor;
+    background: repeating-linear-gradient($whitecolor, $whitecolor 25px, $accentcolor 26px, $accentcolor 27px);
+    background-position-y: 49px;
+    height: 600px;
+    max-width: 650px;
+    padding: 0;
+
+    @include phone-only {
+      max-width: 90%;
+      height: 850px;
+    }
+
+    &-header {
+      background-color: white;
+      background: linear-gradient($whitecolor, $whitecolor 48px, $accentcolor 49px, $accentcolor 50px);
+      height: 50px;
+    }
+
+    &-title {
+      position: relative;
+      top: 20px;
+      font-size: 30px;
+      font-weight: bold;
+      padding-left: 10px;
+    }
+
+    &-text {
+      position: relative;
+      top: 30px;
+      font-size: 22px;
+      width: 100%;
+      margin: 0 55px;
+
+      @include phone-only {
+        width: 300px;
+        max-width: 100%;
+      }
 
       li {
-        line-height: 25.9px;
+        line-height: 1.2;
+
+        @include phone-only {
+          line-height: 25.9px;
+        }
+
+        &:before {
+          content: '\f0c8';
+          font-family: "Font Awesome 5 Free";
+          margin-right: 10px;
+          font-weight: 400;
+          font-size: 20px;
+        }
+
+        &.checked:before {
+          content: '\f14a';
+          margin-right: 10px;
+          font-weight: 400;
+          font-size: 20px;
+        }
+      }
+    }
+
+    .margin {
+      width: 49px;
+      height: 100%;
+    }
+
+    .r-margin {
+      float: right;
+      border-left: 1px solid pink;
+    }
+
+    .l-margin {
+      float: left;
+      border-right: 2px solid pink;
+      position: relative;
+
+      .hole {
+        height: 20px;
+        width: 20px;
+        background-color: #ebebe8;
+        border-radius: 50%;
+        position: absolute;
+        left: 15px;
+      }
+
+      .first-hole {
+        top: 30px;
+      }
+
+      .second-hole {
+        top: 50%;
+      }
+
+      .third-hole {
+        bottom: 30px;
       }
     }
   }
- }
+}

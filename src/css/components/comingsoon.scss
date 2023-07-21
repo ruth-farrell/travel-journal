@@ -8,14 +8,11 @@
     line-height: 3.0;
   }
 
-  &-slogan h2 { 
+  .post-it-note h2 { 
     font-size: 25px;
-  }
-}
 
-@media screen and (max-width: 768px) {
-  .coming-soon-slogan h2 {
-    line-height: 2;
-    font-size: 20px;
+    @include phone-only {
+      font-size: 20px;
+    }
   }
 }

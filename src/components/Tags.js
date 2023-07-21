@@ -1,5 +1,6 @@
 import React from 'react'
-import { FaTag, FaStar, FaBriefcase, FaPersonWalkingLuggage, FaHouseChimney, FaFilterCircleXmark } from "react-icons/fa6";
+import { FaTag, FaStar, FaBriefcase, FaPersonWalkingLuggage, FaHouseChimney, FaFilterCircleXmark, FaHippo, FaBowlFood } from "react-icons/fa6";
+import { GiDinosaurRex } from "react-icons/gi";
 
 
 const Tags = ({
@@ -12,19 +13,24 @@ const Tags = ({
   return (
     <div className="section tag">
       <h2 className="section-title">
-        Filter Destinations By Tag
+        Filter by Tags
       </h2>
       <div className="section-container">
-      {tagItems.length > 1 ? (
-        tagItems.map((tag, index) => { 
-        return (
-          <React.Fragment key={index}>
-            {tag.length ? ( <button className={(tagName === tag ? " active" : "") + " default"} onClick={() => {filterTag(tag);}}>
-            {tag.includes("Highlight") ? <FaStar/> : tag.includes("Location") ? <FaPersonWalkingLuggage/> : tag.includes("Country") ? <FaHouseChimney/> : tag.includes("Remote") ? <FaBriefcase/> : <FaTag/> } {tag}</button> 
-            ) : "" }
-          </React.Fragment>
-        )})
-      ): <span>No tags available for current filters.</span> }
+        {tagItems.map((tag, index) => { 
+          return (
+            <button key={index} className={(tagName.includes(tag)? " active" : "") + " default"} onClick={() => {filterTag(tag)}}>
+              {tag.includes("Highlight") ? <FaStar aria-hidden="true"/> 
+              : tag.includes("Location") ? <FaPersonWalkingLuggage aria-hidden="true"/> 
+              : tag.includes("Country") ? <FaHouseChimney aria-hidden="true"/> 
+              : tag.includes("Remote") ? <FaBriefcase aria-hidden="true"/> 
+              : tag.includes("Dinosaur") ? <GiDinosaurRex aria-hidden="true"/> 
+              : tag.includes("Food") ? <FaBowlFood aria-hidden="true"/>
+              : tag.includes("Wildlife") ? <FaHippo aria-hidden="true"/>
+              : <FaTag/>}
+              {tag}
+            </button> 
+          )
+        })}
       </div>
       {tagName.length ? (
           <button
@@ -32,7 +38,7 @@ const Tags = ({
             onClick={() => {
               setTagName([]);
             }}
-          ><FaFilterCircleXmark/> Reset Tag
+          ><FaFilterCircleXmark/> Reset Tags
           </button>
         ) : ('')}
     </div>

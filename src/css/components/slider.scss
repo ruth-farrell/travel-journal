@@ -11,38 +11,45 @@
   gap: 20px;
   position: relative;
 
-  .slide .slider-content {
+  &-container {
+    position: relative;
+    max-width: 80vw;
+    max-height: 90vh;
+    aspect-ratio: 1 / 1;
+
+    @include phone-only { 
+      max-height: 70vh;
+    }
+  }
+
+  &-btn {
+    z-index: 9;
+  }
+
+  &-content {
     border-radius: 5px;
     width: 100%;
     height: 100%;
+
+    &.-text {
+      background: $accentcolor;
+      color: $whitecolor;
+      padding: 7% 7% 60px;
+      @include flex-center;
+      line-height: 2.0;
+
+      p {
+        font-size: 40px;
+        font-family: $secondaryfont;
+
+        @include phone-only {
+          font-size: 20px;
+        }
+      }
+    }
   }
 
-  .slider-content.-text {
-    background: $accentcolor;
-    color: $whitecolor;
-    padding: 7% 7% 60px;
-    @include flex-center;
-    line-height: 2.0;
-  }
-
-  .slide {
-    display: none;
-    animation: slide-in 1s;
-    width: 100%;
-    height: 100%;
-  }
-
-  .slide.show {
-    display: flex;
-    justify-content: center;
-  }
-
-  .slider-content.-text p {
-    font-size: 40px;
-    font-family: $secondaryfont;
-  }
-
-  .slider-destination-info {
+  &-title {
     position: absolute;
     bottom: 25px;
     text-align: center;
@@ -55,6 +62,42 @@
     border-radius: 5px;
     letter-spacing: 2px;
   }
+
+  &-btn {
+    @include phone-only {
+      position: absolute;
+      bottom: -90px;
+      height: 70px;
+    }
+
+    &.-next {
+      @include phone-only {
+        right: 0px;
+      }
+    }
+
+    &.-previous {
+      @include phone-only {
+        left: 0px;
+      }
+    }  
+  }
+
+  .slide {
+    display: none;
+    animation: slide-in 1s;
+    width: 100%;
+    height: 100%;
+
+    &.show {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
 }
 
 @keyframes slide-in {
@@ -65,43 +108,5 @@
   to {
     transform: translateX(0%);
     opacity: 1;
-  }
-}
-
-.slider-container {
-  position: relative;
-  max-width: 80vw;
-  max-height: 90vh;
-  aspect-ratio: 1 / 1;
-}
-
-
-@media screen and (max-width: 768px) {
-  .slider {
-    img {
-      max-width: 100%;
-    }
-    
-    .slider-btn {
-      position: absolute;
-      bottom: -90px;
-      height: 70px;
-    }
-    
-    .slider-btn.-next {
-      right: 0px;
-    }
-    
-    .slider-btn.-previous {
-      left: 0px;
-    }
-
-    .slider-content.-text p {
-      font-size: 20px;
-    }
-
-    .slider-container {
-      max-height: 70vh;
-    }
   }
 }

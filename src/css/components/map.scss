@@ -3,50 +3,80 @@
 /* Map */
 
 .map {
-  &.section {
-    border-top: $whitecolor 100px solid;
-    position: relative;
+  border-top: $whitecolor 100px solid;
+  position: relative;
+
+  @include phone-only {
+    border-inline: none;
+    border-bottom: $whitecolor 20px solid;
+    border-top: $whitecolor 45px solid;
+  } 
+
+  .section-title {
+    position: absolute;
+    top: -50px;
+
+    @include phone-only {
+      position: static;
+      padding-inline: 45px;
+    }
+  }
+
+  .select-buttons:before { 
+    @include phone-only {
+      content: "\f57d";
+      font-weight: bold;
+    }
   }
 
   button {
     position: absolute;
+
+    &.all {
+      top: 10px;
+      right: 10px; 
+    }
   }
 
-  button.all {
-    top: 10px;
-    right: 10px; 
-  }
-
-  .map-img { 
+  &-img { 
     max-width: 100%; 
   }
   
-  .section-title {
-    position: absolute;
-    top: -50px;
-  }
 
-  .map-buttons {
+  &-buttons {
     position: relative;
     padding: 10px; 
     background-color: $bluecolor;
     transition: transform 0.3s, transform-origin 0.3s;
+
+    @include phone-only {
+      padding: 5px;
+    }
   
     .active .hidden {
-    display: flex;
-    gap: 5px;
-    letter-spacing: 2.5px;
-    position: absolute;
-    font-size: 12px;
-    margin-left: 25px;
-    background: $darkgreycolor;
-    padding: 6px 8px;
-    color: $whitecolor;
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-    width: max-content;
-    font-family: $primaryfont;
-    text-transform: uppercase;
+      display: flex;
+      gap: 5px;
+      letter-spacing: 2.5px;
+      position: absolute;
+      font-size: 12px;
+      margin-left: 25px;
+      background: $darkgreycolor;
+      padding: 6px 8px;
+      color: $whitecolor;
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      width: max-content;
+      font-family: $primaryfont;
+      text-transform: uppercase;
+
+      @include phone-only {
+        font-size: 7px;
+        padding: 3px 5px;
+        margin-left: 15px;
+        border-top-right-radius: 1.5px;
+        border-bottom-right-radius: 1.5px;
+        letter-spacing: 1.5px;
+      }  
     }
   
     .active .hidden:before {
@@ -59,6 +89,13 @@
       border-top: 13px solid transparent;
       border-bottom: 13px solid transparent;
       border-right: 13px solid $darkgreycolor;
+
+      @include phone-only {
+        border-top: 7px solid transparent;
+        border-bottom: 7px solid transparent;
+        border-right: 8px solid $darkgreycolor;
+        left: -8px;
+      }
     }
   
     button.active, 
@@ -66,11 +103,12 @@
       color: $darkgreycolor;
       box-shadow: none;
       opacity: 100%;
+      border: none;
     }
   }  
 }
 
-/* Zoom Buttons */
+/* Map Zoom Buttons */
 
 .zoom-controls {
   position: absolute;
@@ -83,11 +121,25 @@
   justify-content: center;
   gap: 10px;
 
+  @include phone-only {
+    position: static;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+    padding-inline: 40px;
+  }
+  
+
   button {
     position: static;
     font-size: 14px;
     display: flex;
     align-items: center;
+
+    @include phone-only {
+      min-width: auto;
+      box-shadow: 0 0 9px #bbbbbb;
+    }
   }
 
   .zoom-in-out {
@@ -114,10 +166,18 @@
   }
 }
 
-/* Map Buttons Country */
+/* Map Image Container */
 
-.map .map-buttons-container {
+.map-buttons-container {
   overflow: hidden;
+
+  @include phone-only {
+    height: 350px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background: $bluecolor;
+  }
 
   &.zoom-on {
     cursor: grab;
@@ -132,214 +192,144 @@
     align-items: center;
     text-transform: capitalize;
     border: none;
-  }
 
-  button i:hover {
-    opacity: 65%;
-  }
-
-  button.gr {
-    left: 54.5%;
-    top: 27.3%;
-  }
-
-  button.ma {
-    top: 32%;
-    right: 51.8%;
-  }
-
-  button.es {
-    top: 26%;
-    right: 51%;
-  }
-
-  button.it {
-    top: 22%;
-    right: 47.5%;
-  }
-
-  button.va {
-    top: 24.2%;
-    right: 46.7%;
-  }
-
-  button.de {
-    top: 18%;
-    right: 47.5%;
-  }
-
-  button.gb-nir {
-    top: 16%;
-    right: 51.5%;
-  }
-
-  button.gb-eng {
-    top: 17.8%;
-    right: 50.3%;
-  }
-
-  button.ie {
-    top: 18%;
-    right: 52.1%;
-  }
-
-  button.gb-sct {
-    top: 14.5%;
-    right: 50.9%;
-  }
-
-  button.fr {
-    top: 22%;
-    right: 49.5%;
-  }
-
-  button.mt {
-    top: 29%;
-    right: 46.1%;
-  }
-
-  button.cy {
-    top: 29.5%;
-    right: 41.2%;
-  }
-
-  button.at {
-    top: 20.7%;
-    right: 46.8%;
-  }
-
-  button.cz {
-    top: 19%;
-    right: 46.2%;
-  }
-
-  button.be {
-    top: 18.4%;
-    right: 49.1%;
-  }
-
-  button.nl {
-    top: 16.8%;
-    right: 48.5%;
-  }
-
-  button.hu {
-    top: 20.5%;
-    right: 45%;
-  }
-
-  button.lv {
-    top: 14.5%;
-    right: 44.1%;
-  }
-
-  button.us {
-    top: 27%;
-    left: 23%;
-  }
-
-  button.pl {
-    top: 17%;
-    right: 45.4%;
-  }
-
-  button.bs {
-    top: 37.4%;
-    left: 27.7%;
-  }
-
-  button.cl {
-    bottom: 24%;
-    left: 30%;
-  }
-
-  button.ar {
-    bottom: 18%;
-    left: 32%;
-  }
-
-  button.bo {
-    bottom: 30%;
-    left: 31%;
-  }
-
-  button.co {
-    bottom: 44%;
-    left: 28%;
-  }
-
-  button.ec {
-    bottom: 41%;
-    left: 27%;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .map {
-    &.section {
-      border-inline: none;
-      border-bottom: $whitecolor 20px solid;
-      border-top: $whitecolor 45px solid;
-    }
-
-    .map-buttons {
-      padding: 5px;
-    }
-
-    .map-buttons .active .hidden {
-      font-size: 7px;
-      padding: 3px 5px;
-      margin-left: 15px;
-      border-top-right-radius: 1.5px;
-      border-bottom-right-radius: 1.5px;
-      letter-spacing: 1.5px;
-    }
-
-    .map-buttons .active .hidden:before {
-      border-top: 7px solid transparent;
-      border-bottom: 7px solid transparent;
-      border-right: 8px solid $darkgreycolor;
-      left: -8px;
-    }
-
-    .map-buttons-container button {
+    @include phone-only {
       font-size: 6px;
     }
 
-    .map-buttons-container {
-      height: 350px;
-      align-items: center;
-      justify-content: center;
-      display: flex;
-      background: $bluecolor;
+    &.gr {
+      left: 54.5%;
+      top: 27.3%;
     }
-
-    .section-title {
-      padding-inline: 45px;
-      position: static;
-    }
-
-    .select-buttons:before { 
-      content: "\f57d";
-      font-weight: bold;
-    }
-
-    .zoom-controls {
-      position: static;
-      flex-direction: row;
-      width: 100%;
-      justify-content: space-evenly;
-      padding-inline: 40px;
   
-      button {
-        min-width: auto;
-        box-shadow: 0 0 9px #bbbbbb;
-      }
+    &.ma {
+      top: 32%;
+      right: 51.8%;
+    }
   
-      > button {
-        width: 100%;
-        line-height: 1.65;
-      }
+    &.es {
+      top: 26%;
+      right: 51%;
+    }
+  
+    &.it {
+      top: 22%;
+      right: 47.5%;
+    }
+  
+    &.va {
+      top: 24.2%;
+      right: 46.7%;
+    }
+  
+    &.de {
+      top: 18%;
+      right: 47.5%;
+    }
+  
+    &.gb-nir {
+      top: 16%;
+      right: 51.5%;
+    }
+  
+    &.gb-eng {
+      top: 17.8%;
+      right: 50.3%;
+    }
+  
+    &.ie {
+      top: 18%;
+      right: 52.1%;
+    }
+  
+    &.gb-sct {
+      top: 14.5%;
+      right: 50.9%;
+    }
+  
+    &.fr {
+      top: 22%;
+      right: 49.5%;
+    }
+  
+    &.mt {
+      top: 29%;
+      right: 46.1%;
+    }
+  
+    &.cy {
+      top: 29.5%;
+      right: 41.2%;
+    }
+  
+    &.at {
+      top: 20.7%;
+      right: 46.8%;
+    }
+  
+    &.cz {
+      top: 19%;
+      right: 46.2%;
+    }
+  
+    &.be {
+      top: 18.4%;
+      right: 49.1%;
+    }
+  
+    &.nl {
+      top: 16.8%;
+      right: 48.5%;
+    }
+  
+    &.hu {
+      top: 20.5%;
+      right: 45%;
+    }
+  
+    &.lv {
+      top: 14.5%;
+      right: 44.1%;
+    }
+  
+    &.us {
+      top: 27%;
+      left: 23%;
+    }
+  
+    &.pl {
+      top: 17%;
+      right: 45.4%;
+    }
+  
+    &.bs {
+      top: 37.4%;
+      left: 27.7%;
+    }
+  
+    &.cl {
+      bottom: 24%;
+      left: 30%;
+    }
+  
+    &.ar {
+      bottom: 18%;
+      left: 32%;
+    }
+  
+    &.bo {
+      bottom: 30%;
+      left: 31%;
+    }
+  
+    &.co {
+      bottom: 44%;
+      left: 28%;
+    }
+  
+    &.ec {
+      bottom: 41%;
+      left: 27%;
     }
   }
 }

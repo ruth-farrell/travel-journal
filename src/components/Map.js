@@ -13,6 +13,12 @@ const Map = ({
   homeLocationItem,
 }) => {
 
+
+  const [isZoom, setIsZoom ] = useState(false);
+  const [zoomScale, setZoomScale] = useState(1);
+  const [transformX, setTransformX] = useState(50);
+  const [transformY, setTransformY] = useState(50);
+
   const handleCountryChange = event => {
     if (event.target.value === 'All') {
       setTravelLocation('');
@@ -20,11 +26,6 @@ const Map = ({
     filterLocation(event.target.value); 
     }
   };
-
-  const [isZoom, setIsZoom ] = useState(false);
-  const [zoomScale, setZoomScale] = useState(1);
-  const [transformX, setTransformX] = useState(50);
-  const [transformY, setTransformY] = useState(50);
 
   const toggleMapZoom = (e) => {
     const btnInOrOut = e.currentTarget.classList;
@@ -39,16 +40,6 @@ const Map = ({
       setZoomScale(zoomScale - 0.25);
     }
   };
-
-  const renderMapIcon = (code) => {
-    if (homeLocationItem[0].code === code) { 
-      return "fa-house";
-    } 
-    if (currentLocationItem[0].code === code) { 
-      return "fa-person-walking-luggage";
-    }
-    return "fa-location-dot"
-  }
 
   const handleMapDirections = (e) => {
     const btnDirection = e.currentTarget.classList;
@@ -118,18 +109,39 @@ const Map = ({
   return (
     <>
       <div className="section map">
-        <h2 className="section-title">Filter {travelMonth} {travelYear} Destinations By Country</h2>
+        <h2 className="section-title">Filter {travelYear.length ? `${travelYear} ${travelMonth}` : "Destinations"} By Country</h2>
         <div className="zoom-controls">
           <div className="zoom-in-out">
-            <button className="grey square in" onClick={toggleMapZoom} aria-label="Zoom In"><FaMagnifyingGlassPlus aria-hidden="true"/></button>
-            <button disabled={isZoom ? false : true}  className={"grey square  out" + (!isZoom ? " deactivate" : "")} onClick={toggleMapZoom} aria-label="Zoom Out"><FaMagnifyingGlassMinus aria-hidden="true"/></button>
+            <button className="grey square in" onClick={toggleMapZoom}>
+              <FaMagnifyingGlassPlus aria-hidden="true"/>
+              <span className="visually-hidden">Zoom In</span>
+            </button>
+            <button disabled={isZoom ? false : true}  className={"grey square  out" + (!isZoom ? " deactivate" : "")} onClick={toggleMapZoom}>
+              <FaMagnifyingGlassMinus aria-hidden="true"/>
+              <span className="visually-hidden">Zoom Out</span>
+            </button>
           </div>
           <div className={"zoom-directions" + (!isZoom ? " deactivate" : "")}>
-            <button disabled={(!isZoom || transformX === 0) ? true : false} className={"grey square left" + (transformX === 0 ? " deactivate" : "")} onClick={handleMapDirections} aria-label="Move Map Left"><FaArrowLeft aria-hidden="true"/></button>
-            <button disabled={isZoom ? false : true} className="grey square center" onClick={handleMapDirections} aria-label="Move Map to Center"><FaArrowsToCircle aria-hidden="true"/></button>
-            <button disabled={isZoom ? false : true} className={"grey square up" + (transformY === 0 ? " deactivate" : "")} onClick={handleMapDirections} aria-label="Move Map Up"><FaArrowUp aria-hidden="true"/></button>
-            <button disabled={isZoom ? false : true} className={"grey square right" + (transformX === 100 ? " deactivate" : "")} onClick={handleMapDirections} aria-label="Move Map Right"><FaArrowRight aria-hidden="true"/></button>
-            <button disabled={isZoom ? false : true} className={"grey square down" + (transformY === 100 ? " deactivate" : "")} onClick={handleMapDirections} aria-label="Move Map Down"><FaArrowDown aria-hidden="true"/></button>
+            <button disabled={(!isZoom || transformX === 0) ? true : false} className={"grey square left" + (transformX === 0 ? " deactivate" : "")} onClick={handleMapDirections}>
+              <FaArrowLeft aria-hidden="true"/>
+              <span className="visually-hidden">Move Map Left</span>
+            </button>
+            <button disabled={isZoom ? false : true} className="grey square center" onClick={handleMapDirections} aria-label="Move Map to Center">
+              <FaArrowsToCircle aria-hidden="true"/>
+              <span className="visually-hidden">Move Map to Center</span>
+            </button>
+            <button disabled={isZoom ? false : true} className={"grey square up" + (transformY === 0 ? " deactivate" : "")} onClick={handleMapDirections}>
+              <FaArrowUp aria-hidden="true"/>
+              <span className="visually-hidden">Move Map Up</span>
+            </button>
+            <button disabled={isZoom ? false : true} className={"grey square right" + (transformX === 100 ? " deactivate" : "")} onClick={handleMapDirections}>
+              <FaArrowRight aria-hidden="true"/>
+              <span className="visually-hidden">Move Map Right</span>
+            </button>
+            <button disabled={isZoom ? false : true} className={"grey square down" + (transformY === 100 ? " deactivate" : "")} onClick={handleMapDirections}>
+              <FaArrowDown aria-hidden="true"/>
+              <span className="visually-hidden">Move Map Down</span>
+            </button>
           </div>
         </div>
         <div className={"map-buttons-container" + (isZoom ? " zoom-on" : "")} onDragStart={handleMapDrag}>
@@ -144,14 +156,14 @@ const Map = ({
                   <button
                     key={index}
                     onClick={() => filterLocation(Val.name)}
-                    aria-label={Val.name}
                     className={Val.code + (travelLocation === Val.name ? " active" : "")}
                   >
-                   {(homeLocationItem[0].code === Val.code) ? 
-                    <FaHouseChimney aria-hidden="true"/> : (currentLocationItem[0].code === Val.code) ? 
-                    <FaPersonWalkingLuggage aria-hidden="true"/> : <FaLocationDot aria-hidden="true"/> }
-                   <span className="hidden">{Val.name} 
-                    <span className={"fi fi-" + (Val.code)}></span>
+                   <span className="visually-hidden">{`Click to Filter by ${Val.name}`}</span>
+                   {(homeLocationItem[0].code === Val.code) ? <FaHouseChimney aria-hidden="true"/> 
+                    : (currentLocationItem[0].code === Val.code) ? <FaPersonWalkingLuggage aria-hidden="true"/> 
+                    : <FaLocationDot aria-hidden="true"/> }
+                   <span className="hidden" >{Val.name} 
+                    <span className={"fi fi-" + (Val.code)} aria-hidden="true"></span>
                    </span>
                 </button>
               );

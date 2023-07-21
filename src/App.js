@@ -11,7 +11,8 @@ import Timeline from "./components/Timeline";
 import Bucketlist from "./components/Bucketlist";
 import Backtotop from "./components/Backtotop";
 import Quote from "./components/Quote";
-import Comingsoon from "./components/Comingsoon";
+import Sort from './components/Sort';
+import ComingSoon from "./components/Comingsoon";
 import travelData from "./data";
 import Tags from "./components/Tags";
 import "/node_modules/flag-icons/css/flag-icons.min.css"; 
@@ -22,7 +23,7 @@ export default function App() {
   const [travelYear, setTravelYear] = useState("");
   const [travelMonth, setTravelMonth] = useState("");
   const [travelLocation, setTravelLocation] = useState("");
-  const [tagName, setTagName] = useState("");
+  const [tagName, setTagName] = useState([]);
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState(true);
   const [item, setItem] = useState(travelData);
@@ -51,61 +52,57 @@ export default function App() {
     }
   }
 
-  // Travel Data Items
-  const countryItemsNotUnique = 
-    travelData
-      .filter((item) => item.startDate.includes(travelYear))
-      .filter((item) => item.startDate.includes(travelMonth))
-      .map((item) => item.country); 
+  // Travel Data Item filter Criteria
 
-  const countryItems = Array.from (
-    new Set(countryItemsNotUnique.map(JSON.stringify)),
-     JSON.parse);
+  const checkItems = (newVal) => {
+    return (travelYear.length ? (travelYear === newVal.startDate.slice(-4)) : true) &&
+      (travelMonth.length ? (travelMonth === newVal.startDate.slice(2, -4).replace(/\s/g, "")) : true) &&
+      (travelLocation.length ? (travelLocation === newVal.country.name) : true) &&
+      (tagName.length ? (typeof newVal.tags !== "undefined" && checkSubset(newVal.tags, tagName)) : true);
+  }
 
-  countryItems.sort(dynamicSort("name"));
+  const checkMonthandYearItems = (newVal) => {
+    return (travelYear.length ? (travelYear === newVal.startDate.slice(-4)) : true) &&
+      (travelMonth.length ? (travelMonth === newVal.startDate.slice(2, -4).replace(/\s/g, "")) : true)
+  }
+
+  // Country Items
+
+  const countryItemsNotUnique = travelData.filter(checkMonthandYearItems).map((item) => item.country); 
+
+  const countryItems = 
+    Array.from(new Set(countryItemsNotUnique.map(JSON.stringify)), JSON.parse).sort(dynamicSort("name"));
 
   const months = ['January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'];
+  
   const monthItems = [
     ...new Set(
-      travelData
-        .filter((item) => item.startDate.includes(travelYear))
-        .map((item) => item.startDate.slice(2, -4).replaceAll(' ', ''))
+      travelData.filter((item) => (travelYear.length ? (travelYear === item.startDate.slice(-4)) : true) ).map((item) => item.startDate.slice(2, -4).replaceAll(' ', ''))
     ),
   ];
 
   const yearItems = [
     ...new Set(
-      travelData
-      .filter((item) => item.startDate !== '')
-      .map((item) => item.startDate.slice(-4))
+      travelData.filter((item) => item.startDate !== '').map((item) => item.startDate.slice(-4))
     ),
   ];
 
   const titleItems = [
     ...new Set(
-      travelData
-        .filter((item) => item.startDate.includes(travelYear))
-        .filter((item) => item.startDate.includes(travelMonth))
-        .map((item) => item.title)
+      travelData.filter(checkMonthandYearItems).map((item) => item.title)
     ),
   ];
 
   const continentItems = [
     ...new Set(
-      travelData
-        .filter((item) => item.startDate.includes(travelYear))
-        .filter((item) => item.startDate.includes(travelMonth))
-        .map((item) => item.continent)
+      travelData.filter(checkMonthandYearItems).map((item) => item.continent)
     ),
   ];
 
   const tags = [
     ...new Set(
-      travelData
-        .filter((item) => (item.startDate.includes(travelYear)) && 
-        (item.startDate.includes(travelMonth)) && (item.country.name.includes(travelLocation)))
-        .map((item) => item.tags)
+      travelData.filter((item) => typeof item.tags !== "undefined").map((item) => item.tags)
     ),
   ];
 
@@ -113,24 +110,17 @@ export default function App() {
 
   const tagItems = Array.from(new Set(newArray.map(JSON.stringify)), JSON.parse);
 
-  // Number Data 
-  const numberCountries = countryItems.length;
-  const numberCities = titleItems.length;
-  const numberContinents = continentItems.length;
-
   // Tag Icon Data in Map
   const currentLocationItem = [
-    ...new Set(
-      travelData
-        .filter((item) => item.tags.includes("Current Location"))
-        .map((item) => item.country)
+    ...new Set( 
+      travelData.filter((item) => typeof item.tags !== "undefined" && item.tags.includes("Current Location"))
+      .map((item) => item.country)
     ),
   ];
 
   const homeLocationItem = [
     ...new Set(
-      travelData
-        .filter((item) => item.tags.includes("Home Country"))
+      travelData.filter((item) => typeof item.tags !== "undefined" && item.tags.includes("Home Country"))
         .map((item) => item.country)
     ),
   ];
@@ -152,16 +142,11 @@ export default function App() {
   };
 
   const filterTag = (curlocation) => {
-    setTagName(curlocation);
-    filterAllItems();
+    if (!tagName.includes(curlocation)) {
+      setTagName(current => [...current, curlocation]);
+      filterAllItems();
+    }
   };
-
-  const checkItems = (newVal) => {
-    return (travelYear.length ? (travelYear === newVal.startDate.slice(-4)) : true) &&
-      (travelMonth.length ? (travelMonth === newVal.startDate.slice(2, -4).replace(/\s/g, "")) : true) &&
-      (travelLocation.length ? (travelLocation === newVal.country.name) : true) &&
-      (tagName.length ? (newVal.tags.includes(tagName)) : true);
-  }
 
   const filterAllItems = () => {
     const newItem = travelData.filter(checkItems);
@@ -171,6 +156,13 @@ export default function App() {
   useEffect(() => {
     filterAllItems();
   }, [travelMonth, travelLocation, travelYear, tagName]);
+
+
+  let checkSubset = (parentArray, subsetArray) => {
+    return subsetArray.every((el) => {
+        return parentArray.includes(el)
+    })
+  }
 
   return (
     <>
@@ -185,7 +177,7 @@ export default function App() {
             {...{ yearItems, travelYear, filterYear, setTravelYear, setTravelMonth }}
           />
           <Number
-            {...{ travelYear, travelMonth, numberCountries, numberCities, numberContinents }}
+            {...{ travelYear, travelMonth, countryItems, titleItems, continentItems }}
           />
           {travelYear.length ? 
           <Timeline
@@ -199,18 +191,23 @@ export default function App() {
             setTravelLocation, tagName, currentLocationItem, homeLocationItem }}
         />
         <Tags
-          {...{ tagItems, tagName, setTagName, filterTag }}
+          {...{ tagItems, tagName, setTagName, filterTag, checkSubset }}
         /> 
-        <Search
-          {...{ setQuery, setSort, sort }}
-        />
+        <div className="section beside">
+          <Sort
+              {...{ setSort, sort }}
+          />
+          <Search
+            {...{ setQuery }}
+          />
+        </div>
         <Destinations
           {...{ item, query, sort }}
         />
       </main>
       <Quote />
       <Bucketlist />
-      <Comingsoon />
+      <ComingSoon />
       <Footer />
       <Backtotop />
     </>

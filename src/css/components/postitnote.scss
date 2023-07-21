@@ -1,0 +1,30 @@
+@use "./variables.scss" as *;
+
+.post-it-note {
+  position: relative; 
+
+  &-content {
+    position: absolute;
+    color: $greycolor;
+    @include transform(rotate(-11deg));
+    line-height: 3;
+    letter-spacing: 6px;
+    max-width: 300px;
+    font-size: 13px;
+    font-family: $secondaryfont;
+
+    @include phone-only {
+      font-size: 12px;
+    }
+  }
+
+  &-img {
+    max-width: 440px;
+    height: auto;
+    position: relative;
+
+    @include phone-only {
+      max-width: 90%;
+    }
+  }
+}

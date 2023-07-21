@@ -5,6 +5,10 @@
 main, .banner, .header-container {
   margin: 0 auto;
   max-width: 1150px;
+
+  @include tablet-up-to-desktop {
+    padding-inline: 20px;
+  }
 }
 
 .compflex {
@@ -16,19 +20,26 @@ main, .banner, .header-container {
   .section {
       margin-bottom: 0px;
   }
-}
 
-.compflex { 
   .year {
-      flex-basis: 38%;
+    flex-basis: 38%;
+
+    @include phone-only {
+      flex-basis: 90%;
+    }
   }
 
   .number {
-      flex-basis: 60%;
+    flex-basis: 60%;
+
+    @include phone-only {
+      flex-basis: 90%;
+      order: 3;
+    }
   }
 }
 
-/* Section */
+/* Section Layout */
 
 .section {
   @include flex-center;
@@ -38,24 +49,32 @@ main, .banner, .header-container {
   background: $whitecolor;
   @include whiteborder;
   margin: 20px auto;
+
+  @include phone-only {
+    width: 90%;
+  }
+
+  &.beside {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &-title {
+    width: 100%;
+    @include flex-center;
+    letter-spacing: 5px;
+    font-size: 16px;
+    line-height: 2.0;
+    text-transform: uppercase;
+  }
+
+  &-container {
+    @include flex-center;
+    gap: 15px;
+  }
 }
 
-.section-title {
-  width: 100%;
-  @include flex-center;
-  letter-spacing: 5px;
-  font-size: 16px;
-  line-height: 2.0;
-}
-
-.section-container {
-  display: flex;
-  gap: 15px;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-/* Banner */ 
+/* Banner Layout */ 
 
 .banner {
   display: flex;
@@ -65,82 +84,36 @@ main, .banner, .header-container {
   padding-top: 150px;
   flex-wrap: wrap; 
 
-  > div {
-      @include flex-center;
-      text-align: center;
+  @include phone-only {
+    flex-direction: column;
   }
 
-  .post-it {
-    position: relative; 
-  
-    .post-it-rotate {
-      position: absolute;
-      color: $greycolor;
-      @include transform(rotate(-11deg));
-      line-height: 3;
-      letter-spacing: 6px;
-      max-width: 300px;
-      font-size: 11px;
-      font-family: $secondaryfont;
-    }
-  
-    .post-it-img {
-      max-width: 440px;
-      position: relative;
-    }
+  > div {
+    @include flex-center;
+    text-align: center;
   }
 }
 
 /* Hide and Show */
 
-.hidden { 
-  display: none; 
-}
-
-.desktop-only {
-  display: flex;
-}
-
-.mobile-only {
-  display: none;
-}
-
-@media screen and (min-width: 768px) and (max-width: 1170px) { 
-  main, .banner, .header-container {
-    padding-inline: 20px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .compflex .year , 
-  .compflex .number, 
-  .section {
-    width: 90%;
-    flex-basis: 90%;
-  }
-
-  .banner {
-    flex-direction: column;
-
-    .post-it .post-it-rotate {
-      font-size: 10px;
-      max-width: 250px;
-    }
-
-    .post-it .post-it-img {
-      max-width: 85%;
-    }
-  }
-
-  .section.number {
-    order: 3;
+body {
+  .hidden { 
+    display: none; 
   }
 
   .desktop-only {
-    display: none;
-  }
-  
-  .mobile-only {
     display: flex;
+
+    @include phone-only {
+      display: none;
+    }
+  }
+
+  .mobile-only {
+    display: none;
+
+    @include phone-only {
+      display: flex;
+    }
   }
 }

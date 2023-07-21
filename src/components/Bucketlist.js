@@ -4,12 +4,12 @@ export default function Bucketlist() {
   return (
     <div className="bucketlist">
       <div className="sheet">
-        <div className="l-margin margin">
+        <div className="margin l-margin">
           <div className="hole first-hole"></div>
           <div className="hole second-hole"></div>
           <div className="hole third-hole"></div>
         </div>
-        <div className="r-margin margin"></div>
+        <div className="margin r-margin"></div>
         <div className="sheet-header">
           <span className="sheet-title">
           Bucket List

@@ -13,7 +13,9 @@ const Breadcrumb = ({
     {travelYear.length ? ` > ${travelYear}` : ""} 
     {travelLocation.length ? ` > ${travelLocation}` : ""}
     {travelMonth.length ? ` > ${travelMonth}` : ""}
-    {tagName.length ? ` > ${tagName.replace( /([a-z])([A-Z])/g, "$1 $2")}` : ""}
+    {tagName.length ? " > tags: " : ""}
+    {tagName.length ? (
+      tagName.map((item, index) => (index === (tagName.length - 1)) ? (<span key={index}>{item}</span>) : <span key={index}>{item}, </span> )) : ""}
     {query.length ? ` > "${query}"` : ""}
     </span>
   );

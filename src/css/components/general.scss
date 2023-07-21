@@ -1,6 +1,6 @@
 @use "./variables.scss" as *;
 
-/* CSS reset */
+/* CSS reset & element styles */
 
 html, body, p, h1, h2, h3 {
   margin: 0px;
@@ -25,6 +25,7 @@ button {
   appearance: none;
   background: transparent;
   border: none; 
+  white-space: nowrap;
 }
 
 a { 
@@ -35,42 +36,11 @@ a {
   box-sizing: border-box; 
 }
 
-/* Element styles */
-
 body {
   background-color: $greycolor;
   font-family: $primaryfont;
   letter-spacing: 1.0px;
   background-image: url("../../../public/images/world-green.svg");
   background-position: top center;
-}
-
-h1 {
-  color: $greycolor;
-  font-size: 16px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  text-align: center;
-  line-height: 2.0;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  i {
-    padding-right: 20px;
-  }
-}
-
-h2 { 
-  text-transform: uppercase;
-  
-  i {
-    padding-right: 20px;
-  }
-}
-
-@media screen and (prefers-reduced-motion: reduce) {
-	html {
-		scroll-behavior: auto;
-	}
+  background-attachment: fixed;
 }

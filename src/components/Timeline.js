@@ -20,8 +20,7 @@ const Timeline = ({
   return (
     <>
       <div className="section timeline">
-        <h2 className="section-title desktop-only">Filter {travelYear} Destinations By Month</h2>
-        <h2 className="section-title mobile-only">Select Month</h2>
+        <h2 className="section-title">Filter {travelYear.length ? `${travelYear} by ` : ""} Month</h2>
         <div className="timeline-buttons desktop-only">
           {months.map((Val, index) => {
             return (
@@ -46,7 +45,6 @@ const Timeline = ({
             See All
           </button>
         </div>
-
         <div className="select-buttons mobile-only">
           <select className="select-default" onChange={handleChange} defaultValue={'All'}>
             <option

@@ -37,33 +37,49 @@ footer {
     justify-content: space-between;
     width: 100%;
     align-items: center;
+    gap: 20px;
+  }
+
+  .header-container {
+    @include phone-only {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  h1 {
+    color: $greycolor;
+    font-size: 16px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 2.0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+    @include desktop-only {
+      white-space: nowrap;
+    }
   }
 
   &-filter { 
-    display: none; 
+    display: none;
   }
 
   &.fixed .header-filter { 
     @include flex-center;
     color: $whitecolor; 
+    line-height: 2;
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 12px; 
-    gap: 10px;
-  }
-} 
+    font-size: 14px;
+    gap: 15px;
+    flex-wrap: nowrap;
 
-@media screen and (max-width: 768px) {
-  .header.fixed  {
-    .header-filter {
+    @include phone-only {
       gap: 20px;
       flex-direction: column;
-      line-height: 2.0;
-    }
-    
-    .header-container {
-        flex-direction: column;
-        gap: 10px;
     }
   }
-}
+} 

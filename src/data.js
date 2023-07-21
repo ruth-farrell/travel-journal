@@ -11,7 +11,6 @@ const travelJSONData = [
     description: "",
     imageUrl: "dublin.jpeg",
     tags: ["Home Country", "Current Location", "Remote Working" ],
-    // tags: {homeCountry: true, currentLocation: true, travelHighlight: false, remoteWorking: true},
   },
   {
     id: 1,
@@ -24,8 +23,6 @@ const travelJSONData = [
     endDate: "13 July 2016",
     description: "Ice Cream. The Forum. 40 degree heat.",
     imageUrl: "rome2.jpeg",
-    tags: [""],
-    // tags: {homeCountry: false, currentLocation: false, travelHighlight: false, remoteWorking: false},
   },
   {
     id: 2,
@@ -38,8 +35,6 @@ const travelJSONData = [
     endDate: "17 July 2016",
     description: "Three Davids. Sunset at Piazzale Michelangelo.",
     imageUrl: "florence.jpeg",
-    tags: [""],
-    // tags: {homeCountry: false, currentLocation: false, travelHighlight: false, remoteWorking: false},
   },
   {
     id: 3,
@@ -52,8 +47,6 @@ const travelJSONData = [
     endDate: "17 July 2016",
     description: "Tourist Crazy. Day trip. Small City.",
     imageUrl: "pisa.jpeg",
-    tags: [""],
-    // tags: {homeCountry: false, currentLocation: false, travelHighlight: false, remoteWorking: false},
   },
   {
     id: 4,
@@ -66,8 +59,6 @@ const travelJSONData = [
     endDate: "19 July 2016",
     description: "Night train out. Gondola ride. Sunsets.",
     imageUrl: "venice.jpeg",
-    tags: [""],
-    // tags: {homeCountry: false, currentLocation: false, travelHighlight: false, remoteWorking: false},
   },
   {
     id: 5,
@@ -80,8 +71,6 @@ const travelJSONData = [
     endDate: "23 July 2016",
     description: "Open air opera. Museums. Castles.",
     imageUrl: "vienna.jpeg",
-    tags: [""],
-    // tags: {homeCountry: false, currentLocation: false, travelHighlight: false, remoteWorking: false},
   },
   {
     id: 6,
@@ -94,8 +83,6 @@ const travelJSONData = [
     endDate: "29 July 2016",
     description: "Musical Fountain. Bath Party. Ruin Bars.",
     imageUrl: "budapest2.jpeg",
-    tags: [""],
-    // tags: {homeCountry: false, currentLocation: false, travelHighlight: false, remoteWorking: false},
   },
   {
     id: 7,
@@ -108,8 +95,6 @@ const travelJSONData = [
     endDate: "23 January 2017",
     description: "Castles. Bagpipes. Haggis. The Elephant House. Tom Riddle's Grave.",
     imageUrl: "edinburgh.jpeg",
-    tags: [""],
-    // tags: {homeCountry: false, currentLocation: false, travelHighlight: false, remoteWorking: false},
   },
   {
     id: 8,
@@ -122,8 +107,6 @@ const travelJSONData = [
     endDate: "27 July 2017",
     description: "Sleeping Beauty Castle. Dachau. Bowling.",
     imageUrl: "munich.jpeg",
-    tags: [""],
-    // tags: {homeCountry: false, currentLocation: false, travelHighlight: false, remoteWorking: false},
   },
   {
     id: 9,
@@ -136,8 +119,6 @@ const travelJSONData = [
     endDate: "31 July 2017",
     description: "Astronomical Clock.",
     imageUrl: "prague.jpeg",
-    tags: [""],
-    // tags: {homeCountry: false, currentLocation: false, travelHighlight: false, remoteWorking: false},
   },
   {
     id: 10,
@@ -150,8 +131,6 @@ const travelJSONData = [
     endDate: "18 February 2018",
     description: "Gaudi. Park Güell. Tapas.",
     imageUrl: "barcelona.jpeg",
-    tags: [""],
-    // tags: {homeCountry: false, currentLocation: false, travelHighlight: false, remoteWorking: false},
   },
   {
     id: 11,
@@ -164,8 +143,6 @@ const travelJSONData = [
     endDate: "15 April 2018",
     description: "Harry Potter Studios. V&A Museum. Portait Museum. Bounce Ping Pong.",
     imageUrl: "london.jpeg",
-    tags: [""],
-    // tags: {homeCountry: false, currentLocation: false, travelHighlight: false, remoteWorking: false},
   },
   {
     id: 12,
@@ -178,8 +155,6 @@ const travelJSONData = [
     endDate: "28 September 2018",
     description: "Walled Cities. Boat trip to Gozo. Game of Thrones. Cocktails.",
     imageUrl: "malta.jpeg",
-    tags: [""],
-    // tags: {homeCountry: false, currentLocation: false, travelHighlight: false, remoteWorking: false},
   },
   {
     id: 13,
@@ -192,7 +167,6 @@ const travelJSONData = [
     endDate: "13 May 2019",
     description: "Banksy. Van Gogh. Keukenhof Flowers. Clogs. Windmills.",
     imageUrl: "amsterdam.png",
-    tags: [""],
   },
   {
     id: 14,
@@ -205,8 +179,7 @@ const travelJSONData = [
     endDate: "25 August 2019",
     description: "Open air Berlin Philharmonic concert. Archaeopteryx. Disco in a phone box.",
     imageUrl: "berlin.jpg",
-    tags: [""],
-    // tags: {homeCountry: false, currentLocation: false, travelHighlight: false, remoteWorking: false},
+    tags: ["Dinosaurs"]
   },
   {
     id: 15,
@@ -220,8 +193,6 @@ const travelJSONData = [
     description: "Center Parcs: Waterpark. Family fun. Fencing. Badminton. Owls. Cake Decorating",
     imageUrl: "longford.jpeg",
     tags: ["Home Country"],
-    // tags: {homeCountry: true, currentLocation: false, travelHighlight: false, remoteWorking: false},
-
   },
   {
     id: 16,
@@ -234,8 +205,6 @@ const travelJSONData = [
     endDate: "7 November 2020",
     description: "Coral Bay. Beach Bar. Lara Beach.",
     imageUrl: "paphos.jpg",
-    tags: [""],
-    // tags: {homeCountry: false, currentLocation: false, travelHighlight: false, remoteWorking: false},
   },
   {
     id: 17,
@@ -248,8 +217,6 @@ const travelJSONData = [
     endDate: "11 November 2020",
     description: "Cactus Park. Best Beach. Yellow Submarine.",
     imageUrl: "aiyanapa.jpeg",
-    tags: [""],
-    // tags: {homeCountry: false, currentLocation: false, travelHighlight: false, remoteWorking: false},
   },
   {
     id: 18,
@@ -262,8 +229,6 @@ const travelJSONData = [
     endDate: "14 November 2020",
     description: "Wine tasting. Restaurants. Birthday dinner. Salt Flats.",
     imageUrl: "larnaca.jpg",
-    tags: [""],
-    // tags: {homeCountry: false, currentLocation: false, travelHighlight: false, remoteWorking: false},
   },
   {
     id: 19,
@@ -276,8 +241,6 @@ const travelJSONData = [
     endDate: "30 May 2021",
     description: "Titanic. Cycling around the city. Belfast Museum. James restaurant.",
     imageUrl: "belfast.jpeg",
-    tags: [""],
-    // tags: {homeCountry: false, currentLocation: false, travelHighlight: false, remoteWorking: false},
   },
   {
     id: 20,
@@ -316,7 +279,6 @@ const travelJSONData = [
     endDate: "28 August 2021",
     description: "Boat Parties. Watermelon mojitos. Tropicana beach club.",
     imageUrl: "mykonos.jpg",
-    tags: [""],
   },
   {
     id: 23,
@@ -329,7 +291,6 @@ const travelJSONData = [
     endDate: "1 September 2021",
     description: "Lots of cats. Dubliner. Captain Ben",
     imageUrl: "paros.jpeg",
-    tags: [""],
   },
   {
     id: 24,
@@ -342,7 +303,6 @@ const travelJSONData = [
     endDate: "4 September 2021",
     description: "Jacuzzi. Red Beach. Black Beach. Sunset in Oia.",
     imageUrl: "santorini.jpg",
-    tags: [""],
   },
   {
     id: 25,
@@ -355,7 +315,6 @@ const travelJSONData = [
     endDate: "16 September 2021",
     description: "Boot of beer. Balos Beech. Elafonisi. Moussaka",
     imageUrl: "crete.jpeg",
-    tags: [""],
   },
   {
     id: 26,
@@ -381,7 +340,6 @@ const travelJSONData = [
     endDate: "19 September 2021",
     description: "Pope Francis. Postcard from the smallest country. St Peter's Cathedral.",
     imageUrl: "vatican.jpg",
-    tags: [""],
   },
   {
     id: 28,
@@ -433,7 +391,6 @@ const travelJSONData = [
     endDate: "11 October 2021",
     description: "Greek Theatre. Cablecar. Mt Etna. Alacntra Gorges.",
     imageUrl: "taormina.jpeg",
-    tags: [""],
   },
   {
     id: 32,
@@ -459,7 +416,6 @@ const travelJSONData = [
     endDate: "29 October 2021",
     description: "Loro Parque. Swimming. Teide.",
     imageUrl: "tenerife.jpeg",
-    tags: [""],
   },
   {
     id: 34,
@@ -485,7 +441,6 @@ const travelJSONData = [
     endDate: "9 November 2021",
     description: "Ouzoud waterfall. Markets. Tajines",
     imageUrl: "marrakech.jpeg",
-    tags: [""],
   },
   {
     id: 36,
@@ -511,7 +466,6 @@ const travelJSONData = [
     endDate: "14 November 2021",
     description: "Beach. Surfing. Markets.",
     imageUrl: "essoauira.jpeg",
-    tags: [""],
   },
   {
     id: 38,
@@ -524,7 +478,6 @@ const travelJSONData = [
     endDate: "13 February 2022",
     description: "Vodka. Coffee. Dumplings.",
     imageUrl: "poland.jpeg",
-    tags: [""],
   },
   {
     id: 39,
@@ -537,7 +490,6 @@ const travelJSONData = [
     endDate: "20 March 2022",
     description: "Isabella Stewart Gardner. Paddy's Day. Tea Party.",
     imageUrl: "boston.jpeg",
-    tags: [""],
   },
   {
     id: 40,
@@ -550,7 +502,6 @@ const travelJSONData = [
     endDate: "3 April 2022",
     description: "KGB Museum. Rooftop cocktails. Pub crawl.",
     imageUrl: "riga.jpeg",
-    tags: [""],
   },
   {
     id: 41,
@@ -563,7 +514,6 @@ const travelJSONData = [
     endDate: "2 May 2022",
     description: "Baths. Birthdays. Jacuzzi. Margaret Island.",
     imageUrl: "budapest.jpeg",
-    tags: [""],
   },
   {
     id: 42,
@@ -577,7 +527,7 @@ const travelJSONData = [
     description:
       "Waffles. Atomium - national structure. Dinosaurs - Iguanodon. Chocolate making class.",
     imageUrl: "brussels.jpeg",
-    tags: [""],
+    tags: ["Dinosaurs"]
   },
   {
     id: 43,
@@ -590,7 +540,6 @@ const travelJSONData = [
     endDate: "16 May 2022",
     description: "Beer Factory. In Bruge. Colin Farrell.",
     imageUrl: "bruges.jpeg",
-    tags: [""],
   },
   {
     id: 44,
@@ -603,7 +552,6 @@ const travelJSONData = [
     endDate: "6 June 2022",
     description: "Katherine's hen party. Capri Boat trip. ",
     imageUrl: "sorrento2.jpeg",
-    tags: [""],
   },
   {
     id: 45,
@@ -616,7 +564,6 @@ const travelJSONData = [
     endDate: "4 July 2022",
     description: "Eiffel Tower. Croissants in bed. Versailles.",
     imageUrl: "paris.jpeg",
-    tags: [""],
   },
   {
     id: 46,
@@ -629,7 +576,6 @@ const travelJSONData = [
     endDate: "10 July 2022",
     description: "Mansion House. Monet Gardens. Champagne.",
     imageUrl: "bouffemont.jpeg",
-    tags: [""],
   },
   {
     id: 47,
@@ -642,7 +588,6 @@ const travelJSONData = [
     endDate: "24 November 2022",
     description: "South Beach. Everglades. Little Havana. Carnival Cruise.",
     imageUrl: "miami.jpeg",
-    tags: [""],
   },
   {
     id: 48,
@@ -655,7 +600,6 @@ const travelJSONData = [
     endDate: "17 November 2022",
     description: "Paradise Island. Rum Cake. Pirates. Atlantis.",
     imageUrl: "nassau.jpeg",
-    tags: [""],
   },
   {
     id: 49,
@@ -669,7 +613,6 @@ const travelJSONData = [
     description: "Boragó (crazy food restaurant), Rooftop pools, Pisco Sour",
     imageUrl: "santiago.jpg",
     slides: ["santiago-center.jpeg", "Santiago is full of rooftop pools.", "santiago-rooftop-pool.jpeg", 'We visited the "fifth best restaurant" in South America called Borago. The food was a tad crazy :D',"santiago-borago-flower.jpeg"],
-    tags: [""],
   },
   {
     id: 50,
@@ -683,7 +626,6 @@ const travelJSONData = [
     description: "Street Art, Artistic Steps, Coffee Hostel, Funicular",
     imageUrl: "valparaiso.jpg",
     slides: ["Valparaiso is covered top to bottom in the most amazing street art.", "valparaiso-door.jpeg",  "valparaiso-mask.jpeg", "valparaiso-sea-lion.jpeg", "valparaiso-mario.jpeg", "The town is extremely hilly and has historical funiculars (like cable cars) that take you up and down.", "valparaiso-funicular.jpeg","valparaiso-stairs.jpg", "valparaiso-lion.jpeg","The town also has many sets of stairs that are creatively painted.", "valparaiso-steps-heels.jpeg", "valparaiso-stairs.jpeg"],
-    tags: [""],
   },
   {
     id: 51,
@@ -696,7 +638,6 @@ const travelJSONData = [
     endDate: "12 February 2023",
     description: "Beach, Residential, Bus back to Santiago",
     imageUrl: "vinadelmar.jpg",
-    tags: [""],
   },
   {
     id: 52,
@@ -725,7 +666,7 @@ const travelJSONData = [
     description: "Wine, Malbec, Steak, Bus through the Andes",
     imageUrl: "mendoza.jpg",
     slides: ["mendoza-city.jpeg", "In Mendoza we drank a lot of Malbec and ate a lot of steak.", "mendoza-steak.jpeg", "We also went around the vineyards and an olive oil factory."],
-    tags: [""],
+    tags: ["Amazing Food"],
   },
   {
     id: 54,
@@ -739,7 +680,6 @@ const travelJSONData = [
     description: "-5 in Geysers, floating in salt lagoons, Luna Valley",
     imageUrl: "sanpedro.jpeg",
     slides: ["san-pedro-desert.jpeg", "San Pedro de Atacama is one of the driest places on earth.", "We visited the geysers here at dawn and it was super cold: -5 degrees celsius in Summer!","san-pedro-geysers.jpeg", "Valle de la Luna, is so called because this place looks like the surface of the moon.", "We also swam in salt lagoons, where you float incredibly easily.", "San Pedro is so high up and there's no clouds so stargazing here is a must!"],
-    tags: [""],
   },
   {
     id: 55,
@@ -767,7 +707,7 @@ const travelJSONData = [
     description: "Dinosaur Footprints, Hot Chocolate, Dance of the devils",
     imageUrl: "sucre.jpg",
     slides: ["In Sucre, we visited a wall of dinosaur footprints.", "In dinosaur times, this land was horizontal and lead to a lake where dinosaurs gathered to drink.", "sucre-many-footprints.jpeg", "sucre-footprint.jpeg"],
-    tags: [""],
+    tags: ["Dinosaurs"]
   },
   {
     id: 57,
@@ -878,7 +818,7 @@ const travelJSONData = [
     description: "Beach hop, monkeys, locusts, iguanas, tawaca",
     imageUrl: "tayrona.jpeg",
     slides: ["We stayed in a hotel called Tawaca just outside the park. It had the most amazing wildlife.","tayrona-lizard.jpeg", "tayrona-locust.jpeg", "tayrona-tortoise.jpeg", "Tayrona Park is a huge jungle/beach paradise.", "tayrona-beach.jpeg"],
-    tags: [""],
+    tag: ["Incredible Wildlife"]
   },
   {
     id: 65,
@@ -917,7 +857,6 @@ const travelJSONData = [
     description: "Equator line, Community hostel, gold church, chocolate tour",
     slides: ["Here we stood on the equator line and balanced an egg on a nail.", "quito-latitude-0.jpeg", "We had the most amazing brownies and pure cocoa hot chocolates on this chocolate tour.", "quito-chocolate-tour.jpeg"],
     imageUrl: "quito.jpeg",
-    tags: [""],
   },
   {
     id: 68,
@@ -930,7 +869,7 @@ const travelJSONData = [
     description: "Monkeys, caimans, anaconda, yuka bread",
     slides: ["amazon-rainbow.jpeg", "The journey to the Amazon, took an overnight bus, a 4 hour shuttle and a 2 hour canoe trip.", "amazon-beatle.jpeg", "amazon-caimon.jpeg", "amazon-sloth.jpeg", "amazon-stinky-turkey.jpeg"],
     imageUrl: "amazon.jpeg",
-    tags: ["Travel Highlight"]
+    tags: ["Travel Highlight", "Incredible Wildlife"]
   },
   {
     id: 69,
@@ -943,7 +882,6 @@ const travelJSONData = [
     description: "Thermal baths, spa days, chocolate factory",
     slides: ["The Devil's Cauldron waterfall is a must see in Banos.","banos-waterfall.jpeg", "In Banos you can swing off the end of the world.","banos-end-of-the-world.jpeg", "The most amazing hot chocolate-coffee combo was had here.", "banos-hot-chocolate.jpeg", "banos-spa.jpeg"],
     imageUrl: "banos.jpg",
-    tags: [""],
   },
   {
     id: 70,
@@ -956,7 +894,6 @@ const travelJSONData = [
     description: "Hobbit houses, volcano base camp 4800 meters high, jacuzzi",
     slides: ["cotopaxi-net.jpeg", "We stayed in hobbit houses, built into a hill and looking out on the volcano cotopaxi.", "cotopaxi-hobbit-houses.jpeg", "cotopaxi-volcano.jpeg","We hiked to the base camp of Cotopaxi, at 4800 meters high. It was a little chilly :D","cotopaxi-base-camp.jpeg"],
     imageUrl: "cotopaxi.jpeg",
-    tags: [""],
   },
   {
     id: 71,
@@ -970,7 +907,7 @@ const travelJSONData = [
     slides: ["galapagos-pelican.jpeg", "We visited the islands of San Cristobal, Isabella and Santa Cruz.","galapagos-penguin.jpeg","We swam with sea lions and snorkled with sea turtles.","galapagos-sea-lion.jpeg", "galapagos-sea-turtle.jpeg", "galapagos-flamingo.jpeg", "At kicker rock you can dive with sharks.",
     "galapagos-kicker-rock.jpeg", "galapagos-giant-tortoise.jpeg", "galapagos-booby.jpeg", "galapagos-marine-iguanas.jpeg", "galapagos-lake.jpeg"],
     imageUrl: "galapagos.jpeg",
-    tags: ["Travel Highlight"],
+    tags: ["Incredible Wildlife", "Travel Highlight"],
   }
 ];
 

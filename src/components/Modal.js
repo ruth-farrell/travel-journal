@@ -1,30 +1,24 @@
 import React from 'react'
-import Slider from "./Slider";
 import { FaXmark } from "react-icons/fa6";
 
 const Modal = ({
-  destination
+  children
  }) => {
+
   const handleModalBtnClose = (e) => {
-    e.currentTarget.closest(".modal-wrapper").classList.remove("modal-open");
+    e.currentTarget.closest(".modal").classList.remove("modal-open");
   }
  
     return (
-      <div className="modal-wrapper">
+      <div className="modal">
         <div className="modal-btn-container">
-          <button className="round" aria-label="Close" onClick={handleModalBtnClose}><FaXmark/></button>
+          <button className="round" onClick={handleModalBtnClose}>
+            <FaXmark aria-hidden="true"/>
+            <span className="visually-hidden">Close Modal</span>
+          </button>
         </div>
-        <div className="modal">
-          <div className="modal-container">
-            <div className="modal-content">
-              {destination.slides ? 
-                <>
-                  <Slider slides={destination.slides} slidetitle={destination.title} slidecountry={destination.country.name}  />
-                </>
-              : '' }
-            </div>
-
-          </div>
+        <div className="modal-content">
+          {children}
         </div>
       </div>
     )

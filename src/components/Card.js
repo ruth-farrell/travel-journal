@@ -1,16 +1,42 @@
-import React from "react";
+import { useState, React } from "react";
 
-const Card = ({children}) => {
+export function Card({children}) {
 
-  const handleCardHover = (e) => {
-    e.currentTarget.classList.toggle("card-open");
+  const [cardOpen, setCardOpen] = useState(false);
+
+  const handleCardHover = () => {
+    setCardOpen(prevOpen => !prevOpen) 
   };
 
   return (
-    <div className="card" onMouseOver={handleCardHover} onMouseOut={handleCardHover}>
+    <div className={`card ${ cardOpen ? "card-open" : ""}`} onMouseOver={handleCardHover} onMouseOut={handleCardHover}>
       {children}
     </div>                    
   )
 };
 
-export default Card;
+export function CardLeft({imgSrc, imgAlt, imgLoading, title}) {
+
+  return (
+    <div className="card-left">
+      <img
+        src={imgSrc}
+        alt={imgAlt}
+        className="card-left-img"
+        width="350"
+        height="515"
+        loading={imgLoading}
+      />
+      <h2 className="card-left-title">{title}</h2>
+    </div>                    
+  )
+};
+
+export function CardRight({children}) {
+
+  return (
+    <div className="card-right">
+      {children}
+    </div>                    
+  )
+};

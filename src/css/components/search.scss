@@ -11,7 +11,7 @@
     border-right-width: 45px;
   }
 
-  .search-input {
+  &-input {
     position: relative;
 
     svg {
@@ -23,6 +23,12 @@
       left: 14px;
       display: flex;
       align-items: center;
+    }
+
+    &-hidden-label {
+      height: 0;
+      visibility: hidden;
+      padding: 0px 20px;
     }
   }
 
@@ -38,13 +44,5 @@
     display: inline;
     width: 100%;
     text-transform: uppercase;
-  }
-
-
-
-  .search-input-hidden-label {
-    height: 0;
-    visibility: hidden;
-    padding: 0px 20px;
   }
 }

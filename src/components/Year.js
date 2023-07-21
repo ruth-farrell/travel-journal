@@ -16,19 +16,19 @@ export default function Year({ yearItems, filterYear, travelYear, setTravelYear,
 
   return (
     <div className="section year">
-      <h2 className="section-title">Select Year</h2>
+      <h2 className="section-title">Filter by Year</h2>
       <div className="select-buttons">
-      <select className="select-default" onMouseEnter={handleHover} onMouseLeave={handleHover} onChange={handleChange} defaultValue={'All'}>
+      <select className="select-default" onMouseEnter={handleHover} onMouseLeave={handleHover} onChange={handleChange}>
         <option
-            className={"All" + (!travelYear.length ? " active" : "")}
-            value="All"
-          >
+          className={"All" + (!travelYear.length ? " active" : "")}
+          value="All">
             See All
           </option>
         {yearItems.map((Val, id) => {
           return (
             <option
               className={Val + (travelYear === Val ? " active" : "")}
+              selected={travelYear === Val ? true : false}
               key={id} 
               value={Val}>
                {Val}

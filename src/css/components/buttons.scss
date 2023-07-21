@@ -9,6 +9,26 @@
   position: relative;
   pointer-events: none;
 
+  &:before {
+    font-family: "Font Awesome 6 Free"; 
+    content: "\f073";
+    font-size: 20px;
+    color: $accentcolor;
+    margin-bottom: 2px;
+    position: absolute;
+    left: 12px;
+  }
+
+  &:after {
+    font-family: "FontAwesome";
+    content: "\f078";
+    font-size: 20px;
+    color: $accentcolor;
+    margin-bottom: 2px;
+    position: absolute;
+    right: 12px;
+  }
+
   .select-default {
     font-family: $primaryfont;
     letter-spacing: 1.5px;
@@ -21,7 +41,7 @@
     appearance: none;
     pointer-events: all;
     box-shadow: 0 0 9px #bbbbbb;
-    border: 4px solid #ffffff;
+    border: 4px solid $whitecolor;
 
     &:focus-visible {
       outline: $accentcolor2 solid 2px;
@@ -29,45 +49,63 @@
   }
 }
 
-.select-buttons:before {
-  font-family: "Font Awesome 6 Free"; 
-  content: "\f073";
-  font-size: 20px;
-  color: $accentcolor;
-  margin-bottom: 2px;
-  position: absolute;
-  left: 12px;
-}
-
-.select-buttons:after {
-  font-family: "FontAwesome";
-  content: "\f078";
-  font-size: 20px;
-  color: $accentcolor;
-  margin-bottom: 2px;
-  position: absolute;
-  right: 12px;
-}
-
 /* Button styles */
 
-button.active {
-  border: 4px solid $whitecolor;
-  z-index: 999;
-  position: relative;
-  box-shadow: 0 0 21px $darkgreycolor;
+button {
+  &.active {
+    border: 4px solid $whitecolor;
+    z-index: 999;
+    position: relative;
+    box-shadow: 0 0 21px $darkgreycolor;
+  }
+
+  &.round {
+    display: flex;
+    align-items: center;
+    background: $greycolor;
+    border-radius: 50%;
+    height: auto;
+    padding: 25px;
+    margin: 10px;
+    font-size: 20px;
+  }
+
+  &.grey {
+    padding: 12px 20px;
+    background: $greycolor;
+    display: flex;
+    color: $accentcolor;
+    letter-spacing: 2px;
+    font-size: 11px;
+    font-family: $primaryfont;
+    border-radius: 2px;
+    text-transform: uppercase;
+    gap: 5px;
+    border: 4px solid $whitecolor
+  }
+
+  &.shadow {
+    box-shadow: 0 0 9px #bbbbbb;
+  }
+
+  &.square {
+    aspect-ratio: 1/1;
+    padding: 12px 15px;
+  }
 }
 
 .section button.active, .timeline-buttons button.active {
   border: 4px solid $whitecolor;
 }
 
-.section button:hover  { 
-  opacity: 75%; 
-}
+.section { 
+  button:hover  { 
+    opacity: 75%; 
+  }
 
-.section button.deactivate {
-  opacity: 40%;
+  button.deactivate {
+    opacity: 40%;
+  }
 }
 
 button.deactivate, .deactivate button {
@@ -100,22 +138,7 @@ button.default, .default-btn {
 }
 
 .default-btn {
-  border: 4px solid white;
-}
-
-button.round {
-  display: flex;
-  align-items: center;
-  background: $greycolor;
-  border-radius: 50%;
-  height: 100%;
-  padding: 25px;
-  margin: 10px;
-  font-size: 20px;
-}
-
-button.round i {
-  width: 20px;
+  border: 4px solid $whitecolor;
 }
 
 button.round:hover,
@@ -126,27 +149,4 @@ button.grey:hover,
   color: $whitecolor;
   background: $accentcolor2;
   opacity: 100%;
-}
-
-button.grey {
-  padding: 12px 20px;
-  background: $greycolor;
-  display: flex;
-  color: $accentcolor;
-  letter-spacing: 2px;
-  font-size: 11px;
-  font-family: $primaryfont;
-  border-radius: 2px;
-  text-transform: uppercase;
-  gap: 5px;
-  border: 4px solid $whitecolor
-}
-
-button.shadow {
-  box-shadow: 0 0 9px #bbbbbb;
-}
-
-button.square {
-  aspect-ratio: 1/1;
-  padding: 12px 15px;
 }

@@ -1,0 +1,17 @@
+@use "./variables.scss" as *;
+
+/* Sort */
+
+.sort {
+  @include flex-center; 
+  gap: 10px;
+  flex-wrap: nowrap;
+
+  .section-title {
+    justify-content: left;
+    font-family: $primaryfont;
+    font-size: 14px;
+    letter-spacing: 4px;
+    width: auto;
+  }
+}

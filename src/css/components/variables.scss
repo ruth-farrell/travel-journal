@@ -1,7 +1,9 @@
-/* Variables */
+/* Fonts */
 
 $primaryfont: "Work Sans", sans-serif;
 $secondaryfont: "Indie Flower", serif;
+
+/* Colors */
 
 $accentcolor: #8686b8; 
 $accentcolor2: #b6b6ce;
@@ -11,9 +13,32 @@ $greycolor: #f3f3f2;
 $darkgreycolor: #808080;
 $whitecolor: #ffffff;
 
+/* Box shadow */
+
 $box-shadow: 0 0 21px #b2b2c3;
 
-/* Mixin */
+// Media Queries
+
+$phone-only: 768px;
+$desktop-only: 1170px;
+
+@mixin phone-only {
+  @media (max-width: $phone-only) { @content; }
+}
+
+@mixin desktop-only {
+  @media (min-width: $phone-only) { @content; }
+}
+
+@mixin phone-up-to-desktop {
+  @media (max-width: $desktop-only) { @content; }
+}
+
+@mixin tablet-up-to-desktop {
+  @media (min-width: $phone-only) and (max-width: $desktop-only) { @content; }
+}
+
+/* Mixins */
 
 @mixin flex-center {
   display: flex;

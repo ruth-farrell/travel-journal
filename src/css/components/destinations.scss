@@ -1,0 +1,18 @@
+@use "./variables.scss" as *;
+
+.destinations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 48px;
+
+  &-no-results {
+    font-size: 18px;
+    margin: 45px 20px 0px 20px;
+  }
+
+  @include phone-up-to-desktop {
+    gap: 20px;
+    justify-content: space-evenly;
+  }
+}
