@@ -2,7 +2,6 @@
 
 .bucketlist {
   @include flex-center;
-  padding-top: 150px;
 
   .sheet {
     font-family: $secondaryfont;

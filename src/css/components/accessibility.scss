@@ -1,15 +1,17 @@
+@use "./variables.scss" as *;
+
 /* Accessibility */
 
 .visually-hidden:not(:focus):not(:active) {
 	border: 0;
-	clip: rect(0 0 0 0); 
+	clip: rect(0 0 0 0);
 	clip-path: inset(50%);
 	height: 1px;
 	margin: -1px;
 	overflow: hidden;
 	padding: 0;
 	position: absolute;
-	white-space: nowrap; 
+	white-space: nowrap;
 	width: 1px;
 }
 
@@ -17,4 +19,25 @@
 	html {
 		scroll-behavior: auto;
 	}
+
+  .cloud, .aeroplane {
+    animation: none;
+  }
 }
+
+.high-contrast :is(.map-buttons-container button, a, .search-input svg, .number-item-count, .select-buttons, .search input) {
+  color: var(--main-color);
+  background-color: transparent;
+  transform: scale(1.05);
+}
+
+.high-contrast :is(button.default, button.grey, header, footer, a.default-btn, .slider-title) {
+  background-color: var(--main-color);
+  color: $whitecolor;
+  transform: scale(1.05);
+}
+
+.high-contrast .post-it-note-img, .high-contrast .aeroplane {
+  filter: hue-rotate(339deg) brightness(58%) contrast(3.5);
+}
+

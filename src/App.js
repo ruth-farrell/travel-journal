@@ -10,6 +10,7 @@ import Map from "./components/Map";
 import Timeline from "./components/Timeline";
 import Bucketlist from "./components/Bucketlist";
 import Backtotop from "./components/Backtotop";
+import Aeroplane from "./components/Aeroplane";
 import Quote from "./components/Quote";
 import Sort from './components/Sort';
 import ComingSoon from "./components/Comingsoon";

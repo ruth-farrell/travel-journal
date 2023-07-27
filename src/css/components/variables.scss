@@ -4,14 +4,23 @@ $primaryfont: "Work Sans", sans-serif;
 $secondaryfont: "Indie Flower", serif;
 
 /* Colors */
-
-$accentcolor: #8686b8; 
+// #8686b8;
+// $accentcolor:  #8686b8;
+$accentcolor: #7575a8;
 $accentcolor2: #b6b6ce;
 $beigecolor: #f3f3f2;
 $bluecolor: #d6ecf2;
 $greycolor: #f3f3f2;
 $darkgreycolor: #808080;
 $whitecolor: #ffffff;
+
+:root {
+  --main-color: $accentcolor;
+}
+
+:root .high-contrast {
+  --main-color: #001550;
+}
 
 /* Box shadow */
 

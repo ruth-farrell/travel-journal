@@ -1,9 +1,10 @@
 import React from "react";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa6";
+import SkyBackground from "./SkyBackground";
 
 export default function Quote() {
   return (
-    <>
+    <SkyBackground>
       <div className="banner quote">
         <div>
           <blockquote>
@@ -12,6 +13,6 @@ export default function Quote() {
           </blockquote>
         </div>
       </div>
-    </>
+    </SkyBackground>
   );
 }
