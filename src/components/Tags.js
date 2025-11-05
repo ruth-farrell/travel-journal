@@ -1,7 +1,6 @@
 import React from 'react'
-import { FaTag, FaStar, FaBriefcase, FaPersonWalkingLuggage, FaHouseChimney, FaFilterCircleXmark, FaHippo, FaBowlFood } from "react-icons/fa6";
-import { GiDinosaurRex } from "react-icons/gi";
-
+import { FaFilterCircleXmark } from "react-icons/fa6";
+import TagIcons from "./TagIcons";
 
 const Tags = ({
   tagItems,
@@ -16,19 +15,12 @@ const Tags = ({
         Filter by Tags
       </h2>
       <div className="section-container">
-        {tagItems.map((tag, index) => { 
+        {tagItems.map((tag, index) => {
           return (
             <button key={index} className={(tagName.includes(tag)? " active" : "") + " default"} onClick={() => {filterTag(tag)}}>
-              {tag.includes("Highlight") ? <FaStar aria-hidden="true"/> 
-              : tag.includes("Location") ? <FaPersonWalkingLuggage aria-hidden="true"/> 
-              : tag.includes("Country") ? <FaHouseChimney aria-hidden="true"/> 
-              : tag.includes("Remote") ? <FaBriefcase aria-hidden="true"/> 
-              : tag.includes("Dinosaur") ? <GiDinosaurRex aria-hidden="true"/> 
-              : tag.includes("Food") ? <FaBowlFood aria-hidden="true"/>
-              : tag.includes("Wildlife") ? <FaHippo aria-hidden="true"/>
-              : <FaTag/>}
+              <TagIcons tag={tag}/>
               {tag}
-            </button> 
+            </button>
           )
         })}
       </div>

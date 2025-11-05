@@ -10,13 +10,12 @@ import Map from "./components/Map";
 import Timeline from "./components/Timeline";
 import Bucketlist from "./components/Bucketlist";
 import Backtotop from "./components/Backtotop";
-import Aeroplane from "./components/Aeroplane";
 import Quote from "./components/Quote";
 import Sort from './components/Sort';
 import ComingSoon from "./components/Comingsoon";
 import travelData from "./data";
 import Tags from "./components/Tags";
-import "/node_modules/flag-icons/css/flag-icons.min.css"; 
+import "/node_modules/flag-icons/css/flag-icons.min.css";
 
 export default function App() {
 
@@ -29,7 +28,7 @@ export default function App() {
   const [sort, setSort] = useState(true);
   const [item, setItem] = useState(travelData);
 
-  // Sorting Data Functions 
+  // Sorting Data Functions
 
   // Merge Arrays
   let newArray = [];
@@ -53,6 +52,13 @@ export default function App() {
     }
   }
 
+  // Check Array Subset
+  let checkSubset = (parentArray, subsetArray) => {
+    return subsetArray.every((el) => {
+        return parentArray.includes(el)
+    })
+  }
+
   // Travel Data Item filter Criteria
 
   const checkItems = (newVal) => {
@@ -67,16 +73,14 @@ export default function App() {
       (travelMonth.length ? (travelMonth === newVal.startDate.slice(2, -4).replace(/\s/g, "")) : true)
   }
 
-  // Country Items
+  const countryItemsNotUnique = travelData.filter(checkMonthandYearItems).map((item) => item.country);
 
-  const countryItemsNotUnique = travelData.filter(checkMonthandYearItems).map((item) => item.country); 
-
-  const countryItems = 
+  const countryItems =
     Array.from(new Set(countryItemsNotUnique.map(JSON.stringify)), JSON.parse).sort(dynamicSort("name"));
 
   const months = ['January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'];
-  
+
   const monthItems = [
     ...new Set(
       travelData.filter((item) => (travelYear.length ? (travelYear === item.startDate.slice(-4)) : true) ).map((item) => item.startDate.slice(2, -4).replaceAll(' ', ''))
@@ -113,7 +117,7 @@ export default function App() {
 
   // Tag Icon Data in Map
   const currentLocationItem = [
-    ...new Set( 
+    ...new Set(
       travelData.filter((item) => typeof item.tags !== "undefined" && item.tags.includes("Current Location"))
       .map((item) => item.country)
     ),
@@ -122,6 +126,13 @@ export default function App() {
   const homeLocationItem = [
     ...new Set(
       travelData.filter((item) => typeof item.tags !== "undefined" && item.tags.includes("Home Country"))
+        .map((item) => item.country)
+    ),
+  ];
+
+  const residenceLocationItem = [
+    ...new Set(
+      travelData.filter((item) => typeof item.tags !== "undefined" && item.tags.includes("Place of Residence"))
         .map((item) => item.country)
     ),
   ];
@@ -158,17 +169,10 @@ export default function App() {
     filterAllItems();
   }, [travelMonth, travelLocation, travelYear, tagName]);
 
-
-  let checkSubset = (parentArray, subsetArray) => {
-    return subsetArray.every((el) => {
-        return parentArray.includes(el)
-    })
-  }
-
   return (
     <>
       <Header
-        {...{ travelYear, travelMonth, travelLocation, tagName, query, 
+        {...{ travelYear, travelMonth, travelLocation, tagName, query,
           setTravelYear, setTravelMonth, setTravelLocation, setTagName, setQuery }}
       />
       <Hero />
@@ -180,20 +184,20 @@ export default function App() {
           <Number
             {...{ travelYear, travelMonth, countryItems, titleItems, continentItems }}
           />
-          {travelYear.length ? 
+          {travelYear.length ?
           <Timeline
             {...{ months, travelMonth, travelYear, monthItems, setTravelMonth, filterMonth }}
           />
-          : '' 
+          : ''
           }
         </div>
         <Map
-           {...{ countryItems, filterLocation, travelMonth, travelYear, travelLocation, 
-            setTravelLocation, tagName, currentLocationItem, homeLocationItem }}
+           {...{ countryItems, filterLocation, travelMonth, travelYear, travelLocation,
+            setTravelLocation, tagName, currentLocationItem, homeLocationItem, residenceLocationItem }}
         />
         <Tags
           {...{ tagItems, tagName, setTagName, filterTag, checkSubset }}
-        /> 
+        />
         <div className="section beside">
           <Sort
               {...{ setSort, sort }}

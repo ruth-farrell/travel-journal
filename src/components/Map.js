@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaMagnifyingGlassPlus, FaMagnifyingGlassMinus, FaArrowsToCircle, FaLocationDot, FaFilterCircleXmark,
-  FaPersonWalkingLuggage, FaHouseChimney, FaArrowUp, FaArrowDown, FaArrowLeft, FaArrowRight} from "react-icons/fa6";
+  FaPersonWalkingLuggage, FaHouseChimney, FaArrowUp, FaArrowDown, FaArrowLeft, FaArrowRight, FaHeart} from "react-icons/fa6";
 
 const Map = ({
   filterLocation,
@@ -11,8 +11,8 @@ const Map = ({
   setTravelLocation,
   currentLocationItem,
   homeLocationItem,
+  residenceLocationItem,
 }) => {
-
 
   const [isZoom, setIsZoom ] = useState(false);
   const [zoomScale, setZoomScale] = useState(1);
@@ -23,19 +23,19 @@ const Map = ({
     if (event.target.value === 'All') {
       setTravelLocation('');
     } else {
-    filterLocation(event.target.value); 
+    filterLocation(event.target.value);
     }
   };
 
   const toggleMapZoom = (e) => {
     const btnInOrOut = e.currentTarget.classList;
 
-    if (btnInOrOut.contains('in')) { 
+    if (btnInOrOut.contains('in')) {
       setZoomScale(zoomScale + 0.25);
       setIsZoom(true);
     }
 
-    if (btnInOrOut.contains('out') && zoomScale !== 1 ) { 
+    if (btnInOrOut.contains('out') && zoomScale !== 1 ) {
       zoomScale - 0.25 === 1 ? setIsZoom(false) : setIsZoom(true);
       setZoomScale(zoomScale - 0.25);
     }
@@ -44,32 +44,32 @@ const Map = ({
   const handleMapDirections = (e) => {
     const btnDirection = e.currentTarget.classList;
 
-    if (btnDirection.contains('left')) {  
+    if (btnDirection.contains('left')) {
       if ((transformX - 10) >= 0 ) {
         setTransformX(transformX - 10);
         return;
-      } 
+      }
       return;
     }
-    if (btnDirection.contains('right')) {  
+    if (btnDirection.contains('right')) {
       if ((transformX + 10) <= 100 ) {
         setTransformX(transformX + 10);
         return;
-      } 
+      }
       return;
     }
-    if (btnDirection.contains('up')) { 
+    if (btnDirection.contains('up')) {
       if ((transformY - 10) >= 0 ) {
         setTransformY(transformY - 10);
         return;
-      } 
+      }
       return;
     }
-    if (btnDirection.contains('down')) { 
+    if (btnDirection.contains('down')) {
       if ((transformY + 10) <= 100 ) {
         setTransformY(transformY + 10);
         return;
-      } 
+      }
       return;
     }
 
@@ -81,26 +81,26 @@ const Map = ({
     const xPercentage = Math.round(e.nativeEvent.offsetX / e.currentTarget.offsetWidth * 100);
     const yPercentage = Math.round(e.nativeEvent.offsetY / e.currentTarget.offsetHeight * 100);
 
-    if (xPercentage > 50 && ((xPercentage + 15) < 100)) { 
-      setTransformX(xPercentage + 15); 
+    if (xPercentage > 50 && ((xPercentage + 15) < 100)) {
+      setTransformX(xPercentage + 15);
     }
-    else if (xPercentage > 50) { 
+    else if (xPercentage > 50) {
       setTransformX(100);
-    } 
+    }
     else if (xPercentage < 50 && ((xPercentage - 15) > 0)) {
-      setTransformX(xPercentage - 15) 
+      setTransformX(xPercentage - 15)
     } else {
       setTransformX(0);
     }
 
-    if (yPercentage > 50 && ((yPercentage + 15) < 100)) { 
-      setTransformY(yPercentage + 15); 
+    if (yPercentage > 50 && ((yPercentage + 15) < 100)) {
+      setTransformY(yPercentage + 15);
     }
-    else if (yPercentage > 50) { 
+    else if (yPercentage > 50) {
       setTransformY(100);
-    } 
+    }
     else if (yPercentage < 50 && ((yPercentage - 15) > 0)) {
-      setTransformY(yPercentage - 15) 
+      setTransformY(yPercentage - 15)
     } else {
       setTransformY(0);
     }
@@ -159,10 +159,11 @@ const Map = ({
                     className={Val.code + (travelLocation === Val.name ? " active" : "")}
                   >
                    <span className="visually-hidden">{`Click to Filter by ${Val.name}`}</span>
-                   {(homeLocationItem[0].code === Val.code) ? <FaHouseChimney aria-hidden="true"/> 
-                    : (currentLocationItem[0].code === Val.code) ? <FaPersonWalkingLuggage aria-hidden="true"/> 
+                   {(residenceLocationItem[0].code === Val.code) ? <FaHouseChimney aria-hidden="true"/>
+                    : (currentLocationItem[0].code === Val.code) ? <FaPersonWalkingLuggage aria-hidden="true"/>
+                    : (homeLocationItem[0].code === Val.code) ? <FaHeart aria-hidden="true"/>
                     : <FaLocationDot aria-hidden="true"/> }
-                   <span className="hidden" >{Val.name} 
+                   <span className="hidden" >{Val.name}
                     <span className={"fi fi-" + (Val.code)} aria-hidden="true"></span>
                    </span>
                 </button>

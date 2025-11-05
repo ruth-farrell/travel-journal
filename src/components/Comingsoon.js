@@ -12,16 +12,16 @@ export default function ComingSoon() {
           <h2>Onto the Next <br></br>Adventure...</h2>
         </PostItNote>
         <Card>
-          <CardLeft imgSrc={process.env.PUBLIC_URL + `/images/ruthsuitcase.jpeg`} imgAlt="Ruth on the next adventure with a suitcase" imgLoading="lazy" title="Coming soon" />  
+          <CardLeft imgSrc={process.env.PUBLIC_URL + `/images/ruthsuitcase.jpeg`} imgAlt="Ruth on the next adventure with a suitcase" imgLoading="lazy" title="Coming soon" />
           <CardRight>
             <h2>Places to Visit</h2>
             <ul>
               <li><span className="fi fi-pe" aria-hidden="true"></span> Peru</li>
               <li><span className="fi fi-jp" aria-hidden="true"></span> Japan</li>
-              <li><span className="fi fi-nz" aria-hidden="true"></span> New Zealand</li>
-              <li><span className="fi fi-au" aria-hidden="true"></span> Australia</li>
+              <li><span className="fi fi-fj" aria-hidden="true"></span> Fiji</li>
+              <li><span className="fi fi-id" aria-hidden="true"></span> Indonesia</li>
             </ul>
-          </CardRight>   
+          </CardRight>
         </Card>
       </div>
     </SkyBackground>

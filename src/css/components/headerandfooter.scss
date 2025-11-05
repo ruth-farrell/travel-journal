@@ -8,9 +8,13 @@ header, footer {
   background: $accentcolor;
   flex-direction: column;
   gap: 12px;
+
+  @include phone-only {
+    padding: 20px;
+  }
 }
 
-header { 
+header {
   position: fixed;
   z-index: 9;
   width: 100vw;
@@ -30,7 +34,7 @@ footer {
     z-index: 99999;
     justify-content: space-between;
     padding: 15px;
-  } 
+  }
 
   &.fixed .header-container {
     display: flex;
@@ -57,19 +61,23 @@ footer {
     display: flex;
     align-items: center;
     gap: 10px;
-    
+
+    @include phone-only {
+      font-size: 12px;
+    }
+
     @include desktop-only {
       white-space: nowrap;
     }
   }
 
-  &-filter { 
+  &-filter {
     display: none;
   }
 
-  &.fixed .header-filter { 
+  &.fixed .header-filter {
     @include flex-center;
-    color: $whitecolor; 
+    color: $whitecolor;
     line-height: 2;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -82,4 +90,4 @@ footer {
       flex-direction: column;
     }
   }
-} 
+}

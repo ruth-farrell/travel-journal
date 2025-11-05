@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Card, CardLeft, CardRight } from "./Card";
 import Modal from "./Modal";
 import Slider from "./Slider";
-import { FaSpinner, FaTag, FaStar, FaBriefcase, FaPersonWalkingLuggage, FaHouseChimney, FaChevronRight, FaLocationDot, FaHippo, FaBowlFood } from "react-icons/fa6";
-import { GiDinosaurRex } from "react-icons/gi";
+import { FaSpinner, FaChevronRight, FaLocationDot } from "react-icons/fa6";
+import TagIcons from "./TagIcons";
 
 const Destinations = ({ item, query, sort }) => {
 
@@ -15,7 +15,7 @@ const Destinations = ({ item, query, sort }) => {
 
   const handleModalBtnOpen = (e) => {
     const modal = e.currentTarget.closest(".card").nextElementSibling;
-    
+
     modal.classList.toggle("modal-open");
 
     modal.addEventListener('click', (e) => {
@@ -31,12 +31,12 @@ const Destinations = ({ item, query, sort }) => {
    } else if (item.title.toLowerCase().includes(query.toLowerCase())) {
      return item;
    }
-  }); 
+  });
 
   if (sort) {
     filteredCards.reverse();
   }
-              
+
   return (
     <>
       <div className="destinations">
@@ -77,36 +77,29 @@ const Destinations = ({ item, query, sort }) => {
                         <React.Fragment key={index}>
                           {tag.length? (
                           <span >
-                            {tag.includes("Highlight") ? <FaStar aria-hidden="true"/> 
-                            : tag.includes("Location") ? <FaPersonWalkingLuggage aria-hidden="true"/> 
-                            : tag.includes("Country") ? <FaHouseChimney aria-hidden="true"/> 
-                            : tag.includes("Remote") ? <FaBriefcase aria-hidden="true"/> 
-                            : tag.includes("Dinosaur") ? <GiDinosaurRex aria-hidden="true"/> 
-                            : tag.includes("Food") ? <FaBowlFood aria-hidden="true"/>
-                            : tag.includes("Wildlife") ? <FaHippo aria-hidden="true"/>
-                            : <FaTag aria-hidden="true"/> }
-                          {tag}</span>) : "" } 
+                            <TagIcons tag={tag}/>
+                          {tag}</span>) : "" }
                         </React.Fragment>
                       )
                       })
                       : ""}
                     </div>
-                    { destination.slides ? 
+                    { destination.slides ?
                       <button className="default" onClick={handleModalBtnOpen}>
                         View more <FaChevronRight aria-hidden="true"/>
                       </button>
                     : '' }
                   </CardRight>
                 </Card>
-                {destination.slides ? 
+                {destination.slides ?
                 <Modal>
                   <Slider slides={destination.slides} sliderTitle={`${destination.title} - ${destination.country.name}`} />
-                </Modal> 
-                : ''} 
+                </Modal>
+                : ''}
               </div>
             ) : null
           })
-         )   
+         )
          : (
           <div className="cards-no-results">
             <span>No results. Try changing your filters/search.</span>
@@ -114,7 +107,7 @@ const Destinations = ({ item, query, sort }) => {
          )
         }
       </div>
-      {filteredCards.length > 6 && !showAllCards ? 
+      {filteredCards.length > 6 && !showAllCards ?
       <div className="banner cards-controller">
         <div>
           <button onClick={handleShowAllCards} className="grey shadow">

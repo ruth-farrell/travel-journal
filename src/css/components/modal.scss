@@ -43,13 +43,13 @@
     position: relative;
     z-index: 99999;
     border-radius: 5px;
-    padding: 30px 20px;
+    padding-block: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
 
     @include phone-only {
-      height: 80vh; 
+      height: 80vh;
     }
   }
 }
