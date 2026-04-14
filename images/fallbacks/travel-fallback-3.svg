@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-labelledby="title3 desc3">
+  <title id="title3">Travel image fallback</title>
+  <desc id="desc3">A stylized city skyline illustration used when a travel image cannot be loaded.</desc>
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eff6f9"/>
+      <stop offset="100%" stop-color="#d9e9f0"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1200" fill="url(#bg3)"/>
+  <rect x="0" y="860" width="900" height="340" fill="#2f4858"/>
+  <rect x="110" y="620" width="120" height="240" fill="#4f6d7a"/>
+  <rect x="250" y="560" width="160" height="300" fill="#3f5f71"/>
+  <rect x="430" y="640" width="110" height="220" fill="#6b8899"/>
+  <rect x="560" y="520" width="190" height="340" fill="#587988"/>
+  <rect x="770" y="690" width="80" height="170" fill="#4f6d7a"/>
+  <circle cx="730" cy="210" r="90" fill="#ffffff" opacity="0.75"/>
+</svg>
