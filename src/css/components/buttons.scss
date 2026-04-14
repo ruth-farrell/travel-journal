@@ -31,17 +31,18 @@
 
   .select-default {
     font-family: $primaryfont;
-    letter-spacing: 1.5px;
-    font-weight: 100;
+    letter-spacing: 0.8px;
+    font-weight: 400;
     cursor: pointer;
     background: $greycolor;
     padding: 14px 45px 14px 45px;
-    font-size: 13px;
-    text-transform: uppercase;
+    font-size: 14px;
+    text-transform: none;
     appearance: none;
     pointer-events: all;
-    box-shadow: 0 0 9px #bbbbbb;
-    border: 4px solid $whitecolor;
+    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.08);
+    border: 1px solid $bordercolor;
+    border-radius: 8px;
 
     &:focus-visible {
       outline: $accentcolor2 solid 2px;
@@ -53,10 +54,10 @@
 
 button {
   &.active {
-    border: 4px solid $whitecolor;
+    border: 1px solid $bordercolor;
     z-index: 999;
     position: relative;
-    box-shadow: 0 0 21px $darkgreycolor;
+    box-shadow: 0 6px 14px rgba(15, 23, 42, 0.12);
   }
 
   &.round {
@@ -71,21 +72,22 @@ button {
   }
 
   &.grey {
-    padding: 12px 20px;
+    padding: 12px 22px;
     background: $greycolor;
     display: flex;
     color: $accentcolor;
-    letter-spacing: 2px;
-    font-size: 11px;
+    letter-spacing: 0.8px;
+    font-size: 14px;
     font-family: $primaryfont;
-    border-radius: 2px;
-    text-transform: uppercase;
-    gap: 5px;
-    border: 4px solid $whitecolor
+    border-radius: 8px;
+    text-transform: none;
+    gap: 8px;
+    border: 1px solid $bordercolor;
+    transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
   }
 
   &.shadow {
-    box-shadow: 0 0 9px #bbbbbb;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
   }
 
   &.square {
@@ -95,12 +97,12 @@ button {
 }
 
 .section button.active, .timeline-buttons button.active {
-  border: 4px solid $whitecolor;
+  border: 1px solid $bordercolor;
 }
 
 .section { 
   button:hover  { 
-    opacity: 75%; 
+    opacity: 90%; 
   }
 
   button.deactivate {
@@ -118,27 +120,35 @@ button.active.deactivate {
 }
 
 button.default, .default-btn {
-  padding: 10px 20px;
-  letter-spacing: 3px;
-  font-size: 12px;
-  text-transform: uppercase;
+  padding: 12px 22px;
+  letter-spacing: 0.8px;
+  font-size: 14px;
+  text-transform: none;
   font-family: $primaryfont;
-  font-weight: 100;
-  color: $greycolor; 
+  font-weight: 500;
+  color: $onaccentcolor; 
   background: $accentcolor;
   cursor: pointer;
-  border-radius: 2px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
 
   &:hover {
     opacity: 75%;
   }
 }
 
+.section.tag button.default.active {
+  background: linear-gradient(135deg, #498ebc, #5faa9a);
+  color: $onaccentcolor;
+  border: 1px solid #498ebc;
+  box-shadow: 0 0 0 2px rgba(95, 170, 154, 0.35);
+}
+
 .default-btn {
-  border: 4px solid $whitecolor;
+  border: 1px solid $bordercolor;
 }
 
 button.round:hover,
@@ -146,7 +156,7 @@ select.year-select:hover,
 button.grey:hover,
 .year-buttons.btn-hover::after,
 .year-buttons.btn-hover::before {
-  color: $whitecolor;
+  color: $onaccentcolor;
   background: $accentcolor2;
   opacity: 100%;
 }

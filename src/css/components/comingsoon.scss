@@ -3,9 +3,48 @@
 /* Comingsoon */
 
 .coming-soon {
-  ul li { 
+  .card {
+    @include phone-only {
+      max-width: 92%;
+      margin-inline: auto;
+    }
+  }
+
+  .coming-soon-title {
+    background: $greycolor;
+    border-radius: 10px;
+    padding: 8px 16px;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .coming-soon-list {
+    display: grid;
+    gap: 10px;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .coming-soon-list li {
+    font-size: 17px;
+    line-height: 1.45;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: $greycolor;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .coming-soon-list .fi {
     font-size: 18px;
-    line-height: 3.0;
+    border-radius: 999px;
+    width: 26px;
+    height: 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(47, 72, 88, 0.12);
   }
 
   .post-it-note h2 { 

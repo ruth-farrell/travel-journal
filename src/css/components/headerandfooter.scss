@@ -4,10 +4,10 @@
 
 header, footer {
   @include flex-center;
-  padding: 30px;
+  padding: 18px 28px;
   background: $accentcolor;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 
   @include phone-only {
     padding: 20px;
@@ -21,9 +21,9 @@ header {
 }
 
 footer {
-  font-size: 12px;
-  color: $greycolor;
-  margin-top: 150px;
+  font-size: 14px;
+  color: $onaccentcolor;
+  margin-top: 110px;
 }
 
 /* Fixed Header */
@@ -33,18 +33,20 @@ footer {
     position: fixed;
     z-index: 99999;
     justify-content: space-between;
-    padding: 15px;
+    padding: 10px 18px;
   }
 
   &.fixed .header-container {
-    display: flex;
     justify-content: space-between;
-    width: 100%;
-    align-items: center;
-    gap: 20px;
   }
 
   .header-container {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    align-items: center;
+    gap: 20px;
+
     @include phone-only {
       flex-direction: column;
       gap: 10px;
@@ -52,23 +54,103 @@ footer {
   }
 
   h1 {
-    color: $greycolor;
-    font-size: 16px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
+    color: $onaccentcolor;
+    font-family: $primaryfont;
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: 0.4px;
+    text-transform: none;
     text-align: center;
-    line-height: 2.0;
+    line-height: 1.2;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 
     @include phone-only {
-      font-size: 12px;
+      font-size: 15px;
     }
 
     @include desktop-only {
       white-space: nowrap;
     }
+  }
+
+  .header-brand {
+    margin: 0;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: left 0.45s cubic-bezier(0.22, 1, 0.36, 1), transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+
+    @include phone-only {
+      left: 0;
+      transform: none;
+      margin: 0;
+    }
+  }
+
+  &.fixed .header-brand {
+    left: 0;
+    transform: translateX(0);
+  }
+
+  .header-brand-icon {
+    width: 48px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2px;
+    position: relative;
+  }
+
+  .header-brand-icon-cloud {
+    font-size: 34px;
+    color: $whitecolor;
+  }
+
+  .header-brand-icon-plane {
+    position: absolute;
+    top: -2px;
+    left: 54%;
+    translate: calc(-40% + 5px) 0;
+  }
+
+  .header-brand-icon-plane-image {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .header-brand-icon-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .header-brand-title {
+    font-size: 24px;
+    font-weight: 400;
+    font-family: $secondaryfont;
+    transition: font-size 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+
+    @include phone-only {
+      font-size: 19px;
+    }
+  }
+
+  &.fixed .header-brand-title {
+    font-size: 19px;
+
+    @include phone-only {
+      font-size: 16px;
+    }
+  }
+
+  .header-brand-name {
+    font-family: $secondaryfont;
   }
 
   &-filter {
@@ -77,10 +159,10 @@ footer {
 
   &.fixed .header-filter {
     @include flex-center;
-    color: $whitecolor;
+    color: $onaccentcolor;
     line-height: 2;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    text-transform: none;
+    letter-spacing: 0.8px;
     font-size: 14px;
     gap: 15px;
     flex-wrap: nowrap;

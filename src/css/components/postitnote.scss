@@ -1,30 +1,101 @@
 @use "./variables.scss" as *;
 
 .post-it-note {
-  position: relative; 
+  position: relative;
 
-  &-content {
-    position: absolute;
-    color: $greycolor;
-    @include transform(rotate(-11deg));
-    line-height: 3;
-    letter-spacing: 6px;
-    max-width: 300px;
-    font-size: 13px;
-    font-family: $secondaryfont;
+  h2 {
+    font-size: 20px;
+    line-height: 1.25;
 
     @include phone-only {
-      font-size: 12px;
+      font-size: 16px;
     }
   }
 
-  &-img {
-    max-width: 440px;
-    height: auto;
-    position: relative;
+  &-content {
+    position: absolute;
+    color: #1d2a33;
+    @include transform(rotate(-5deg));
+    line-height: 1.8;
+    letter-spacing: 1px;
+    max-width: 300px;
+    font-size: 16px;
+    font-family: $secondaryfont;
+    font-weight: 500;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    text-align: center;
+    z-index: 2;
 
     @include phone-only {
-      max-width: 90%;
+      font-size: 14px;
+    }
+  }
+
+  &-surface {
+    width: 390px;
+    height: 386px;
+    position: relative;
+    background:
+      repeating-linear-gradient(
+        $whitecolor,
+        $whitecolor 24px,
+        #d4dde3 25px,
+        #d4dde3 26px
+      );
+    background-position-y: 48px;
+    border-radius: 8px 8px 22px 14px;
+    border: 1px solid rgba(29, 42, 51, 0.08);
+    box-shadow: none;
+    @include transform(rotate(-6deg));
+    overflow: hidden;
+
+    &:before {
+      content: none;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 42px;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: #dba5af;
+      pointer-events: none;
+    }
+
+    .post-it-note-pin {
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      width: 40px;
+      height: 40px;
+      translate: -50% 0;
+      border-radius: 50%;
+      background: linear-gradient(145deg, $accentcolor2 0%, $accentcolor 100%);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.18);
+      z-index: 3;
+    }
+
+    .post-it-note-pin:after {
+      content: "";
+      position: absolute;
+      top: 36px;
+      left: 50%;
+      width: 4px;
+      height: 26px;
+      translate: -50% 0;
+      background: linear-gradient(180deg, rgba(47, 72, 88, 0.65), rgba(47, 72, 88, 0));
+      border-radius: 999px;
+    }
+
+    @include phone-only {
+      width: min(86vw, 390px);
+      height: auto;
+      aspect-ratio: 390 / 386;
     }
   }
 }

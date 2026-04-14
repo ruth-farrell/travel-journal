@@ -6,11 +6,13 @@
   .sheet {
     font-family: $secondaryfont;
     background-color: $whitecolor;
-    background: repeating-linear-gradient($whitecolor, $whitecolor 25px, $accentcolor 26px, $accentcolor 27px);
+    background: repeating-linear-gradient($whitecolor, $whitecolor 24px, #d4dde3 25px, #d4dde3 26px);
     background-position-y: 49px;
     height: 600px;
     max-width: 650px;
     padding: 0;
+    border-radius: 8px 8px 22px 14px;
+    border: 1px solid rgba(29, 42, 51, 0.08);
 
     @include phone-only {
       max-width: 90%;
@@ -18,8 +20,8 @@
     }
 
     &-header {
-      background-color: #fff;
-      background: linear-gradient($whitecolor, $whitecolor 48px, $accentcolor 49px, $accentcolor 50px);
+      background-color: $whitecolor;
+      background: linear-gradient($whitecolor, $whitecolor 48px, #d4dde3 49px, #d4dde3 50px);
       height: 50px;
     }
 
@@ -74,18 +76,19 @@
 
     .r-margin {
       float: right;
-      border-left: 1px solid pink;
+      border-left: 1px solid #e6eaee;
     }
 
     .l-margin {
       float: left;
-      border-right: 2px solid pink;
+      border-right: 2px solid #dba5af;
       position: relative;
 
       .hole {
         height: 20px;
         width: 20px;
-        background-color: #ebebe8;
+        background-color: $whitecolor;
+        border: 1px solid #d8e1e8;
         border-radius: 50%;
         position: absolute;
         left: 15px;

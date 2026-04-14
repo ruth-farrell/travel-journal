@@ -15,7 +15,7 @@ main, .banner, .header-container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 2%;
+  gap: 24px;
 
   .section {
       margin-bottom: 0px;
@@ -39,38 +39,82 @@ main, .banner, .header-container {
   }
 }
 
+.year-number-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 24px;
+
+  @include phone-only {
+    flex-wrap: wrap;
+  }
+
+  .section {
+    margin-bottom: 0;
+  }
+
+  .year {
+    flex: 0 1 38%;
+
+    @include phone-only {
+      flex: 1 1 100%;
+    }
+  }
+
+  .number {
+    flex: 0 1 60%;
+
+    @include phone-only {
+      flex: 1 1 100%;
+    }
+  }
+}
+
 /* Section Layout */
 
 .section {
   @include flex-center;
   flex-direction: column;
-  gap: 20px;
+  gap: 28px;
   width: 100%;
   background: $whitecolor;
+  color: $textcolor;
   @include whiteborder;
-  margin: 20px auto;
+  margin: 28px auto;
+  padding: 18px 0;
 
   @include phone-only {
-    width: 90%;
+    width: 92%;
+    gap: 22px;
+    padding: 14px 0;
   }
 
   &.beside {
     flex-direction: row;
     justify-content: space-between;
+    gap: 18px;
+    padding-inline: 20px;
+
+    @include phone-only {
+      flex-direction: column;
+      padding-inline: 14px;
+    }
   }
 
   &-title {
     width: 100%;
     @include flex-center;
-    letter-spacing: 5px;
-    font-size: 16px;
-    line-height: 2.0;
-    text-transform: uppercase;
+    font-family: $secondaryfont;
+    letter-spacing: 0.8px;
+    font-size: 19px;
+    line-height: 1.45;
+    text-transform: none;
+    font-weight: 700;
   }
 
   &-container {
     @include flex-center;
-    gap: 15px;
+    gap: 22px;
   }
 }
 
@@ -78,14 +122,16 @@ main, .banner, .header-container {
 
 .banner {
   display: flex;
-  gap: 20px;
+  gap: 36px;
   justify-content: space-around;
   align-items: center;
-  padding-top: 150px;
+  padding-top: 142px;
   flex-wrap: wrap; 
 
   @include phone-only {
     flex-direction: column;
+    padding-top: 124px;
+    gap: 28px;
   }
 
   > div {

@@ -45,12 +45,13 @@
 
   &-buttons {
     position: relative;
-    padding: 10px;
-    background-color: $bluecolor;
+    padding: 2px;
+    background-color: transparent;
+    border-radius: 10px;
     transition: transform 0.3s, transform-origin 0.3s;
 
     @include phone-only {
-      padding: 5px;
+      padding: 0;
     }
 
     .active .hidden {
@@ -70,7 +71,7 @@
       text-transform: uppercase;
 
       @include phone-only {
-        font-size: 7px;
+        font-size: 10px;
         padding: 3px 5px;
         margin-left: 15px;
         border-top-right-radius: 1.5px;
@@ -114,7 +115,7 @@
   position: absolute;
   left: 10px;
   top: 10px;
-  z-index: 9;
+  z-index: 12;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -122,11 +123,19 @@
   gap: 10px;
 
   @include phone-only {
-    position: static;
+    position: absolute;
+    left: 50%;
+    top: auto;
+    bottom: 12px;
+    transform: translateX(-50%);
+    z-index: 12;
     flex-direction: row;
-    width: 100%;
-    justify-content: space-evenly;
-    padding-inline: 40px;
+    width: auto;
+    justify-content: center;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: none;
   }
 
 
@@ -135,10 +144,17 @@
     font-size: 14px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 2px solid $bordercolor;
 
     @include phone-only {
       min-width: auto;
-      box-shadow: 0 0 9px #bbbbbb;
+      padding: 10px 12px;
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.12);
     }
   }
 
@@ -169,6 +185,7 @@
 /* Map Image Container */
 
 .map-buttons-container {
+  position: relative;
   overflow: hidden;
 
   @include phone-only {
@@ -176,14 +193,14 @@
     align-items: center;
     justify-content: center;
     display: flex;
-    background: $bluecolor;
+    background: transparent;
   }
 
   &.zoom-on {
     cursor: grab;
   }
 
-  button {
+.map-buttons button {
     font-size: 16px;
     color: $accentcolor;
     background: none;
@@ -194,7 +211,7 @@
     border: none;
 
     @include phone-only {
-      font-size: 6px;
+      font-size: 10px;
     }
 
     &.gr {
@@ -243,7 +260,7 @@
       font-size: 14px;
 
       @include phone-only {
-        font-size: 6px;
+        font-size: 10px;
       }
     }
 
@@ -345,6 +362,11 @@
     &.sg {
       bottom: 43.4%;
       right: 21.1%;
+    }
+
+    &.vn {
+      bottom: 27%;
+      right: 20%;
     }
 
     &.au {
